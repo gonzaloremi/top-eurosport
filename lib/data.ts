@@ -1,42 +1,41 @@
 import "server-only";
 import { sql, ensureSchema } from "./db";
 import { CATEGORIES, type Category } from "./season";
-import { normalize, scoreCategory, type Standing } from "./scoring";
+import { scoreCategory, type Standing } from "./scoring";
+import { allAthletes, makeResolver, toLite, type Athlete } from "./athletes";
+import { normalize } from "./search";
 
-export type Top10Pair = Record<Category, string[]>;
+export type Slot = { id: number | null; name: string };
+export type Slots = Record<Category, Slot[]>;
 
-function empty(): Top10Pair {
-  return { monde: Array(10).fill(""), france: Array(10).fill("") };
+export function emptySlots(): Slots {
+  const e = () => Array.from({ length: 10 }, () => ({ id: null, name: "" }));
+  return { monde: e(), france: e() };
 }
 
-export async function getResults(season: number): Promise<Top10Pair> {
+export async function getResults(season: number): Promise<Slots> {
   await ensureSchema();
-  const rows = await sql`SELECT category, position, athlete FROM results WHERE season = ${season}`;
-  const r = empty();
-  for (const row of rows) r[row.category as Category][row.position - 1] = row.athlete;
+  const rows = await sql`SELECT category, position, athlete, athlete_id FROM results WHERE season = ${season}`;
+  const r = emptySlots();
+  for (const row of rows) r[row.category as Category][row.position - 1] = { id: row.athlete_id, name: row.athlete };
   return r;
 }
 
-export function hasResults(r: Top10Pair, cat?: Category) {
+export function hasResults(r: Slots, cat?: Category) {
   const cats = cat ? [cat] : CATEGORIES;
-  return cats.some((c) => r[c].some(Boolean));
-}
-
-export async function getAliases(season: number): Promise<Map<string, string>> {
-  const rows = await sql`SELECT from_key, to_key FROM aliases WHERE season = ${season}`;
-  return new Map(rows.map((r) => [r.from_key as string, r.to_key as string]));
+  return cats.some((c) => r[c].some((s) => s.name));
 }
 
 export async function getPredictions(userIds: number[], season: number) {
   await ensureSchema();
-  const map = new Map<number, Top10Pair>();
+  const map = new Map<number, Slots>();
   if (userIds.length === 0) return map;
   const rows = await sql`
-    SELECT user_id, category, position, athlete FROM predictions
+    SELECT user_id, category, position, athlete, athlete_id FROM predictions
     WHERE season = ${season} AND user_id = ANY(${userIds})`;
   for (const row of rows) {
-    if (!map.has(row.user_id)) map.set(row.user_id, empty());
-    map.get(row.user_id)![row.category as Category][row.position - 1] = row.athlete;
+    if (!map.has(row.user_id)) map.set(row.user_id, emptySlots());
+    map.get(row.user_id)![row.category as Category][row.position - 1] = { id: row.athlete_id, name: row.athlete };
   }
   return map;
 }
@@ -64,28 +63,43 @@ export async function getMembers(leagueId: number) {
     WHERE m.league_id = ${leagueId} ORDER BY m.joined_at`;
 }
 
-export async function computeStandings(
-  members: { id: number; display_name: string }[],
-  season: number
-) {
-  const [results, aliases, preds] = await Promise.all([
+/** Clé de comparaison : l'athlète du catalogue si connu, sinon le texte normalisé. */
+function keyer(athletes: Athlete[]) {
+  const resolve = makeResolver(athletes);
+  return (s: Slot) => {
+    if (!s.name && !s.id) return "";
+    const id = s.id ?? resolve(s.name);
+    return id ? `a${id}` : `t${normalize(s.name)}`;
+  };
+}
+
+export async function computeStandings(members: { id: number; display_name: string }[], season: number) {
+  const [results, preds, athletes] = await Promise.all([
     getResults(season),
-    getAliases(season),
     getPredictions(
       members.map((m) => m.id),
       season
     ),
+    allAthletes(),
   ]);
+  const key = keyer(athletes);
+  const officialKeys = { monde: results.monde.map(key), france: results.france.map(key) };
   const details = new Map<number, Record<Category, ReturnType<typeof scoreCategory>>>();
   const standings: Standing[] = members.map((m) => {
-    const p = preds.get(m.id) ?? empty();
-    const monde = scoreCategory(p.monde, results.monde, aliases);
-    const france = scoreCategory(p.france, results.france, aliases);
+    const p = preds.get(m.id) ?? emptySlots();
+    const score = (c: Category) => {
+      const keys = p[c].map(key);
+      const res = scoreCategory(keys, officialKeys[c], new Map(), (k) => k);
+      res.details.forEach((d, i) => (d.athlete = p[c][i].name));
+      return res;
+    };
+    const monde = score("monde");
+    const france = score("france");
     details.set(m.id, { monde, france });
     return {
       userId: m.id,
       name: m.display_name,
-      submitted: p.monde.some(Boolean) || p.france.some(Boolean),
+      submitted: p.monde.some((s) => s.name) || p.france.some((s) => s.name),
       monde: monde.total,
       france: france.total,
       total: monde.total + france.total,
@@ -95,16 +109,7 @@ export async function computeStandings(
   return { standings, details, results, preds };
 }
 
-/** Tous les noms déjà saisis (pour l'autocomplétion). */
-export async function getKnownAthletes(): Promise<string[]> {
+export async function getCatalogLite() {
   await ensureSchema();
-  const rows = await sql`
-    SELECT athlete FROM results
-    UNION SELECT athlete FROM predictions`;
-  const byKey = new Map<string, string>();
-  for (const r of rows) {
-    const k = normalize(r.athlete);
-    if (k && !byKey.has(k)) byKey.set(k, r.athlete);
-  }
-  return [...byKey.values()].sort((a, b) => a.localeCompare(b, "fr"));
+  return (await allAthletes()).map(toLite);
 }

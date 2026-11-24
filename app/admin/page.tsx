@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
 import { sql } from "@/lib/db";
-import { getAliases, getKnownAthletes, getResults, hasResults } from "@/lib/data";
+import { allAthletes, makeResolver, similarTo, toLite } from "@/lib/athletes";
+import { getResults } from "@/lib/data";
 import { currentSeason } from "@/lib/season";
-import { normalize } from "@/lib/scoring";
-import { saveAlias, saveResults, setAdmin } from "../actions";
+import { flag, search } from "@/lib/search";
+import { editAthlete, linkLegacy, mergeAthlete, proposeAthlete, saveResults, setAdmin } from "../actions";
 import { Top10Form } from "../components/forms";
 
 export default async function Admin({ searchParams }: { searchParams: Promise<{ saison?: string }> }) {
@@ -12,84 +13,145 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
   const now = currentSeason();
   const { saison } = await searchParams;
   const season = Number(saison) || now;
-  const [results, athletes, aliases, users] = await Promise.all([
+  const [results, athletes, users, legacyRows] = await Promise.all([
     getResults(season),
-    getKnownAthletes(),
-    getAliases(season),
+    allAthletes(),
     sql<{ id: number; display_name: string; is_admin: boolean }[]>`
       SELECT id, display_name, is_admin FROM users ORDER BY created_at`,
+    sql<{ athlete: string; n: number; users: string }[]>`
+      SELECT p.athlete, count(*)::int AS n, string_agg(DISTINCT u.display_name, ', ') AS users
+      FROM predictions p JOIN users u ON u.id = p.user_id
+      WHERE p.athlete_id IS NULL GROUP BY p.athlete ORDER BY n DESC`,
   ]);
-
-  // Noms pronostiqués qui ne correspondent à aucun athlète officiel (fautes de frappe…)
-  const officialByKey = new Map<string, string>();
-  for (const c of ["monde", "france"] as const)
-    for (const a of results[c]) if (a) officialByKey.set(normalize(a), a);
-  const picks = await sql`SELECT DISTINCT athlete FROM predictions WHERE season = ${season}`;
-  const unmatched = new Map<string, string>();
-  for (const p of picks) {
-    const k = normalize(p.athlete);
-    if (k && !officialByKey.has(k) && !unmatched.has(k)) unmatched.set(k, p.athlete);
-  }
+  const lite = athletes.map(toLite);
+  const resolve = makeResolver(athletes);
+  const legacy = legacyRows.filter((r) => !resolve(r.athlete));
+  const pending = athletes.filter((a) => a.status === "pending");
+  const creators = new Map(users.map((u) => [u.id, u.display_name]));
+  const usage = new Map(
+    (await sql`SELECT athlete_id, count(*)::int AS n FROM predictions WHERE athlete_id IS NOT NULL GROUP BY athlete_id`).map(
+      (r) => [r.athlete_id as number, r.n as number]
+    )
+  );
+  const todo = pending.length + legacy.length;
+  const sportsList = [...new Set(athletes.map((a) => a.sport))].sort((a, b) => a.localeCompare(b, "fr"));
 
   return (
     <>
-      <div className="kicker">Espace admin</div>
-      <h1 style={{ marginBottom: 12 }}>Tops 10 officiels</h1>
-      <nav className="season-switch" style={{ marginBottom: 12 }}>
-        {[now - 1, now, now + 1].map((s) => (
-          <Link key={s} href={`/admin?saison=${s}`} className={s === season ? "active" : ""}>
-            {s}
-          </Link>
-        ))}
-      </nav>
-      <p className="muted" style={{ marginBottom: 18 }}>
-        Saisis les tops 10 publiés par Eurosport pour la saison {season}. Les points de toutes les
-        ligues sont recalculés immédiatement. Les accents, majuscules, espaces et tirets sont
-        ignorés pour comparer les noms.
-      </p>
+      <div className="section-title" style={{ marginTop: 6 }}>
+        <div>
+          <div className="kicker">Espace admin</div>
+          <h1>Revue & résultats</h1>
+        </div>
+        <Link href="/admin/catalogue" className="pill">📚 Catalogue ({athletes.length})</Link>
+      </div>
+
+      <section id="revue" className={`game ${todo ? "theme-yellow" : "theme-pitch"}`}>
+        <div className="art" style={{ minHeight: 0 }}>
+          <div className="kicker">À vérifier</div>
+          <h2 style={{ fontSize: "2.2rem" }}>
+            {todo ? `${todo} élément${todo > 1 ? "s" : ""} à revoir` : "Tout est propre ✔"}
+          </h2>
+          <p style={{ marginTop: 6, maxWidth: "70ch" }}>
+            Athlètes ajoutés par les joueurs (corrige l&apos;orthographe puis valide, ou fusionne avec un athlète existant) et
+            anciens noms saisis à la main qui ne correspondent à personne du catalogue.
+          </p>
+
+          {pending.map((a) => {
+            const similar = similarTo(a, athletes);
+            return (
+              <div key={a.id} className="review-item">
+                <div className="grow">
+                  <strong>
+                    {flag(a.country.trim())} {a.display_name}
+                  </strong>{" "}
+                  <span className="small">
+                    · {a.sport} · {a.gender === "F" ? "F" : "H"} · ajouté par {creators.get(a.created_by ?? 0) ?? "?"} ·{" "}
+                    {usage.get(a.id) ?? 0} prono(s)
+                  </span>
+                </div>
+                <div className="row" style={{ gap: 6 }}>
+                  {similar.map((b) => (
+                    <form key={b.id} action={mergeAthlete}>
+                      <input type="hidden" name="from" value={a.id} />
+                      <input type="hidden" name="to" value={b.id} />
+                      <button className="btn ghost" title={`Fusionner dans ${b.display_name} (${b.sport})`}>
+                        = {b.display_name}
+                      </button>
+                    </form>
+                  ))}
+                  <form action={editAthlete} className="inline">
+                    <input type="hidden" name="id" value={a.id} />
+                    <input name="first_name" defaultValue={a.first_name} placeholder="Prénom" aria-label="Prénom" />
+                    <input name="last_name" defaultValue={a.last_name} placeholder="Nom" aria-label="Nom" required />
+                    <button className="btn dark">✔ Valider</button>
+                  </form>
+                </div>
+              </div>
+            );
+          })}
+
+          {legacy.map((r) => {
+            const guesses = search(lite, r.athlete, { limit: 3 });
+            return (
+              <div key={r.athlete} className="review-item">
+                <div className="grow">
+                  <strong>⚠️ « {r.athlete} »</strong>{" "}
+                  <span className="small">· saisi à la main par {r.users} ({r.n})</span>
+                </div>
+                <div className="row" style={{ gap: 6 }}>
+                  {guesses.map((g) => (
+                    <form key={g.id} action={linkLegacy}>
+                      <input type="hidden" name="text" value={r.athlete} />
+                      <input type="hidden" name="athlete_id" value={g.id} />
+                      <button className="btn ghost">→ {flag(g.c)} {g.n}</button>
+                    </form>
+                  ))}
+                  <form action={linkLegacy} className="inline">
+                    <input type="hidden" name="text" value={r.athlete} />
+                    <select name="athlete_id" required defaultValue="">
+                      <option value="" disabled>Autre athlète…</option>
+                      {sportsList.map((sp) => (
+                        <optgroup key={sp} label={sp}>
+                          {athletes.filter((x) => x.sport === sp).map((x) => (
+                            <option key={x.id} value={x.id}>{x.display_name}</option>
+                          ))}
+                        </optgroup>
+                      ))}
+                    </select>
+                    <button className="btn ghost">OK</button>
+                  </form>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className="section-title">
+        <div>
+          <div className="kicker">Verdict Eurosport</div>
+          <h2 style={{ fontSize: "2.2rem" }}>Tops 10 officiels</h2>
+        </div>
+        <nav className="season-switch">
+          {[now - 1, now].map((s) => (
+            <Link key={s} href={`/admin?saison=${s}`} className={s === season ? "active" : ""}>
+              {s}
+            </Link>
+          ))}
+        </nav>
+      </div>
       <Top10Form
         key={season}
         action={saveResults}
+        propose={proposeAthlete}
         initial={results}
-        athletes={athletes}
+        catalogue={lite}
         submitLabel={`Enregistrer les tops 10 officiels ${season}`}
         hidden={{ season }}
       />
 
-      {hasResults(results) && (
-        <section className="card" style={{ marginTop: 16 }}>
-          <h2 style={{ marginBottom: 6 }}>Noms à rapprocher</h2>
-          <p className="muted small">
-            Noms saisis par les joueurs qui ne correspondent à aucun athlète officiel. Si c&apos;est
-            une faute de frappe (ex : « Mbape »), associe-le au bon athlète. Sinon, laisse vide.
-          </p>
-          {unmatched.size === 0 && <p className="muted">Rien à rapprocher 👍</p>}
-          <datalist id="official">
-            {[...officialByKey.values()].map((a) => (
-              <option key={a} value={a} />
-            ))}
-          </datalist>
-          {[...unmatched.entries()].map(([k, name]) => {
-            const current = aliases.get(k);
-            return (
-              <form key={k} action={saveAlias} className="row" style={{ margin: "6px 0" }}>
-                <input type="hidden" name="season" value={season} />
-                <input type="hidden" name="from" value={name} />
-                <strong style={{ minWidth: 140 }}>{name} →</strong>
-                <input
-                  name="to"
-                  list="official"
-                  defaultValue={current ? officialByKey.get(current) ?? "" : ""}
-                  placeholder="(aucun)"
-                />
-                <button className="btn ghost">OK</button>
-              </form>
-            );
-          })}
-        </section>
-      )}
-
-      <section className="card" style={{ marginTop: 16 }}>
+      <section className="card" style={{ marginTop: 22 }}>
         <h2 style={{ marginBottom: 6 }}>Administrateurs</h2>
         <ul className="list-plain">
           {users.map((u) => (

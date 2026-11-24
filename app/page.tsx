@@ -22,7 +22,7 @@ export default async function Home() {
   const locked = isLocked(season);
   const [leagues, preds] = await Promise.all([getMyLeagues(user.id), getPredictions([user.id], season)]);
   const mine = preds.get(user.id);
-  const filled = mine ? mine.monde.filter(Boolean).length + mine.france.filter(Boolean).length : 0;
+  const filled = mine ? mine.monde.filter((x) => x.name).length + mine.france.filter((x) => x.name).length : 0;
   const t = countdown(season);
 
   return (

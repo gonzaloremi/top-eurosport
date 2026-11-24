@@ -323,3 +323,91 @@ details.player[open] summary::after { content: "▴"; }
 .theme-blue input:focus { border-color: var(--yellow); }
 .wordmark .mark { display: block; }
 .podium .podium-pts { font-size: 0.85rem; font-weight: 900; margin-top: 6px; }
+
+/* ============ Athlete picker ============ */
+.picker, .picked { position: relative; flex: 1; min-width: 0; }
+.picked { display: flex; align-items: stretch; gap: 6px; }
+.picked-main {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; text-align: left; cursor: pointer;
+  font: 700 0.98rem var(--body); padding: 7px 12px; border-radius: 12px; min-height: 50px;
+  border: 2px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.1); color: inherit;
+}
+.picked-main:disabled { cursor: default; }
+.picked-name { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.picked-name, .opt-name { overflow: hidden; }
+.picked-name small, .opt-name small { font-size: 0.74rem; font-weight: 600; opacity: 0.7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.picked.legacy .picked-main { border-color: var(--orange); border-style: dashed; }
+.flag { font-size: 1.25rem; flex: none; }
+.clear { flex: none; width: 38px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.18); background: transparent; color: inherit; cursor: pointer; font-weight: 900; opacity: 0.7; }
+.clear:hover { opacity: 1; }
+.theme-rainbow .picked-main, .theme-yellow .picked-main { background: #fffdf8; border-color: #141414; color: #141414; }
+.theme-rainbow .clear, .theme-yellow .clear { border-color: #c9c3b4; color: #141414; }
+.dropdown {
+  position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 6px);
+  background: var(--surface); color: var(--ink); border: 2px solid #141414; border-radius: 14px;
+  box-shadow: 0 6px 0 #141414, 0 18px 40px rgba(0,0,0,0.25); padding: 6px; max-height: 380px; overflow: auto;
+}
+.option {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: none; border: 0;
+  padding: 8px 10px; border-radius: 10px; cursor: pointer; font: 700 0.95rem var(--body); color: inherit;
+}
+.option .opt-name { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.option.active { background: var(--surface-2); outline: 2px solid var(--blue); }
+.option:disabled { opacity: 0.4; cursor: not-allowed; }
+.option.add { border-top: 1.5px dashed var(--line); border-radius: 0 0 10px 10px; margin-top: 4px; }
+.propose { padding: 8px; }
+.propose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.propose-grid > .full { grid-column: 1 / -1; }
+@media (max-width: 520px) { .propose-grid { grid-template-columns: 1fr; } }
+.dropdown input, .propose select {
+  background: var(--surface-2) !important; color: var(--ink) !important; border: 2px solid var(--line) !important;
+}
+.propose select { font: 600 0.92rem var(--body); padding: 10px; border-radius: 12px; min-width: 0; flex: 1; }
+
+/* ============ Admin review ============ */
+.review-item {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: space-between;
+  background: #fffdf8; color: #141414; border: 2px solid #141414; border-radius: 14px; padding: 10px 12px; margin-top: 10px;
+}
+.review-item .btn { padding: 6px 12px; font-size: 0.85rem; box-shadow: 0 3px 0 #141414; }
+.catalogue { columns: 3 300px; column-gap: 22px; }
+.catalogue .card { break-inside: avoid; display: inline-block; width: 100%; padding: 14px 16px; }
+.catalogue .list-plain li { padding: 6px 0; }
+
+.review-item form.inline { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.review-item input, .review-item select {
+  background: #fff; color: #141414; border: 2px solid #c9c3b4; padding: 6px 10px; border-radius: 10px;
+  font: 600 0.88rem var(--body); width: auto; min-width: 0;
+}
+.review-item input { max-width: 140px; }
+.review-item select { max-width: 260px; }
+
+/* ============ Drag & drop ============ */
+.medal.handle { position: relative; cursor: grab; touch-action: none; user-select: none; }
+fieldset:disabled .medal.handle, .medal.handle:active { cursor: grabbing; }
+.medal .grip {
+  position: absolute; left: -13px; top: 50%; transform: translateY(-50%); font-family: var(--body);
+  font-size: 0.8rem; letter-spacing: -2px; opacity: 0.35; line-height: 1;
+}
+.pick { margin-left: 10px; transition: transform 0.12s ease; }
+.pick.dragging { transform: scale(1.02); position: relative; z-index: 3; }
+.pick.dragging .medal { box-shadow: 0 4px 0 #141414; transform: rotate(-4deg); }
+.pick.dragging .picked-main, .pick.dragging .picker input { box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
+
+/* ============ Install sheet (PWA) ============ */
+.install-sheet {
+  position: fixed; z-index: 50; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom));
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  background: var(--night); color: var(--night-ink); border: 2px solid #141414; border-radius: 20px;
+  box-shadow: 0 6px 0 #141414, 0 20px 50px rgba(0,0,0,0.35); padding: 14px;
+  animation: slideup 0.35s cubic-bezier(.2,.9,.3,1.2);
+}
+.install-sheet img { border-radius: 14px; border: 2px solid #141414; flex: none; }
+.install-sheet .grow { flex: 1; min-width: 180px; }
+.install-sheet strong { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.3rem; letter-spacing: 0.01em; }
+.install-sheet p { margin: 2px 0 0; font-size: 0.9rem; color: var(--night-muted); }
+.install-sheet b { color: #fff; }
+.install-actions { display: flex; gap: 8px; margin-left: auto; }
+.install-actions .btn { padding: 8px 14px; }
+.ios-share { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: #fff; color: #1a6cff; font-weight: 900; }
+@keyframes slideup { from { transform: translateY(120%); } to { transform: none; } }

@@ -131,7 +131,7 @@ export default async function LeaguePage({
                     </div>
                     <ol>
                       {results[c].map((a, i) => (
-                        <li key={i}><span className="grow">{a || "—"}</span></li>
+                        <li key={i}><span className="grow">{a.name || "—"}</span></li>
                       ))}
                     </ol>
                   </div>

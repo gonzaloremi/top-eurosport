@@ -6,7 +6,8 @@ import { revalidatePath } from "next/cache";
 import { sql, ensureSchema } from "@/lib/db";
 import { createSession, destroySession, requireUser, requireAdmin } from "@/lib/auth";
 import { CATEGORIES, currentSeason, isLocked, type Category } from "@/lib/season";
-import { normalize } from "@/lib/scoring";
+import { normalize, type Lite } from "@/lib/search";
+import { displayName, insertAthlete, mergeAthletes, toLite } from "@/lib/athletes";
 
 export type FormState = { error?: string; ok?: string } | undefined;
 
@@ -101,52 +102,101 @@ export async function leaveLeague(fd: FormData) {
 
 // ---------- Pronostics ----------
 
-function readTop10(fd: FormData, prefix: string): string[] {
-  return Array.from({ length: 10 }, (_, i) =>
-    str(fd, `${prefix}-${i + 1}`).replace(/\s+/g, " ").slice(0, 60)
-  );
+type SlotIn = { id: number | null; name: string };
+
+async function readSlots(fd: FormData, prefix: string): Promise<SlotIn[] | string> {
+  const raw = Array.from({ length: 10 }, (_, i) => str(fd, `${prefix}-${i + 1}`));
+  const ids = raw.filter((v) => /^\d+$/.test(v)).map(Number);
+  const rows = ids.length
+    ? await sql`SELECT id, display_name FROM athletes WHERE id = ANY(${ids})`
+    : [];
+  const names = new Map(rows.map((r) => [r.id as number, r.display_name as string]));
+  const out: SlotIn[] = [];
+  for (const v of raw) {
+    if (!v) out.push({ id: null, name: "" });
+    else if (/^\d+$/.test(v)) {
+      const name = names.get(Number(v));
+      if (!name) return "Un des athlètes choisis n'existe plus, recharge la page.";
+      out.push({ id: Number(v), name });
+    } else if (v.startsWith("txt:")) out.push({ id: null, name: v.slice(4).slice(0, 60) });
+    else return "Valeur invalide.";
+  }
+  return out;
 }
 
-function checkDuplicates(list: string[], label: string): string | null {
+function checkDuplicates(list: SlotIn[], label: string): string | null {
   const seen = new Map<string, number>();
   for (let i = 0; i < list.length; i++) {
-    const k = normalize(list[i]);
+    const k = list[i].id ? `a${list[i].id}` : normalize(list[i].name) ? `t${normalize(list[i].name)}` : "";
     if (!k) continue;
-    if (seen.has(k)) return `${label} : « ${list[i]} » apparaît deux fois (places ${seen.get(k)! + 1} et ${i + 1}).`;
+    if (seen.has(k)) return `${label} : « ${list[i].name} » apparaît deux fois (places ${seen.get(k)! + 1} et ${i + 1}).`;
     seen.set(k, i);
   }
   return null;
+}
+
+async function readBoth(fd: FormData) {
+  const monde = await readSlots(fd, "monde");
+  if (typeof monde === "string") return monde;
+  const france = await readSlots(fd, "france");
+  if (typeof france === "string") return france;
+  const lists: Record<Category, SlotIn[]> = { monde, france };
+  for (const c of CATEGORIES) {
+    const dup = checkDuplicates(lists[c], c === "monde" ? "Top Monde" : "Top France");
+    if (dup) return dup;
+  }
+  return lists;
 }
 
 export async function savePredictions(_: FormState, fd: FormData): Promise<FormState> {
   const user = await requireUser();
   const season = currentSeason();
   if (isLocked(season)) return { error: "Trop tard ! Les pronostics sont fermés depuis le 1er décembre." };
-  const lists: Record<Category, string[]> = {
-    monde: readTop10(fd, "monde"),
-    france: readTop10(fd, "france"),
-  };
-  for (const c of CATEGORIES) {
-    const dup = checkDuplicates(lists[c], c === "monde" ? "Top Monde" : "Top France");
-    if (dup) return { error: dup };
-  }
+  const lists = await readBoth(fd);
+  if (typeof lists === "string") return { error: lists };
   await sql.begin(async (tx) => {
     await tx`DELETE FROM predictions WHERE user_id = ${user.id} AND season = ${season}`;
-    for (const c of CATEGORIES) {
+    for (const c of CATEGORIES)
       for (let i = 0; i < 10; i++) {
-        if (!lists[c][i]) continue;
-        await tx`INSERT INTO predictions (user_id, season, category, position, athlete)
-                 VALUES (${user.id}, ${season}, ${c}, ${i + 1}, ${lists[c][i]})`;
+        const s = lists[c][i];
+        if (!s.name) continue;
+        await tx`INSERT INTO predictions (user_id, season, category, position, athlete, athlete_id)
+                 VALUES (${user.id}, ${season}, ${c}, ${i + 1}, ${s.name}, ${s.id})`;
       }
-    }
   });
   revalidatePath("/", "layout");
-  const missing = CATEGORIES.reduce((n, c) => n + lists[c].filter((a) => !a).length, 0);
+  const missing = CATEGORIES.reduce((n, c) => n + lists[c].filter((a) => !a.name).length, 0);
+  const vague = CATEGORIES.reduce((n, c) => n + lists[c].filter((a) => a.name && !a.id).length, 0);
   return {
-    ok: missing
-      ? `Enregistré ✔︎ — il te reste ${missing} case(s) vide(s), tu peux revenir compléter jusqu'au 30 novembre.`
-      : "Classement enregistré ✔︎ Tu peux encore le modifier jusqu'au 30 novembre minuit.",
+    ok: vague
+      ? `Enregistré ✔︎ — ${vague} nom(s) marqué(s) ⚠️ à préciser : choisis-les dans la liste pour être sûr que ça compte.`
+      : missing
+        ? `Enregistré ✔︎ — il te reste ${missing} case(s) vide(s), tu peux revenir compléter jusqu'au 30 novembre.`
+        : "Classement enregistré ✔︎ Tu peux encore le modifier jusqu'au 30 novembre minuit.",
   };
+}
+
+// ---------- Catalogue d'athlètes ----------
+
+export type ProposeResult = { error?: string; athlete?: Lite };
+
+export async function proposeAthlete(fd: FormData): Promise<ProposeResult> {
+  const user = await requireUser();
+  const first = str(fd, "first_name").slice(0, 40);
+  const last = str(fd, "last_name").slice(0, 40);
+  const sport = str(fd, "sport").slice(0, 40);
+  const gender = str(fd, "gender") === "F" ? "F" : "M";
+  const country = str(fd, "country").toUpperCase();
+  if (last.length < 2) return { error: "Indique au moins le nom de famille." };
+  if (sport.length < 2) return { error: "Indique le sport." };
+  if (!/^[A-Z]{2}$/.test(country)) return { error: "Pays invalide." };
+  const a = await insertAthlete({
+    first_name: first, last_name: last, sport, gender, country,
+    in_intl: country !== "FR", in_fr: country === "FR",
+    status: user.is_admin ? "approved" : "pending", created_by: user.id,
+  });
+  revalidatePath("/admin");
+  return { athlete: toLite(a) };
 }
 
 // ---------- Admin : résultats officiels ----------
@@ -155,38 +205,78 @@ export async function saveResults(_: FormState, fd: FormData): Promise<FormState
   await requireAdmin();
   const season = Number(str(fd, "season"));
   if (!Number.isInteger(season) || season < 2000 || season > 2100) return { error: "Saison invalide." };
-  const lists: Record<Category, string[]> = {
-    monde: readTop10(fd, "monde"),
-    france: readTop10(fd, "france"),
-  };
-  for (const c of CATEGORIES) {
-    const dup = checkDuplicates(lists[c], c === "monde" ? "Top Monde" : "Top France");
-    if (dup) return { error: dup };
-  }
+  const lists = await readBoth(fd);
+  if (typeof lists === "string") return { error: lists };
   await sql.begin(async (tx) => {
     await tx`DELETE FROM results WHERE season = ${season}`;
     for (const c of CATEGORIES)
-      for (let i = 0; i < 10; i++)
-        if (lists[c][i])
-          await tx`INSERT INTO results (season, category, position, athlete)
-                   VALUES (${season}, ${c}, ${i + 1}, ${lists[c][i]})`;
+      for (let i = 0; i < 10; i++) {
+        const s = lists[c][i];
+        if (s.name)
+          await tx`INSERT INTO results (season, category, position, athlete, athlete_id)
+                   VALUES (${season}, ${c}, ${i + 1}, ${s.name}, ${s.id})`;
+      }
   });
   revalidatePath("/", "layout");
   return { ok: `Top 10 officiels ${season} enregistrés ✔︎` };
 }
 
-export async function saveAlias(fd: FormData) {
+export async function approveAthlete(fd: FormData) {
   await requireAdmin();
-  const season = Number(str(fd, "season"));
-  const from = normalize(str(fd, "from"));
-  const to = normalize(str(fd, "to"));
-  if (!from) redirect(`/admin?saison=${season}`);
-  if (!to || to === from) await sql`DELETE FROM aliases WHERE season = ${season} AND from_key = ${from}`;
-  else
-    await sql`INSERT INTO aliases (season, from_key, to_key) VALUES (${season}, ${from}, ${to})
-              ON CONFLICT (season, from_key) DO UPDATE SET to_key = EXCLUDED.to_key`;
+  await sql`UPDATE athletes SET status = 'approved' WHERE id = ${Number(str(fd, "id"))}`;
   revalidatePath("/", "layout");
-  redirect(`/admin?saison=${season}`);
+  redirect("/admin#revue");
+}
+
+export async function editAthlete(fd: FormData) {
+  await requireAdmin();
+  const id = Number(str(fd, "id"));
+  const first = str(fd, "first_name").slice(0, 40);
+  const last = str(fd, "last_name").slice(0, 40);
+  if (id && last.length >= 2) {
+    const display = displayName(first, last);
+    await sql`UPDATE athletes SET first_name = ${first}, last_name = ${last}, display_name = ${display},
+              search_key = ${normalize(display)}, last_key = ${normalize(last)}, status = 'approved'
+              WHERE id = ${id}`;
+    await sql`UPDATE predictions SET athlete = ${display} WHERE athlete_id = ${id}`;
+    await sql`UPDATE results SET athlete = ${display} WHERE athlete_id = ${id}`;
+  }
+  revalidatePath("/", "layout");
+  redirect("/admin#revue");
+}
+
+export async function mergeAthlete(fd: FormData) {
+  await requireAdmin();
+  const from = Number(str(fd, "from"));
+  const to = Number(str(fd, "to"));
+  if (from && to) await mergeAthletes(from, to);
+  revalidatePath("/", "layout");
+  redirect("/admin#revue");
+}
+
+export async function deleteAthlete(fd: FormData) {
+  await requireAdmin();
+  const id = Number(str(fd, "id"));
+  const [used] = await sql`
+    SELECT 1 FROM predictions WHERE athlete_id = ${id} UNION SELECT 1 FROM results WHERE athlete_id = ${id} LIMIT 1`;
+  if (!used) await sql`DELETE FROM athletes WHERE id = ${id}`;
+  revalidatePath("/", "layout");
+  redirect("/admin/catalogue");
+}
+
+/** Rattache un nom saisi en texte libre (anciens pronos) à un athlète du catalogue. */
+export async function linkLegacy(fd: FormData) {
+  await requireAdmin();
+  const text = str(fd, "text");
+  const id = Number(str(fd, "athlete_id"));
+  if (!text || !id) redirect("/admin#revue");
+  const [a] = await sql`SELECT display_name FROM athletes WHERE id = ${id}`;
+  if (a) {
+    await sql`UPDATE predictions SET athlete_id = ${id}, athlete = ${a.display_name} WHERE athlete_id IS NULL AND athlete = ${text}`;
+    await sql`UPDATE results SET athlete_id = ${id}, athlete = ${a.display_name} WHERE athlete_id IS NULL AND athlete = ${text}`;
+  }
+  revalidatePath("/", "layout");
+  redirect("/admin#revue");
 }
 
 export async function setAdmin(fd: FormData) {

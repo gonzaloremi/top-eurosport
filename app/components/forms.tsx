@@ -1,8 +1,10 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
-import type { FormState } from "@/app/actions";
+import type { FormState, ProposeResult } from "@/app/actions";
+import type { Lite } from "@/lib/search";
+import { AthletePicker, type PickValue } from "./athlete-picker";
 import { Jersey } from "./jersey";
 
 type Action = (s: FormState, fd: FormData) => Promise<FormState>;
@@ -82,36 +84,75 @@ export function InlineForm({
 export function Top10Form({
   action,
   initial,
-  athletes,
+  catalogue: initialCatalogue,
+  propose,
   disabled,
   submitLabel,
   hidden,
 }: {
   action: Action;
-  initial: { monde: string[]; france: string[] };
-  athletes: string[];
+  initial: { monde: PickValue[]; france: PickValue[] };
+  catalogue: Lite[];
+  propose: (fd: FormData) => Promise<ProposeResult>;
   disabled?: boolean;
   submitLabel: string;
   hidden?: Record<string, string | number>;
 }) {
   const [state, formAction] = useActionState(action, undefined);
   const [values, setValues] = useState(initial);
+  const [catalogue, setCatalogue] = useState(initialCatalogue);
+  const [drag, setDrag] = useState<{ cat: "monde" | "france"; index: number } | null>(null);
+  const listRefs = useRef<Record<string, HTMLOListElement | null>>({});
+
+  // Glisser-déposer : on attrape le numéro, la ligne suit le doigt / la souris et les autres se décalent.
+  function startDrag(e: React.PointerEvent, cat: "monde" | "france", index: number) {
+    if (disabled) return;
+    e.preventDefault();
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    setDrag({ cat, index });
+  }
+  function moveDrag(e: React.PointerEvent) {
+    if (!drag) return;
+    const list = listRefs.current[drag.cat];
+    if (!list) return;
+    const rows = Array.from(list.children) as HTMLElement[];
+    let target = drag.index;
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i].getBoundingClientRect();
+      if (e.clientY >= r.top && e.clientY <= r.bottom) target = i;
+    }
+    if (e.clientY < rows[0].getBoundingClientRect().top) target = 0;
+    if (e.clientY > rows[rows.length - 1].getBoundingClientRect().bottom) target = rows.length - 1;
+    if (target !== drag.index) {
+      setValues((prev) => {
+        const arr = [...prev[drag.cat]];
+        const [item] = arr.splice(drag.index, 1);
+        arr.splice(target, 0, item);
+        return { ...prev, [drag.cat]: arr };
+      });
+      setDrag({ cat: drag.cat, index: target });
+    }
+  }
+  function endDrag() {
+    setDrag(null);
+  }
   const cols = [
     { key: "monde" as const, kicker: "Maillot arc-en-ciel", title: "Top 10 Monde", theme: "theme-rainbow", jersey: "rainbow" as const },
     { key: "france" as const, kicker: "Maillot bleu", title: "Top 10 France", theme: "theme-blue", jersey: "blue" as const },
   ];
+  const proposeAndRemember = async (fd: FormData) => {
+    const res = await propose(fd);
+    if (res.athlete) setCatalogue((c) => (c.some((a) => a.id === res.athlete!.id) ? c : [...c, res.athlete!]));
+    return res;
+  };
   return (
     <form action={formAction} className="stack" style={{ gap: 0 }}>
       {hidden &&
         Object.entries(hidden).map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
-      <datalist id="athletes">
-        {athletes.map((a) => (
-          <option key={a} value={a} />
-        ))}
-      </datalist>
       <div className="grid2">
         {cols.map((c) => {
-          const filled = values[c.key].filter((v) => v.trim()).length;
+          const filled = values[c.key].filter((v) => v.name).length;
+          const taken = new Set(values[c.key].map((v) => v.id).filter((x): x is number => !!x));
           return (
             <section key={c.key} className={`game ${c.theme}`}>
               {c.jersey === "rainbow" && <div className="rainbow-band" />}
@@ -126,30 +167,40 @@ export function Top10Form({
                     <span className="counter">{filled}/10</span>
                   </div>
                 </div>
-                <fieldset disabled={disabled}>
-                  <ol className="pick-list">
-                    {values[c.key].map((v, i) => (
-                      <li className="pick" key={i}>
-                        <span className={`medal ${i < 3 ? `m${i + 1}` : ""}`}>{i + 1}</span>
-                        <input
-                          name={`${c.key}-${i + 1}`}
-                          list="athletes"
-                          value={v}
-                          maxLength={60}
-                          placeholder={i === 0 ? "Le n°1 de l'année…" : `${i + 1}e`}
-                          autoComplete="off"
-                          onChange={(e) =>
-                            setValues((prev) => {
-                              const next = { ...prev, [c.key]: [...prev[c.key]] };
-                              next[c.key][i] = e.target.value;
-                              return next;
-                            })
-                          }
-                        />
-                      </li>
-                    ))}
-                  </ol>
-                </fieldset>
+                <ol className="pick-list" ref={(el) => { listRefs.current[c.key] = el; }}>
+                  {values[c.key].map((v, i) => (
+                    <li className={`pick ${drag?.cat === c.key && drag.index === i ? "dragging" : ""}`} key={i}>
+                      <span
+                        className={`medal handle ${i < 3 ? `m${i + 1}` : ""}`}
+                        title={disabled ? undefined : "Glisser pour déplacer"}
+                        onPointerDown={(e) => startDrag(e, c.key, i)}
+                        onPointerMove={moveDrag}
+                        onPointerUp={endDrag}
+                        onPointerCancel={endDrag}
+                      >
+                        <span className="grip" aria-hidden>⋮⋮</span>
+                        {i + 1}
+                      </span>
+                      <AthletePicker
+                        name={`${c.key}-${i + 1}`}
+                        value={v}
+                        catalogue={catalogue}
+                        franceOnly={c.key === "france"}
+                        takenIds={taken}
+                        disabled={disabled}
+                        placeholder={i === 0 ? "Tape un nom… (ex : mbappe)" : `${i + 1}e`}
+                        onPropose={proposeAndRemember}
+                        onChange={(nv) =>
+                          setValues((prev) => {
+                            const next = { ...prev, [c.key]: [...prev[c.key]] };
+                            next[c.key][i] = nv;
+                            return next;
+                          })
+                        }
+                      />
+                    </li>
+                  ))}
+                </ol>
               </div>
             </section>
           );

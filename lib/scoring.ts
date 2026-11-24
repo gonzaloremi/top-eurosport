@@ -21,19 +21,23 @@ export type PickScore = { position: number; athlete: string; points: 0 | 1 | 3 }
 export function scoreCategory(
   picks: Top10,
   official: Top10,
-  aliases: Map<string, string> = new Map()
+  aliases: Map<string, string> = new Map(),
+  keyOf: (n: string) => string = normalize
 ): { total: number; exact: number; details: PickScore[] } {
   const key = (n: string) => {
-    const k = normalize(n);
+    const k = keyOf(n);
     return aliases.get(k) ?? k;
   };
   const officialKeys = official.map((a) => (a ? key(a) : ""));
   const officialSet = new Set(officialKeys.filter(Boolean));
+  const seen = new Set<string>();
   let total = 0;
   let exact = 0;
   const details: PickScore[] = picks.map((athlete, i) => {
     if (!athlete || officialSet.size === 0) return { position: i + 1, athlete, points: 0 };
     const k = key(athlete);
+    if (seen.has(k)) return { position: i + 1, athlete, points: 0 }; // doublon (après fusion)
+    seen.add(k);
     let points: 0 | 1 | 3 = 0;
     if (officialKeys[i] && officialKeys[i] === k) {
       points = 3;

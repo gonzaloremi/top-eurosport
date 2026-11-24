@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { getUser } from "@/lib/auth";
 import { logout } from "./actions";
+import { InstallPrompt } from "./components/install-prompt";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
@@ -9,6 +10,8 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Top 10 de l'année",
   description: "Devine les tops 10 Eurosport France et Monde de l'année entre amis et en famille.",
+  appleWebApp: { capable: true, title: "Top10", statusBarStyle: "default" },
+  icons: { apple: "/apple-touch-icon.png" },
 };
 export const viewport: Viewport = { themeColor: "#eceae4", width: "device-width", initialScale: 1 };
 
@@ -57,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Link href="/regles">Règles</Link> · <Link href="/palmares">Palmarès</Link>
           </span>
         </footer>
+        <InstallPrompt />
       </body>
     </html>
   );

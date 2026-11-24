@@ -1,0 +1,3812 @@
+[
+{
+"first_name": "Tigst",
+"last_name": "Assefa",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "ET",
+"intl": true,
+"fr": false,
+"note": "Record du monde du marathon féminin (2h15'41\" à Londres)"
+},
+{
+"first_name": "Laëticia",
+"last_name": "Bapté",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze aux championnats d'Europe sur 100 m haies"
+},
+{
+"first_name": "Marie-Julie",
+"last_name": "Bonnin",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Médaillée aux championnats d'Europe à la perche"
+},
+{
+"first_name": "Devynne",
+"last_name": "Charlton",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "BS",
+"intl": true,
+"fr": false,
+"note": "Record du monde du 60 m haies en salle"
+},
+{
+"first_name": "Alice",
+"last_name": "Finot",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne d'Europe du 3000 m steeple"
+},
+{
+"first_name": "Melissa",
+"last_name": "Jefferson-Wooden",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Doublé 100 m (10\"62)/200 m à l'Ultimate Championship"
+},
+{
+"first_name": "Hilary",
+"last_name": "Kpatcha",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze aux championnats d'Europe à la longueur"
+},
+{
+"first_name": "Yaroslava",
+"last_name": "Mahuchikh",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "UA",
+"intl": true,
+"fr": false,
+"note": "Victoire en hauteur à l'Ultimate Championship"
+},
+{
+"first_name": "Masai",
+"last_name": "Russell",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Record du monde du 100 m haies à Zurich, titre Ultimate"
+},
+{
+"first_name": "Kenny",
+"last_name": "Bednarek",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Doublé 100 m/200 m à l'Ultimate Championship"
+},
+{
+"first_name": "Étienne",
+"last_name": "Daguinos",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze aux championnats d'Europe sur 5000 m"
+},
+{
+"first_name": "Armand",
+"last_name": "Duplantis",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Record du monde perche (6,31 m), champion du monde en salle"
+},
+{
+"first_name": "Jimmy",
+"last_name": "Gressier",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Record d'Europe du 5 km, record de France du 3000 m, bronze Euro"
+},
+{
+"first_name": "Josh",
+"last_name": "Kerr",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Record du monde du mile, champion du monde en salle 3000 m"
+},
+{
+"first_name": "Muhammad Abdallah",
+"last_name": "Kounta",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion d'Europe du 400 m"
+},
+{
+"first_name": "Just",
+"last_name": "Kwaou-Mathey",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion d'Europe du 110 m haies"
+},
+{
+"first_name": "Sabastian",
+"last_name": "Sawe",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "KE",
+"intl": true,
+"fr": false,
+"note": "Record du monde du marathon sous les 2 heures"
+},
+{
+"first_name": "Yann",
+"last_name": "Schrub",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze aux Mondiaux en salle sur 3000 m"
+},
+{
+"first_name": "Alison",
+"last_name": "dos Santos",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "Record du monde du 400 m haies à Zurich, titre Ultimate"
+},
+{
+"first_name": "Emma",
+"last_name": "Cornelis",
+"sport": "Aviron",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde en deux sans barreur avec Peron"
+},
+{
+"first_name": "Hezekia",
+"last_name": "Peron",
+"sport": "Aviron",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde en deux sans barreur avec Cornelis"
+},
+{
+"first_name": "Oliver",
+"last_name": "Zeidler",
+"sport": "Aviron",
+"gender": "M",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Champion du monde en skiff à Amsterdam"
+},
+{
+"first_name": "Saya",
+"last_name": "Sakakibara",
+"sport": "BMX",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Vice-championne du monde de BMX racing"
+},
+{
+"first_name": "Bethany",
+"last_name": "Shriever",
+"sport": "BMX",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "4e titre de championne du monde de BMX racing (record)"
+},
+{
+"first_name": "Jesse",
+"last_name": "Asmus",
+"sport": "BMX",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de BMX racing à domicile (Brisbane)"
+},
+{
+"first_name": "Ross",
+"last_name": "Cullen",
+"sport": "BMX",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Vice-champion du monde de BMX racing"
+},
+{
+"first_name": "Mathis",
+"last_name": "Ragot Richard",
+"sport": "BMX",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Bronze aux Mondiaux, champion d'Europe de BMX racing"
+},
+{
+"first_name": "Delphine",
+"last_name": "Delrue",
+"sport": "Badminton",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne du monde 2026 en double mixte avec Thom Gicquel"
+},
+{
+"first_name": "An",
+"last_name": "Se-young",
+"sport": "Badminton",
+"gender": "F",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "Championne du monde 2026 sans perdre un set (2e titre)"
+},
+{
+"first_name": "Akane",
+"last_name": "Yamaguchi",
+"sport": "Badminton",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Finaliste des Championnats du monde 2026"
+},
+{
+"first_name": "Thom",
+"last_name": "Gicquel",
+"sport": "Badminton",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion du monde 2026 en double mixte avec Delphine Delrue"
+},
+{
+"first_name": "Alex",
+"last_name": "Lanier",
+"sport": "Badminton",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion du monde 2026, 1er Français sacré en simple"
+},
+{
+"first_name": "Kodai",
+"last_name": "Naraoka",
+"sport": "Badminton",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Finaliste des Championnats du monde 2026"
+},
+{
+"first_name": "Dominique",
+"last_name": "Malonga",
+"sport": "Basket-ball",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "All-Star WNBA 2026 à 20 ans (Seattle Storm)"
+},
+{
+"first_name": "Breanna",
+"last_name": "Stewart",
+"sport": "Basket-ball",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne du monde 2026, 1re joueuse MVP deux fois d'une Coupe du monde"
+},
+{
+"first_name": "Gabby",
+"last_name": "Williams",
+"sport": "Basket-ball",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne WNBA et MVP des Finales (Valkyries), vice-championne du monde"
+},
+{
+"first_name": "A'ja",
+"last_name": "Wilson",
+"sport": "Basket-ball",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "MVP WNBA 2026, record de 5 trophées (3e d'affilée)"
+},
+{
+"first_name": "Jalen",
+"last_name": "Brunson",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Champion NBA 2026 et MVP des Finales avec les Knicks (45 pts au match 5)"
+},
+{
+"first_name": "Evan",
+"last_name": "Fournier",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion d'EuroLigue 2026 et MVP du Final Four avec l'Olympiakos"
+},
+{
+"first_name": "Shai",
+"last_name": "Gilgeous-Alexander",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "MVP de la saison régulière NBA 2025-26 (2e d'affilée)"
+},
+{
+"first_name": "Nikola",
+"last_name": "Jokić",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "RS",
+"intl": true,
+"fr": false,
+"note": "Finaliste MVP NBA 2026, All-NBA First Team"
+},
+{
+"first_name": "Sasha",
+"last_name": "Vezenkov",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "BG",
+"intl": true,
+"fr": false,
+"note": "MVP de l'EuroLigue 2026 et champion d'Europe avec l'Olympiakos"
+},
+{
+"first_name": "Victor",
+"last_name": "Wembanyama",
+"sport": "Basket-ball",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Défenseur de l'année unanime, All-NBA First Team, finaliste NBA 2026"
+},
+{
+"first_name": "Camille",
+"last_name": "Bened",
+"sport": "Biathlon",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne olympique du relais 2026"
+},
+{
+"first_name": "Lou",
+"last_name": "Jeanmonnot",
+"sport": "Biathlon",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Gros globe 2025-26, 2 titres olympiques en relais, argent et bronze"
+},
+{
+"first_name": "Maren",
+"last_name": "Kirkeeide",
+"sport": "Biathlon",
+"gender": "F",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du sprint, argent de la poursuite"
+},
+{
+"first_name": "Océane",
+"last_name": "Michelon",
+"sport": "Biathlon",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne olympique mass start et relais, argent du sprint"
+},
+{
+"first_name": "Julia",
+"last_name": "Simon",
+"sport": "Biathlon",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne olympique de l'individuel + 2 relais, argent mass start"
+},
+{
+"first_name": "Lisa",
+"last_name": "Vittozzi",
+"sport": "Biathlon",
+"gender": "F",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Championne olympique de la poursuite à domicile"
+},
+{
+"first_name": "Johan-Olav",
+"last_name": "Botn",
+"sport": "Biathlon",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Champion olympique de l'individuel 2026"
+},
+{
+"first_name": "Fabien",
+"last_name": "Claude",
+"sport": "Biathlon",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion olympique du relais 2026"
+},
+{
+"first_name": "Johannes",
+"last_name": "Dale-Skjevdal",
+"sport": "Biathlon",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Champion olympique de la mass start 2026"
+},
+{
+"first_name": "Quentin",
+"last_name": "Fillon Maillet",
+"sport": "Biathlon",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion olympique du sprint + 2 relais d'or, bronze mass start"
+},
+{
+"first_name": "Émilien",
+"last_name": "Jacquelin",
+"sport": "Biathlon",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion olympique du relais, bronze olympique de la poursuite"
+},
+{
+"first_name": "Sturla Holm",
+"last_name": "Lægreid",
+"sport": "Biathlon",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "3 médailles olympiques individuelles, 2e de la Coupe du monde"
+},
+{
+"first_name": "Éric",
+"last_name": "Perrot",
+"sport": "Biathlon",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Gros globe 2025-26, 2 titres olympiques en relais, argent individuel"
+},
+{
+"first_name": "Naoya",
+"last_name": "Inoue",
+"sport": "Boxe",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Bat Nakatani au Tokyo Dome, reste champion incontesté"
+},
+{
+"first_name": "Christian",
+"last_name": "Mbilli",
+"sport": "Boxe",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion du monde WBC super-moyens, battu par Canelo en octobre"
+},
+{
+"first_name": "Oleksandr",
+"last_name": "Usyk",
+"sport": "Boxe",
+"gender": "M",
+"country": "UA",
+"intl": true,
+"fr": false,
+"note": "Conserve ses ceintures lourds face à Verhoeven à Gizeh (TKO 11e)"
+},
+{
+"first_name": "Saúl",
+"last_name": "Álvarez",
+"sport": "Boxe",
+"gender": "M",
+"country": "MX",
+"intl": true,
+"fr": false,
+"note": "« Canelo » bat Mbilli et récupère le titre WBC super-moyens"
+},
+{
+"first_name": "Jessica",
+"last_name": "Fox",
+"sport": "Canoë-kayak",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "5e titre mondial en K1 slalom à Oklahoma City"
+},
+{
+"first_name": "Tereza",
+"last_name": "Kneblová",
+"sport": "Canoë-kayak",
+"gender": "F",
+"country": "CZ",
+"intl": true,
+"fr": false,
+"note": "Championne du monde C1 slalom, 1er titre senior"
+},
+{
+"first_name": "Jakub",
+"last_name": "Krejčí",
+"sport": "Canoë-kayak",
+"gender": "M",
+"country": "CZ",
+"intl": true,
+"fr": false,
+"note": "Champion du monde K1 slalom à Oklahoma City"
+},
+{
+"first_name": "Fernando",
+"last_name": "Pimenta",
+"sport": "Canoë-kayak",
+"gender": "M",
+"country": "PT",
+"intl": true,
+"fr": false,
+"note": "Champion du monde K1 5000 m, 22e médaille mondiale"
+},
+{
+"first_name": "Miquel",
+"last_name": "Travé",
+"sport": "Canoë-kayak",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion du monde C1 slalom, 1er titre senior"
+},
+{
+"first_name": "Ida Marie",
+"last_name": "Hagen",
+"sport": "Combiné nordique",
+"gender": "F",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Gros globe 2025-26 avec 11 victoires en 14 courses"
+},
+{
+"first_name": "Johannes",
+"last_name": "Lamparter",
+"sport": "Combiné nordique",
+"gender": "M",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "Gros globe de cristal 2025-26"
+},
+{
+"first_name": "Jens Lurås",
+"last_name": "Oftebro",
+"sport": "Combiné nordique",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Triple champion olympique 2026 (3 épreuves sur 3)"
+},
+{
+"first_name": "Marion",
+"last_name": "Borras",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde de l'américaine (avec Clara Copponi)"
+},
+{
+"first_name": "Clara",
+"last_name": "Copponi",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde de l'américaine (avec Marion Borras)"
+},
+{
+"first_name": "Lara",
+"last_name": "Gillespie",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "IE",
+"intl": true,
+"fr": false,
+"note": "Titres de championne du monde à Shanghai"
+},
+{
+"first_name": "Mathilde",
+"last_name": "Gros",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne d'Europe du kilomètre, argent au keirin"
+},
+{
+"first_name": "Liying",
+"last_name": "Yuan",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de vitesse individuelle (2 titres mondiaux)"
+},
+{
+"first_name": "Harrie",
+"last_name": "Lavreysen",
+"sport": "Cyclisme sur piste",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Champion du monde vitesse (8e de suite), keirin et vitesse par équipes"
+},
+{
+"first_name": "Iúri",
+"last_name": "Leitão",
+"sport": "Cyclisme sur piste",
+"gender": "M",
+"country": "PT",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de l'omnium"
+},
+{
+"first_name": "Jonathan",
+"last_name": "Milan",
+"sport": "Cyclisme sur piste",
+"gender": "M",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Record du monde de la poursuite individuelle (4 km) aux Mondiaux"
+},
+{
+"first_name": "Étienne",
+"last_name": "Oliviero",
+"sport": "Cyclisme sur piste",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion du monde du kilomètre, champion d'Europe vitesse par équipes"
+},
+{
+"first_name": "Benjamin",
+"last_name": "Thomas",
+"sport": "Cyclisme sur piste",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion du monde de la course aux points"
+},
+{
+"first_name": "Paula",
+"last_name": "Blasi",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de la Vuelta Femenina"
+},
+{
+"first_name": "Marion",
+"last_name": "Bunel",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "3e de la Vuelta Femenina"
+},
+{
+"first_name": "Pauline",
+"last_name": "Ferrand-Prévot",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "2e du Tour des Flandres, 3e de Paris-Roubaix"
+},
+{
+"first_name": "Célia",
+"last_name": "Gery",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne de France, victoire d'étape au Giro"
+},
+{
+"first_name": "Cédrine",
+"last_name": "Kerbaol",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Meilleure Française du Tour de France Femmes (6e)"
+},
+{
+"first_name": "Franziska",
+"last_name": "Koch",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de Paris-Roubaix"
+},
+{
+"first_name": "Lotte",
+"last_name": "Kopecky",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de Milan-San Remo"
+},
+{
+"first_name": "Marlen",
+"last_name": "Reusser",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Championne du monde du contre-la-montre (titre conservé)"
+},
+{
+"first_name": "Demi",
+"last_name": "Vollering",
+"sport": "Cyclisme sur route",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Tour de France Femmes, Giro, Tour des Flandres, championne du monde et d'Europe"
+},
+{
+"first_name": "Remco",
+"last_name": "Evenepoel",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "2e du Tour, 4e titre mondial du chrono, champion d'Europe sur route"
+},
+{
+"first_name": "Romain",
+"last_name": "Grégoire",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion de France sur route, 3 victoires"
+},
+{
+"first_name": "Jordan",
+"last_name": "Jegat",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "10e du Tour de France"
+},
+{
+"first_name": "Paul",
+"last_name": "Magnier",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "15 victoires en 2026"
+},
+{
+"first_name": "Lenny",
+"last_name": "Martinez",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "5e du Tour de France, 7 victoires dont 5 en WorldTour"
+},
+{
+"first_name": "Brandon",
+"last_name": "McNulty",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Champion du monde sur route à Montréal"
+},
+{
+"first_name": "Tadej",
+"last_name": "Pogačar",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "SI",
+"intl": true,
+"fr": false,
+"note": "5e Tour de France, Milan-San Remo, Tour des Flandres, Liège-Bastogne-Liège"
+},
+{
+"first_name": "Paul",
+"last_name": "Seixas",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Tour de Lombardie, 4e du Tour, Flèche Wallonne, bronze CLM Mondiaux"
+},
+{
+"first_name": "Jonas",
+"last_name": "Vingegaard",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "DK",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du Giro 2026, complète la triple couronne des Grands Tours"
+},
+{
+"first_name": "Ceylin del Carmen",
+"last_name": "Alvarado",
+"sport": "Cyclo-cross",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Vice-championne du monde de cyclo-cross"
+},
+{
+"first_name": "Lucinda",
+"last_name": "Brand",
+"sport": "Cyclo-cross",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Championne du monde et vainqueure de la Coupe du monde"
+},
+{
+"first_name": "Puck",
+"last_name": "Pieterse",
+"sport": "Cyclo-cross",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Bronze aux Mondiaux de cyclo-cross"
+},
+{
+"first_name": "Tibor",
+"last_name": "Del Grosso",
+"sport": "Cyclo-cross",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Vice-champion du monde de cyclo-cross"
+},
+{
+"first_name": "Thibau",
+"last_name": "Nys",
+"sport": "Cyclo-cross",
+"gender": "M",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "Bronze aux Mondiaux, 2e de la Coupe du monde"
+},
+{
+"first_name": "Mathieu",
+"last_name": "van der Poel",
+"sport": "Cyclo-cross",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "8e titre mondial de cyclo-cross (record), Coupe du monde"
+},
+{
+"first_name": "Sébastien",
+"last_name": "Buemi",
+"sport": "Endurance (WEC/24h du Mans)",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Champion du monde WEC Hypercar (Toyota n°8), 5e titre"
+},
+{
+"first_name": "Brendon",
+"last_name": "Hartley",
+"sport": "Endurance (WEC/24h du Mans)",
+"gender": "M",
+"country": "NZ",
+"intl": true,
+"fr": false,
+"note": "Champion du monde WEC Hypercar (Toyota n°8), 5e titre"
+},
+{
+"first_name": "Ryo",
+"last_name": "Hirakawa",
+"sport": "Endurance (WEC/24h du Mans)",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion du monde WEC Hypercar (Toyota n°8)"
+},
+{
+"first_name": "Kamui",
+"last_name": "Kobayashi",
+"sport": "Endurance (WEC/24h du Mans)",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Vainqueur des 24 Heures du Mans (Toyota n°7)"
+},
+{
+"first_name": "Nyck",
+"last_name": "de Vries",
+"sport": "Endurance (WEC/24h du Mans)",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Vainqueur des 24 Heures du Mans pour sa 1re fois (Toyota n°7)"
+},
+{
+"first_name": "Zélia",
+"last_name": "Avezou",
+"sport": "Escalade",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Victoire en bloc à Keqiao, vice-championne d'Europe 2026"
+},
+{
+"first_name": "Oriane",
+"last_name": "Bertone",
+"sport": "Escalade",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Victoire en Coupe du monde de bloc à Salt Lake City"
+},
+{
+"first_name": "Janja",
+"last_name": "Garnbret",
+"sport": "Escalade",
+"gender": "F",
+"country": "SI",
+"intl": true,
+"fr": false,
+"note": "50e victoire en Coupe du monde, 2e du général difficulté"
+},
+{
+"first_name": "Erin",
+"last_name": "McNeice",
+"sport": "Escalade",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Vainqueure du classement général de bloc 2026"
+},
+{
+"first_name": "Annie",
+"last_name": "Sanders",
+"sport": "Escalade",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vainqueure du classement général de difficulté 2026"
+},
+{
+"first_name": "Sorato",
+"last_name": "Anraku",
+"sport": "Escalade",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du classement général de bloc 2026"
+},
+{
+"first_name": "Do-hyun",
+"last_name": "Lee",
+"sport": "Escalade",
+"gender": "M",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "2e du classement général de bloc 2026"
+},
+{
+"first_name": "Mejdi",
+"last_name": "Schalck",
+"sport": "Escalade",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "3e du classement général mondial de bloc 2026"
+},
+{
+"first_name": "Sara",
+"last_name": "Balzer",
+"sport": "Escrime",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Vice-championne du monde de sabre à Hong Kong"
+},
+{
+"first_name": "Larissa",
+"last_name": "Eifler",
+"sport": "Escrime",
+"gender": "F",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de sabre à Hong Kong (bat Balzer 15-10)"
+},
+{
+"first_name": "Toscane",
+"last_name": "Tori",
+"sport": "Escrime",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze mondial au sabre à 22 ans, 1er podium mondial"
+},
+{
+"first_name": "Pavel",
+"last_name": "Graudyn",
+"sport": "Escrime",
+"gender": "M",
+"country": "RU",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de sabre à Hong Kong"
+},
+{
+"first_name": "Lucas",
+"last_name": "Malcotti",
+"sport": "Escrime",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Champion du monde d'épée à Hong Kong"
+},
+{
+"first_name": "Selma",
+"last_name": "Bacha",
+"sport": "Football",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Seule Française nommée au Ballon d'Or 2026, finaliste de la C1 avec l'OL"
+},
+{
+"first_name": "Marie-Antoinette",
+"last_name": "Katoto",
+"sport": "Football",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Buteuse des Bleues qualifiées pour le Mondial 2027 (42 buts en sélection)"
+},
+{
+"first_name": "Melvine",
+"last_name": "Malard",
+"sport": "Football",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Buteuse décisive des Bleues en qualifications pour le Mondial 2027"
+},
+{
+"first_name": "Ewa",
+"last_name": "Pajor",
+"sport": "Football",
+"gender": "F",
+"country": "PL",
+"intl": true,
+"fr": false,
+"note": "2e du Ballon d'Or, doublé en finale de la Ligue des champions 2026"
+},
+{
+"first_name": "Salma",
+"last_name": "Paralluelo",
+"sport": "Football",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Doublé en finale de la Ligue des champions 2026 (Barça 4-0 Lyon)"
+},
+{
+"first_name": "Alexia",
+"last_name": "Putellas",
+"sport": "Football",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Ballon d'Or féminin 2026 (3e sacre), Ligue des champions avec le Barça"
+},
+{
+"first_name": "Alessia",
+"last_name": "Russo",
+"sport": "Football",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "9e du Ballon d'Or féminin 2026 (Arsenal, Angleterre)"
+},
+{
+"first_name": "Ousmane",
+"last_name": "Dembélé",
+"sport": "Football",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Ligue des champions 2026 avec le PSG, buteur en finale face à Arsenal"
+},
+{
+"first_name": "Harry",
+"last_name": "Kane",
+"sport": "Football",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Ballon d'Or 2026 (Bayern Munich, Angleterre 3e du Mondial)"
+},
+{
+"first_name": "Kylian",
+"last_name": "Mbappé",
+"sport": "Football",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "2e du Ballon d'Or 2026, Soulier d'or du Mondial 2026 (10 buts)"
+},
+{
+"first_name": "Lionel",
+"last_name": "Messi",
+"sport": "Football",
+"gender": "M",
+"country": "AR",
+"intl": true,
+"fr": false,
+"note": "Finaliste du Mondial 2026, Ballon d'argent du tournoi, 5e du Ballon d'Or"
+},
+{
+"first_name": "Michael",
+"last_name": "Olise",
+"sport": "Football",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Nommé au Ballon d'Or 2026, demi-finaliste du Mondial avec les Bleus"
+},
+{
+"first_name": "",
+"last_name": "Rodri",
+"sport": "Football",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Rodri : champion du monde 2026 et Ballon d'or du Mondial, 4e du Ballon d'Or"
+},
+{
+"first_name": "Dayot",
+"last_name": "Upamecano",
+"sport": "Football",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Pilier de la défense des Bleus au Mondial 2026, 26e du Ballon d'Or"
+},
+{
+"first_name": "Lamine",
+"last_name": "Yamal",
+"sport": "Football",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion du monde 2026 avec l'Espagne, 3e du Ballon d'Or"
+},
+{
+"first_name": "Andrea Kimi",
+"last_name": "Antonelli",
+"sport": "Formule 1",
+"gender": "M",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Champion du monde F1 à 20 ans, plus jeune de l'histoire (Mercedes)"
+},
+{
+"first_name": "Isack",
+"last_name": "Hadjar",
+"sport": "Formule 1",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Premier podium chez Red Bull (3e à Monaco), meilleur Français"
+},
+{
+"first_name": "George",
+"last_name": "Russell",
+"sport": "Formule 1",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Dans le top 3 provisoire du championnat (Mercedes)"
+},
+{
+"first_name": "Max",
+"last_name": "Verstappen",
+"sport": "Formule 1",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Dauphin provisoire d'Antonelli au championnat (Red Bull)"
+},
+{
+"first_name": "Nelly",
+"last_name": "Korda",
+"sport": "Golf",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de la Chevron et de l'US Women's Open 2026"
+},
+{
+"first_name": "Shiho",
+"last_name": "Kuwaki",
+"sport": "Golf",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de l'AIG Women's Open 2026, 1er majeur"
+},
+{
+"first_name": "Agathe",
+"last_name": "Laisné",
+"sport": "Golf",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "2 victoires sur le circuit européen 2026, leader du Ladies European Tour"
+},
+{
+"first_name": "Haeran",
+"last_name": "Ryu",
+"sport": "Golf",
+"gender": "F",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "Vainqueure du KPMG Women's PGA et de l'Evian Championship 2026"
+},
+{
+"first_name": "Wyndham",
+"last_name": "Clark",
+"sport": "Golf",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de l'US Open 2026 à Shinnecock Hills (2e titre)"
+},
+{
+"first_name": "Matt",
+"last_name": "Fitzpatrick",
+"sport": "Golf",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "4 victoires en 2026 dont l'Open de France"
+},
+{
+"first_name": "Ryan",
+"last_name": "Fox",
+"sport": "Golf",
+"gender": "M",
+"country": "NZ",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de l'Open britannique 2026 à Royal Birkdale"
+},
+{
+"first_name": "Rory",
+"last_name": "McIlroy",
+"sport": "Golf",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du Masters 2026, 1er doublé à Augusta depuis Tiger Woods"
+},
+{
+"first_name": "Scottie",
+"last_name": "Scheffler",
+"sport": "Golf",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de la FedEx Cup 2026 (3 victoires), n°1 mondial"
+},
+{
+"first_name": "Rebeca",
+"last_name": "Andrade",
+"sport": "Gymnastique artistique",
+"gender": "F",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "3e titre mondial au saut à Rotterdam"
+},
+{
+"first_name": "Skye",
+"last_name": "Blakely",
+"sport": "Gymnastique artistique",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne du monde du concours général à Rotterdam"
+},
+{
+"first_name": "Kaylia",
+"last_name": "Nemour",
+"sport": "Gymnastique artistique",
+"gender": "F",
+"country": "DZ",
+"intl": true,
+"fr": false,
+"note": "2e titre mondial consécutif aux barres asymétriques"
+},
+{
+"first_name": "Daiki",
+"last_name": "Hashimoto",
+"sport": "Gymnastique artistique",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "4e titre mondial consécutif au concours général à Rotterdam"
+},
+{
+"first_name": "Jingyuan",
+"last_name": "Zou",
+"sport": "Gymnastique artistique",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Champion du monde aux barres parallèles à Rotterdam"
+},
+{
+"first_name": "Sarah",
+"last_name": "Bouktit",
+"sport": "Handball",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "MVP du Final4, 1re Ligue des champions de l'histoire pour Metz"
+},
+{
+"first_name": "Mathias",
+"last_name": "Gidsel",
+"sport": "Handball",
+"gender": "M",
+"country": "DK",
+"intl": true,
+"fr": false,
+"note": "Champion d'Europe 2026, MVP et meilleur buteur de l'Euro (68 buts)"
+},
+{
+"first_name": "Domen",
+"last_name": "Makuc",
+"sport": "Handball",
+"gender": "M",
+"country": "SI",
+"intl": true,
+"fr": false,
+"note": "Ligue des champions 2026 avec Barcelone, MVP du Final4"
+},
+{
+"first_name": "Dika",
+"last_name": "Mem",
+"sport": "Handball",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Ligue des champions 2026 avec Barcelone (37-34 en finale)"
+},
+{
+"first_name": "Uta",
+"last_name": "Abe",
+"sport": "Judo",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde -52 kg à Bakou"
+},
+{
+"first_name": "Shirine",
+"last_name": "Boukli",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze mondial en -48 kg à Bakou, 2e médaille mondiale"
+},
+{
+"first_name": "Romane",
+"last_name": "Dicko",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde +78 kg à Bakou"
+},
+{
+"first_name": "Marie-Ève",
+"last_name": "Gahié",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde -70 kg à Bakou"
+},
+{
+"first_name": "Kaïla",
+"last_name": "Issoufi",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne du monde à Bakou"
+},
+{
+"first_name": "Wakana",
+"last_name": "Koga",
+"sport": "Judo",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde à Bakou (1re journée)"
+},
+{
+"first_name": "Hyeonji",
+"last_name": "Lee",
+"sport": "Judo",
+"gender": "F",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "Championne du monde +78 kg à Bakou face à Romane Dicko"
+},
+{
+"first_name": "Yelyzaveta",
+"last_name": "Lytvynenko",
+"sport": "Judo",
+"gender": "F",
+"country": "AE",
+"intl": true,
+"fr": false,
+"note": "Championne du monde à Bakou, historique pour les Émirats"
+},
+{
+"first_name": "Hifumi",
+"last_name": "Abe",
+"sport": "Judo",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion du monde -66 kg à Bakou"
+},
+{
+"first_name": "Dayyan",
+"last_name": "Boulemtafes",
+"sport": "Judo",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze mondial en -73 kg à 20 ans, 1er podium mondial"
+},
+{
+"first_name": "Axel",
+"last_name": "Clerget",
+"sport": "Judo",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze aux Mondiaux de Bakou en -90 kg"
+},
+{
+"first_name": "Tato",
+"last_name": "Grigalashvili",
+"sport": "Judo",
+"gender": "M",
+"country": "GE",
+"intl": true,
+"fr": false,
+"note": "4e titre mondial en -81 kg à Bakou"
+},
+{
+"first_name": "Ryuga",
+"last_name": "Tanaka",
+"sport": "Judo",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion du monde -73 kg à Bakou"
+},
+{
+"first_name": "Inal",
+"last_name": "Tasoev",
+"sport": "Judo",
+"gender": "M",
+"country": "RU",
+"intl": true,
+"fr": false,
+"note": "3e titre mondial en +100 kg à Bakou"
+},
+{
+"first_name": "Kexin",
+"last_name": "Hong",
+"sport": "Lutte",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de lutte, 1er titre mondial"
+},
+{
+"first_name": "Yui",
+"last_name": "Susaki",
+"sport": "Lutte",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde -50 kg"
+},
+{
+"first_name": "Saeid",
+"last_name": "Esmaeili",
+"sport": "Lutte",
+"gender": "M",
+"country": "IR",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de lutte gréco-romaine 2026"
+},
+{
+"first_name": "Ibrahim",
+"last_name": "Ghanem",
+"sport": "Lutte",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Conserve son titre européen en -72 kg (gréco-romaine)"
+},
+{
+"first_name": "Natália",
+"last_name": "Silva",
+"sport": "MMA (UFC)",
+"gender": "F",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "Championne UFC des poids mouches (bat Wang Cong)"
+},
+{
+"first_name": "Ciryl",
+"last_name": "Gane",
+"sport": "MMA (UFC)",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion UFC des lourds : KO de Pereira, puis défense vs Hokit"
+},
+{
+"first_name": "Sean",
+"last_name": "Strickland",
+"sport": "MMA (UFC)",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Champion UFC des moyens en battant Khamzat Chimaev"
+},
+{
+"first_name": "Carlos",
+"last_name": "Ulberg",
+"sport": "MMA (UFC)",
+"gender": "M",
+"country": "NZ",
+"intl": true,
+"fr": false,
+"note": "Champion UFC mi-lourds par KO sur Jiří Procházka"
+},
+{
+"first_name": "Alexander",
+"last_name": "Volkanovski",
+"sport": "MMA (UFC)",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Conserve son titre UFC plumes face à Diego Lopes"
+},
+{
+"first_name": "Marco",
+"last_name": "Bezzecchi",
+"sport": "MotoGP",
+"gender": "M",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Longtemps leader, vainqueur du GP du Portugal (Aprilia)"
+},
+{
+"first_name": "Jorge",
+"last_name": "Martín",
+"sport": "MotoGP",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Vice-champion MotoGP, vainqueur au GP de France"
+},
+{
+"first_name": "Marc",
+"last_name": "Márquez",
+"sport": "MotoGP",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "8e titre en catégorie reine, égale le record d'Agostini"
+},
+{
+"first_name": "Béryl",
+"last_name": "Gastaldello",
+"sport": "Natation",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Anastasiia",
+"last_name": "Kirpichnikova",
+"sport": "Natation",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Katie",
+"last_name": "Ledecky",
+"sport": "Natation",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Summer",
+"last_name": "McIntosh",
+"sport": "Natation",
+"gender": "F",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Kaylee",
+"last_name": "McKeown",
+"sport": "Natation",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Mollie",
+"last_name": "O'Callaghan",
+"sport": "Natation",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Gretchen",
+"last_name": "Walsh",
+"sport": "Natation",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Marie",
+"last_name": "Wattel",
+"sport": "Natation",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Maxime",
+"last_name": "Grousset",
+"sport": "Natation",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Qin",
+"last_name": "Haiyang",
+"sport": "Natation",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Hubert",
+"last_name": "Kós",
+"sport": "Natation",
+"gender": "M",
+"country": "HU",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Florent",
+"last_name": "Manaudou",
+"sport": "Natation",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Léon",
+"last_name": "Marchand",
+"sport": "Natation",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Yohann",
+"last_name": "Ndoye-Brouard",
+"sport": "Natation",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "David",
+"last_name": "Popovici",
+"sport": "Natation",
+"gender": "M",
+"country": "RO",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Pan",
+"last_name": "Zhanle",
+"sport": "Natation",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Delfina",
+"last_name": "Brea",
+"sport": "Padel",
+"gender": "F",
+"country": "AR",
+"intl": true,
+"fr": false,
+"note": "N°1 mondiale avec Gemma Triay, 6 à 7 titres Premier Padel en 2026"
+},
+{
+"first_name": "Beatriz",
+"last_name": "González",
+"sport": "Padel",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "N°2 mondiale avec Paula Josemaría, 6 titres Premier Padel en 2026"
+},
+{
+"first_name": "Paula",
+"last_name": "Josemaría",
+"sport": "Padel",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "N°2 mondiale avec Bea González, 6 titres Premier Padel en 2026"
+},
+{
+"first_name": "Gemma",
+"last_name": "Triay",
+"sport": "Padel",
+"gender": "F",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "N°1 mondiale avec Delfi Brea, 6 à 7 titres Premier Padel en 2026"
+},
+{
+"first_name": "Federico",
+"last_name": "Chingotto",
+"sport": "Padel",
+"gender": "M",
+"country": "AR",
+"intl": true,
+"fr": false,
+"note": "N°2 mondial avec Galán, 7 titres Premier Padel en 2026"
+},
+{
+"first_name": "Arturo",
+"last_name": "Coello",
+"sport": "Padel",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "N°1 mondial avec Tapia, 9 titres Premier Padel en 2026"
+},
+{
+"first_name": "Alejandro",
+"last_name": "Galán",
+"sport": "Padel",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "N°2 mondial avec Chingotto, 7 titres Premier Padel en 2026"
+},
+{
+"first_name": "Agustín",
+"last_name": "Tapia",
+"sport": "Padel",
+"gender": "M",
+"country": "AR",
+"intl": true,
+"fr": false,
+"note": "N°1 mondial avec Coello, 9 titres Premier Padel en 2026"
+},
+{
+"first_name": "Laurence",
+"last_name": "Fournier Beaudry",
+"sport": "Patinage artistique",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne olympique et du monde de danse avec Cizeron"
+},
+{
+"first_name": "Minerva Fabienne",
+"last_name": "Hase",
+"sport": "Patinage artistique",
+"gender": "F",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Championne du monde des couples 2026 avec Nikita Volodin"
+},
+{
+"first_name": "Alysa",
+"last_name": "Liu",
+"sport": "Patinage artistique",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne olympique 2026"
+},
+{
+"first_name": "Riku",
+"last_name": "Miura",
+"sport": "Patinage artistique",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne olympique des couples avec Ryuichi Kihara"
+},
+{
+"first_name": "Kaori",
+"last_name": "Sakamoto",
+"sport": "Patinage artistique",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde 2026, vice-championne olympique"
+},
+{
+"first_name": "Kévin",
+"last_name": "Aymoz",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "11e aux JO, vainqueur du Skate Canada 2026"
+},
+{
+"first_name": "Guillaume",
+"last_name": "Cizeron",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion olympique et du monde de danse avec Fournier Beaudry"
+},
+{
+"first_name": "Yuma",
+"last_name": "Kagiyama",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Vice-champion olympique et vice-champion du monde"
+},
+{
+"first_name": "Ryuichi",
+"last_name": "Kihara",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion olympique des couples avec Riku Miura"
+},
+{
+"first_name": "Ilia",
+"last_name": "Malinin",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "3e titre mondial consécutif à Prague après l'échec olympique"
+},
+{
+"first_name": "Mikhail",
+"last_name": "Shaidorov",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "KZ",
+"intl": true,
+"fr": false,
+"note": "Champion olympique surprise 2026"
+},
+{
+"first_name": "Adam",
+"last_name": "Siao Him Fa",
+"sport": "Patinage artistique",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "7e aux JO, vainqueur du Grand Prix de France 2026"
+},
+{
+"first_name": "Gil-li",
+"last_name": "Kim",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "Short-track : championne olympique 1500 m et relais"
+},
+{
+"first_name": "Femke",
+"last_name": "Kok",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du 500 m (record olympique), argent 1000 m"
+},
+{
+"first_name": "Jutta",
+"last_name": "Leerdam",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du 1000 m, argent 500 m"
+},
+{
+"first_name": "Antoinette",
+"last_name": "Rijpma-de Jong",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du 1500 m"
+},
+{
+"first_name": "Xandra",
+"last_name": "Velzeboer",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Short-track : championne olympique 500 et 1000 m, record du monde"
+},
+{
+"first_name": "Steven",
+"last_name": "Dubois",
+"sport": "Patinage de vitesse",
+"gender": "M",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "Short-track : champion olympique du 500 m"
+},
+{
+"first_name": "Metoděj",
+"last_name": "Jílek",
+"sport": "Patinage de vitesse",
+"gender": "M",
+"country": "CZ",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du 10 000 m"
+},
+{
+"first_name": "Zhongyan",
+"last_name": "Ning",
+"sport": "Patinage de vitesse",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du 1500 m devant Stolz"
+},
+{
+"first_name": "Jordan",
+"last_name": "Stolz",
+"sport": "Patinage de vitesse",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Champion olympique 500 m et 1000 m, argent 1500 m"
+},
+{
+"first_name": "Jens",
+"last_name": "van 't Wout",
+"sport": "Patinage de vitesse",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "Short-track : champion olympique 1000 et 1500 m, bronze 500 m"
+},
+{
+"first_name": "Elfyn",
+"last_name": "Evans",
+"sport": "Rallye (WRC)",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Champion du monde des rallyes, 1er titre après 5 places de 2e"
+},
+{
+"first_name": "Adrien",
+"last_name": "Fourmaux",
+"sport": "Rallye (WRC)",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Podiums au Kenya (2e) et au Chili (3e) avec Hyundai"
+},
+{
+"first_name": "Sébastien",
+"last_name": "Ogier",
+"sport": "Rallye (WRC)",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Vainqueur aux Canaries et en Acropole, 2e au Chili"
+},
+{
+"first_name": "Oliver",
+"last_name": "Solberg",
+"sport": "Rallye (WRC)",
+"gender": "M",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Vice-champion WRC, vainqueur Monte-Carlo, Chili, Sardaigne"
+},
+{
+"first_name": "Nasser",
+"last_name": "Al-Attiyah",
+"sport": "Rallye-raid (Dakar)",
+"gender": "M",
+"country": "QA",
+"intl": true,
+"fr": false,
+"note": "6e victoire au Dakar (autos), 1re pour Dacia"
+},
+{
+"first_name": "Luciano",
+"last_name": "Benavides",
+"sport": "Rallye-raid (Dakar)",
+"gender": "M",
+"country": "AR",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du Dakar motos avec 2 s d'avance sur Brabec"
+},
+{
+"first_name": "Ricky",
+"last_name": "Brabec",
+"sport": "Rallye-raid (Dakar)",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "2e du Dakar motos à 2 secondes du vainqueur"
+},
+{
+"first_name": "Sébastien",
+"last_name": "Loeb",
+"sport": "Rallye-raid (Dakar)",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "4e du Dakar à 37 s du podium, vainqueur au Portugal (W2RC)"
+},
+{
+"first_name": "Adrien",
+"last_name": "Van Beveren",
+"sport": "Rallye-raid (Dakar)",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "6e du Dakar motos avec une victoire d'étape"
+},
+{
+"first_name": "Pauline",
+"last_name": "Bourdon Sansus",
+"sport": "Rugby",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Essai de l'année World Rugby 2026"
+},
+{
+"first_name": "Zoe",
+"last_name": "Harrison",
+"sport": "Rugby",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Grand Chelem 2026 avec l'Angleterre, nommée joueuse de l'année World Rugby"
+},
+{
+"first_name": "Megan",
+"last_name": "Jones",
+"sport": "Rugby",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Grand Chelem 2026 avec l'Angleterre, nommée joueuse de l'année World Rugby"
+},
+{
+"first_name": "Aoife",
+"last_name": "Wafer",
+"sport": "Rugby",
+"gender": "F",
+"country": "IE",
+"intl": true,
+"fr": false,
+"note": "Meilleure joueuse du Tournoi des Six Nations féminin 2026 (2e fois)"
+},
+{
+"first_name": "Louis",
+"last_name": "Bielle-Biarrey",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Meilleur joueur du Tournoi 2026, record de 9 essais, Champions Cup avec l'UBB"
+},
+{
+"first_name": "Maxime",
+"last_name": "Lucu",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champions Cup 2026 avec l'UBB (41-19 en finale contre le Leinster)"
+},
+{
+"first_name": "Peato",
+"last_name": "Mauvaka",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Doublé en finale du Top 14 2026, 4e Brennus d'affilée avec Toulouse"
+},
+{
+"first_name": "Charles",
+"last_name": "Ollivon",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Un des 3 piliers du XV de France vainqueur du Tournoi 2026"
+},
+{
+"first_name": "Henry",
+"last_name": "Pollock",
+"sport": "Rugby",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Révélation anglaise, doublé contre l'Australie en Nations Championship 2026"
+},
+{
+"first_name": "Thomas",
+"last_name": "Ramos",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Meilleur marqueur du Tournoi 2026 gagné par la France, Brennus avec Toulouse"
+},
+{
+"first_name": "Jack",
+"last_name": "Willis",
+"sport": "Rugby",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Homme du match de la finale du Top 14 2026 avec Toulouse"
+},
+{
+"first_name": "Nozomi",
+"last_name": "Maruyama",
+"sport": "Saut à ski",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Bronze olympique petit tremplin, 2e de la Coupe du monde"
+},
+{
+"first_name": "Nika",
+"last_name": "Prevc",
+"sport": "Saut à ski",
+"gender": "F",
+"country": "SI",
+"intl": true,
+"fr": false,
+"note": "Gros globe 2025-26, or mixte, argent et bronze olympiques"
+},
+{
+"first_name": "Anna Odine",
+"last_name": "Strøm",
+"sport": "Saut à ski",
+"gender": "F",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Double championne olympique 2026 (petit et grand tremplin)"
+},
+{
+"first_name": "Valentin",
+"last_name": "Foubert",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "5e du petit tremplin aux JO 2026"
+},
+{
+"first_name": "Ryōyū",
+"last_name": "Kobayashi",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "2e de la Coupe du monde 2025-26"
+},
+{
+"first_name": "Ren",
+"last_name": "Nikaidō",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Argent olympique grand tremplin, bronze petit tremplin"
+},
+{
+"first_name": "Domen",
+"last_name": "Prevc",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "SI",
+"intl": true,
+"fr": false,
+"note": "Champion olympique grand tremplin, gros globe, Tournée des 4 tremplins"
+},
+{
+"first_name": "Philipp",
+"last_name": "Raimund",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du petit tremplin 2026"
+},
+{
+"first_name": "Kacper",
+"last_name": "Tomasiak",
+"sport": "Saut à ski",
+"gender": "M",
+"country": "PL",
+"intl": true,
+"fr": false,
+"note": "Argent olympique petit tremplin, bronze grand tremplin"
+},
+{
+"first_name": "Sky",
+"last_name": "Brown",
+"sport": "Skateboard",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de park 2026 (São Paulo)"
+},
+{
+"first_name": "Ibuki",
+"last_name": "Matsumoto",
+"sport": "Skateboard",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de street (São Paulo, mars 2026)"
+},
+{
+"first_name": "Yumeka",
+"last_name": "Oda",
+"sport": "Skateboard",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de street 2026 (Asunción)"
+},
+{
+"first_name": "Egoitz",
+"last_name": "Bijueska",
+"sport": "Skateboard",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de park (São Paulo, mars 2026)"
+},
+{
+"first_name": "Aurélien",
+"last_name": "Giraud",
+"sport": "Skateboard",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "3e du best trick au Tampa Pro 2026, finaliste SLS"
+},
+{
+"first_name": "Ginwoo",
+"last_name": "Onodera",
+"sport": "Skateboard",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de street 2026 (Asunción)"
+},
+{
+"first_name": "Toa",
+"last_name": "Sasaki",
+"sport": "Skateboard",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de street (São Paulo, mars 2026)"
+},
+{
+"first_name": "Emma",
+"last_name": "Aicher",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Vice-championne olympique de descente, 2e de la Coupe du monde"
+},
+{
+"first_name": "Federica",
+"last_name": "Brignone",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Double championne olympique 2026 (super-G et géant) à domicile"
+},
+{
+"first_name": "Breezy",
+"last_name": "Johnson",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne olympique de descente 2026"
+},
+{
+"first_name": "Romane",
+"last_name": "Miradoli",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne olympique du super-G 2026"
+},
+{
+"first_name": "Julia",
+"last_name": "Scheib",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "Petit globe de cristal du géant 2025-26"
+},
+{
+"first_name": "Mikaela",
+"last_name": "Shiffrin",
+"sport": "Ski alpin",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du slalom, 6e gros globe (record égalé)"
+},
+{
+"first_name": "Atle Lie",
+"last_name": "McGrath",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Petit globe de cristal du slalom 2025-26"
+},
+{
+"first_name": "Loïc",
+"last_name": "Meillard",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du slalom 2026, bronze en géant"
+},
+{
+"first_name": "Clément",
+"last_name": "Noël",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur du slalom de Madonna di Campiglio (janvier 2026)"
+},
+{
+"first_name": "Marco",
+"last_name": "Odermatt",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "5e gros globe d'affilée, globes descente et super-G, 2 médailles JO"
+},
+{
+"first_name": "Lucas",
+"last_name": "Pinheiro Braathen",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du géant, 1re médaille d'hiver du Brésil, globe géant"
+},
+{
+"first_name": "Franjo",
+"last_name": "von Allmen",
+"sport": "Ski alpin",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Triple champion olympique 2026 (descente, super-G, combiné équipe)"
+},
+{
+"first_name": "Ebba",
+"last_name": "Andersson",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du 50 km, 2 médailles d'argent"
+},
+{
+"first_name": "Jessie",
+"last_name": "Diggins",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Gros globe de cristal 2025-26, bronze olympique du 10 km"
+},
+{
+"first_name": "Frida",
+"last_name": "Karlsson",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Double championne olympique 2026 (skiathlon, 10 km)"
+},
+{
+"first_name": "Léonie",
+"last_name": "Perry",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Meilleure Française aux JO : 10e du 10 km"
+},
+{
+"first_name": "Jonna",
+"last_name": "Sundling",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Championne olympique sprint par équipes, argent du sprint"
+},
+{
+"first_name": "Linn",
+"last_name": "Svahn",
+"sport": "Ski de fond",
+"gender": "F",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du sprint 2026"
+},
+{
+"first_name": "Mathis",
+"last_name": "Desloges",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "3 médailles d'argent olympiques (skiathlon, 10 km, relais)"
+},
+{
+"first_name": "Einar",
+"last_name": "Hedegart",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du sprint par équipes, bronze 10 km"
+},
+{
+"first_name": "Johannes Høsflot",
+"last_name": "Klæbo",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "6 titres olympiques en 2026, record de 11 ors, gros globe"
+},
+{
+"first_name": "Hugo",
+"last_name": "Lapalus",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion olympique du relais 4x7,5 km"
+},
+{
+"first_name": "Victor",
+"last_name": "Lovera",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion olympique du relais 4x7,5 km"
+},
+{
+"first_name": "Martin Løwstrøm",
+"last_name": "Nyenget",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Vice-champion olympique du 50 km, bronze skiathlon"
+},
+{
+"first_name": "Ben",
+"last_name": "Ogden",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vice-champion olympique du sprint et du sprint par équipes"
+},
+{
+"first_name": "Mathilde",
+"last_name": "Gremaud",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du slopestyle 2026"
+},
+{
+"first_name": "Eileen",
+"last_name": "Gu",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du halfpipe + 2 médailles d'argent"
+},
+{
+"first_name": "Perrine",
+"last_name": "Laffont",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Médaille de bronze olympique en bosses 2026"
+},
+{
+"first_name": "Liz",
+"last_name": "Lemley",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne olympique des bosses 2026"
+},
+{
+"first_name": "Megan",
+"last_name": "Oldham",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du big air, bronze slopestyle"
+},
+{
+"first_name": "Mengtao",
+"last_name": "Xu",
+"sport": "Ski freestyle",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Double championne olympique du saut acrobatique"
+},
+{
+"first_name": "Simone",
+"last_name": "Deromedis",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du skicross à domicile"
+},
+{
+"first_name": "Youri",
+"last_name": "Duplessis Kergomard",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur en skicross à Veysonnaz, 2e du général en janvier"
+},
+{
+"first_name": "Alex",
+"last_name": "Ferreira",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du halfpipe 2026"
+},
+{
+"first_name": "Tormod",
+"last_name": "Frostad",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du big air 2026"
+},
+{
+"first_name": "Birk",
+"last_name": "Ruud",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du slopestyle 2026"
+},
+{
+"first_name": "Cooper",
+"last_name": "Woods",
+"sport": "Ski freestyle",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Champion olympique des bosses devant Kingsbury"
+},
+{
+"first_name": "Josie",
+"last_name": "Baff",
+"sport": "Snowboard",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du snowboardcross 2026"
+},
+{
+"first_name": "Léa",
+"last_name": "Casta",
+"sport": "Snowboard",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze olympique en snowboardcross par équipes mixtes"
+},
+{
+"first_name": "Gaon",
+"last_name": "Choi",
+"sport": "Snowboard",
+"gender": "F",
+"country": "KR",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du halfpipe devant Chloe Kim"
+},
+{
+"first_name": "Mari",
+"last_name": "Fukada",
+"sport": "Snowboard",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du slopestyle 2026"
+},
+{
+"first_name": "Zuzana",
+"last_name": "Maděrová",
+"sport": "Snowboard",
+"gender": "F",
+"country": "CZ",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du slalom géant parallèle 2026"
+},
+{
+"first_name": "Kokomo",
+"last_name": "Murase",
+"sport": "Snowboard",
+"gender": "F",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Championne olympique du big air, bronze slopestyle"
+},
+{
+"first_name": "Loan",
+"last_name": "Bozzolo",
+"sport": "Snowboard",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze olympique en snowboardcross par équipes mixtes"
+},
+{
+"first_name": "Alessandro",
+"last_name": "Hämmerle",
+"sport": "Snowboard",
+"gender": "M",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du snowboardcross 2026"
+},
+{
+"first_name": "Benjamin",
+"last_name": "Karl",
+"sport": "Snowboard",
+"gender": "M",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du slalom géant parallèle 2026"
+},
+{
+"first_name": "Kira",
+"last_name": "Kimura",
+"sport": "Snowboard",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du big air 2026"
+},
+{
+"first_name": "Yiming",
+"last_name": "Su",
+"sport": "Snowboard",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du slopestyle, bronze en big air"
+},
+{
+"first_name": "Yuto",
+"last_name": "Totsuka",
+"sport": "Snowboard",
+"gender": "M",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champion olympique du halfpipe 2026"
+},
+{
+"first_name": "William",
+"last_name": "Contreras",
+"sport": "Sports US",
+"gender": "M",
+"country": "VE",
+"intl": true,
+"fr": false,
+"note": "MVP des World Series, 1er titre des Brewers"
+},
+{
+"first_name": "Jordan",
+"last_name": "Staal",
+"sport": "Sports US",
+"gender": "M",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "Coupe Stanley + Conn Smythe avec Carolina, à 37 ans"
+},
+{
+"first_name": "Kenneth",
+"last_name": "Walker III",
+"sport": "Sports US",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "MVP du Super Bowl LX avec les Seahawks, 1er RB depuis 1998"
+},
+{
+"first_name": "Erin",
+"last_name": "Brooks",
+"sport": "Surf",
+"gender": "F",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "1re victoire sur le CT au Tahiti Pro de Teahupoo à 19 ans"
+},
+{
+"first_name": "Carissa",
+"last_name": "Moore",
+"sport": "Surf",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Retour gagnant, en tête de la course au titre avant Pipe"
+},
+{
+"first_name": "Molly",
+"last_name": "Picklum",
+"sport": "Surf",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Championne du monde en titre, en lice pour le titre 2026"
+},
+{
+"first_name": "Caitlin",
+"last_name": "Simmers",
+"sport": "Surf",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Victoire au Cloud 9 Pro (Philippines) 2026"
+},
+{
+"first_name": "Yago",
+"last_name": "Dora",
+"sport": "Surf",
+"gender": "M",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "Leader du Championship Tour avant le Pipe Masters (déc.)"
+},
+{
+"first_name": "Italo",
+"last_name": "Ferreira",
+"sport": "Surf",
+"gender": "M",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "Encore en course pour le titre mondial 2026"
+},
+{
+"first_name": "Gabriel",
+"last_name": "Medina",
+"sport": "Surf",
+"gender": "M",
+"country": "BR",
+"intl": true,
+"fr": false,
+"note": "En lice pour un 4e titre mondial au Pipe Masters"
+},
+{
+"first_name": "Seth",
+"last_name": "Moniz",
+"sport": "Surf",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "1re victoire sur le CT au Tahiti Pro de Teahupoo"
+},
+{
+"first_name": "Sarah",
+"last_name": "Chaâri",
+"sport": "Taekwondo",
+"gender": "F",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "Victoire au Grand Prix de Taiyuan"
+},
+{
+"first_name": "Mirra",
+"last_name": "Andreeva",
+"sport": "Tennis",
+"gender": "F",
+"country": "RU",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de Roland-Garros et du Masters WTA 2026 à 19 ans"
+},
+{
+"first_name": "Linda",
+"last_name": "Nosková",
+"sport": "Tennis",
+"gender": "F",
+"country": "CZ",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de Wimbledon 2026, 1er titre du Grand Chelem"
+},
+{
+"first_name": "Diane",
+"last_name": "Parry",
+"sport": "Tennis",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "1er titre WTA en carrière à Monterrey (WTA 500) en 2026"
+},
+{
+"first_name": "Elena",
+"last_name": "Rybakina",
+"sport": "Tennis",
+"gender": "F",
+"country": "KZ",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de l'Open d'Australie et de l'US Open 2026, n°1 mondiale"
+},
+{
+"first_name": "Aryna",
+"last_name": "Sabalenka",
+"sport": "Tennis",
+"gender": "F",
+"country": "BY",
+"intl": true,
+"fr": false,
+"note": "Finaliste de l'Open d'Australie et de l'US Open 2026"
+},
+{
+"first_name": "Carlos",
+"last_name": "Alcaraz",
+"sport": "Tennis",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de l'Open d'Australie 2026, Grand Chelem en carrière à 22 ans"
+},
+{
+"first_name": "Arthur",
+"last_name": "Fils",
+"sport": "Tennis",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur du Masters 1000 de Cincinnati et de Barcelone 2026, n°1 français"
+},
+{
+"first_name": "Ben",
+"last_name": "Shelton",
+"sport": "Tennis",
+"gender": "M",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Finaliste de l'US Open 2026"
+},
+{
+"first_name": "Jannik",
+"last_name": "Sinner",
+"sport": "Tennis",
+"gender": "M",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de Wimbledon 2026 (2e d'affilée), n°1 mondial"
+},
+{
+"first_name": "Alexander",
+"last_name": "Zverev",
+"sport": "Tennis",
+"gender": "M",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de Roland-Garros et de l'US Open 2026"
+},
+{
+"first_name": "Charlotte",
+"last_name": "Lutz",
+"sport": "Tennis de table",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne d'Europe 2026 en double mixte avec Alexis Lebrun"
+},
+{
+"first_name": "Wang",
+"last_name": "Manyu",
+"sport": "Tennis de table",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Finaliste du Singapore Smash 2026, championne du monde par équipes"
+},
+{
+"first_name": "Prithika",
+"last_name": "Pavade",
+"sport": "Tennis de table",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne de France 2026, quart de finaliste de l'Euro"
+},
+{
+"first_name": "Sun",
+"last_name": "Yingsha",
+"sport": "Tennis de table",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Vainqueure du Singapore Smash 2026, championne du monde par équipes"
+},
+{
+"first_name": "Wang",
+"last_name": "Chuqin",
+"sport": "Tennis de table",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du Singapore Smash 2026, champion du monde par équipes"
+},
+{
+"first_name": "Félix",
+"last_name": "Lebrun",
+"sport": "Tennis de table",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion d'Europe 2026, n°2 mondial, 2 Grand Smash en double"
+},
+{
+"first_name": "Alexis",
+"last_name": "Lebrun",
+"sport": "Tennis de table",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Top 16 européen 2026, 2 Grand Smash en double avec Félix"
+},
+{
+"first_name": "Cassandre",
+"last_name": "Beaugrand",
+"sport": "Triathlon",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne du monde, 5 victoires WTCS sur 5 courses"
+},
+{
+"first_name": "Taylor",
+"last_name": "Knibb",
+"sport": "Triathlon",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Championne du monde Ironman (Kona) et Ironman 70.3"
+},
+{
+"first_name": "Emma",
+"last_name": "Lombardi",
+"sport": "Triathlon",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne du monde du relais mixte"
+},
+{
+"first_name": "Léonie",
+"last_name": "Périault",
+"sport": "Triathlon",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne du monde du relais mixte"
+},
+{
+"first_name": "Georgia",
+"last_name": "Taylor-Brown",
+"sport": "Triathlon",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Podium de la Grande finale WTCS à Pontevedra"
+},
+{
+"first_name": "Kristian",
+"last_name": "Blummenfelt",
+"sport": "Triathlon",
+"gender": "M",
+"country": "NO",
+"intl": true,
+"fr": false,
+"note": "Meilleur temps de l'histoire sur Ironman (Texas), 2e du 70.3"
+},
+{
+"first_name": "Dorian",
+"last_name": "Coninx",
+"sport": "Triathlon",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion du monde du relais mixte"
+},
+{
+"first_name": "Matthew",
+"last_name": "Hauser",
+"sport": "Triathlon",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de la Grande finale WTCS à Pontevedra"
+},
+{
+"first_name": "Vincent",
+"last_name": "Luis",
+"sport": "Triathlon",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion du monde Ironman à Kona, 1er Français titré"
+},
+{
+"first_name": "Tom",
+"last_name": "Richard",
+"sport": "Triathlon",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion du monde du relais mixte"
+},
+{
+"first_name": "Vasco",
+"last_name": "Vilaça",
+"sport": "Triathlon",
+"gender": "M",
+"country": "PT",
+"intl": true,
+"fr": false,
+"note": "Champion du monde (classement WTCS)"
+},
+{
+"first_name": "Hayden",
+"last_name": "Wilde",
+"sport": "Triathlon",
+"gender": "M",
+"country": "NZ",
+"intl": true,
+"fr": false,
+"note": "Champion du monde Ironman 70.3 à Nice"
+},
+{
+"first_name": "Sina",
+"last_name": "Frei",
+"sport": "VTT",
+"gender": "F",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de cross-country (XCO)"
+},
+{
+"first_name": "Valentina",
+"last_name": "Höll",
+"sport": "VTT",
+"gender": "F",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "5e titre mondial de descente consécutif et Coupe du monde"
+},
+{
+"first_name": "Jenny",
+"last_name": "Rissveds",
+"sport": "VTT",
+"gender": "F",
+"country": "SE",
+"intl": true,
+"fr": false,
+"note": "Vainqueure de la Coupe du monde XCO"
+},
+{
+"first_name": "Laura",
+"last_name": "Stigger",
+"sport": "VTT",
+"gender": "F",
+"country": "AT",
+"intl": true,
+"fr": false,
+"note": "Championne du monde de short-track (XCC)"
+},
+{
+"first_name": "Adrien",
+"last_name": "Boichis",
+"sport": "VTT",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion du monde de short-track (XCC)"
+},
+{
+"first_name": "Jérôme",
+"last_name": "Gilloux",
+"sport": "VTT",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion du monde de VTT à assistance électrique (5e titre)"
+},
+{
+"first_name": "Jackson",
+"last_name": "Goldstone",
+"sport": "VTT",
+"gender": "M",
+"country": "CA",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de descente (titre conservé)"
+},
+{
+"first_name": "Luca",
+"last_name": "Martin",
+"sport": "VTT",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Vainqueur Coupe du monde XCO et XCC, bronze mondial XCC"
+},
+{
+"first_name": "Luke",
+"last_name": "Meier-Smith",
+"sport": "VTT",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de la Coupe du monde de descente"
+},
+{
+"first_name": "Tom",
+"last_name": "Pidcock",
+"sport": "VTT",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de cross-country (XCO), 2e titre"
+},
+{
+"first_name": "Élodie",
+"last_name": "Bonafous",
+"sport": "Voile",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "3e de la Route du Rhum 2026 en IMOCA, 1re Française sur le podium"
+},
+{
+"first_name": "Francesca",
+"last_name": "Clapcich",
+"sport": "Voile",
+"gender": "F",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "1re femme championne de l'IMOCA Globe Series 2026"
+},
+{
+"first_name": "Diego",
+"last_name": "Botín",
+"sport": "Voile",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Barreur espagnol qualifié pour la Grand Final SailGP 2026"
+},
+{
+"first_name": "Thomas",
+"last_name": "Coville",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "2e de la Route du Rhum 2026 en Ultim"
+},
+{
+"first_name": "Boris",
+"last_name": "Herrmann",
+"sport": "Voile",
+"gender": "M",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "2e de la Route du Rhum 2026 en IMOCA"
+},
+{
+"first_name": "Corentin",
+"last_name": "Horeau",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Vainqueur Route du Rhum 2026 en IMOCA, record de la classe"
+},
+{
+"first_name": "Tom",
+"last_name": "Laperche",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Vainqueur Route du Rhum 2026 en Ultim, record de l'épreuve"
+},
+{
+"first_name": "Nicolas",
+"last_name": "Lunven",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur de la Solitaire du Figaro 2026 (3e sacre)"
+},
+{
+"first_name": "Achille",
+"last_name": "Nebout",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur de la Route du Rhum 2026 en Class40"
+},
+{
+"first_name": "Tom",
+"last_name": "Slingsby",
+"sport": "Voile",
+"gender": "M",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Barreur de l'Australie, leader de la saison SailGP 2026"
+},
+{
+"first_name": "Melissa",
+"last_name": "Vargas",
+"sport": "Volley-ball",
+"gender": "F",
+"country": "TR",
+"intl": true,
+"fr": false,
+"note": "Championne d'Europe et de la VNL 2026, MVP des deux compétitions"
+},
+{
+"first_name": "Tomasz",
+"last_name": "Fornal",
+"sport": "Volley-ball",
+"gender": "M",
+"country": "PL",
+"intl": true,
+"fr": false,
+"note": "MVP de la VNL 2026 gagnée par la Pologne, champion d'Europe 2026"
+},
+{
+"first_name": "Charlotte",
+"last_name": "Fry",
+"sport": "Équitation",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Doublé mondial en dressage (Spécial + libre) à Aix"
+},
+{
+"first_name": "Steve",
+"last_name": "Guerdat",
+"sport": "Équitation",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de saut d'obstacles à Aix-la-Chapelle"
+},
+{
+"first_name": "Michael",
+"last_name": "Jung",
+"sport": "Équitation",
+"gender": "M",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "Champion du monde de concours complet à Aix-la-Chapelle"
+},
+{
+"first_name": "Thibeau",
+"last_name": "Spits",
+"sport": "Équitation",
+"gender": "M",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "Vice-champion du monde de saut d'obstacles à Aix"
+}
+]

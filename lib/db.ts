@@ -69,6 +69,27 @@ async function createSchema() {
       PRIMARY KEY (season, from_key)
     )`;
   await sql`
+    CREATE TABLE IF NOT EXISTS athletes (
+      id SERIAL PRIMARY KEY,
+      first_name TEXT NOT NULL DEFAULT '',
+      last_name TEXT NOT NULL,
+      display_name TEXT NOT NULL,
+      search_key TEXT NOT NULL,
+      last_key TEXT NOT NULL,
+      sport TEXT NOT NULL,
+      gender CHAR(1) NOT NULL DEFAULT 'M',
+      country CHAR(2) NOT NULL DEFAULT 'FR',
+      in_intl BOOLEAN NOT NULL DEFAULT FALSE,
+      in_fr BOOLEAN NOT NULL DEFAULT FALSE,
+      note TEXT NOT NULL DEFAULT '',
+      status TEXT NOT NULL DEFAULT 'approved' CHECK (status IN ('approved','pending')),
+      created_by INT REFERENCES users(id) ON DELETE SET NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+      UNIQUE (search_key, sport)
+    )`;
+  await sql`ALTER TABLE predictions ADD COLUMN IF NOT EXISTS athlete_id INT REFERENCES athletes(id) ON DELETE SET NULL`;
+  await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS athlete_id INT REFERENCES athletes(id) ON DELETE SET NULL`;
+  await sql`
     CREATE TABLE IF NOT EXISTS settings (
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
@@ -78,7 +99,12 @@ async function createSchema() {
 /** Creates tables on first use (idempotent), once per server instance. */
 export function ensureSchema(): Promise<void> {
   if (!g._schema) {
-    g._schema = createSchema().catch((e) => {
+    g._schema = createSchema()
+      .then(async () => {
+        const { syncCatalog } = await import("./catalog");
+        await syncCatalog();
+      })
+      .catch((e) => {
       g._schema = undefined;
       throw e;
     });
