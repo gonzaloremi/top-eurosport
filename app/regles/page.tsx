@@ -12,8 +12,8 @@ export default function Regles() {
           les classera en fin d&apos;année.
         </li>
         <li>
-          Le classement doit être envoyé <strong>au plus tard le 15 décembre</strong> (23h59, heure de
-          Paris). Jusque-là il reste modifiable et caché aux autres joueurs.
+          Les pronos doivent être envoyés <strong>au plus tard le 15 décembre</strong> (23h59, heure de
+          Paris). Jusque-là ils restent modifiables et cachés aux autres joueurs.
         </li>
         <li>
           Pour chaque athlète :
@@ -49,7 +49,7 @@ export default function Regles() {
         </li>
         <li>En cas d&apos;égalité, celui qui a le plus d&apos;athlètes à la bonne place passe devant.</li>
         <li>
-          Un même classement compte pour toutes tes ligues. Pour rejoindre une ligue, il suffit de
+          Tes pronos comptent pour toutes tes ligues. Pour rejoindre une ligue, il suffit de
           son code à 4 lettres.
         </li>
       </ol>

@@ -65,7 +65,7 @@ export default async function Home() {
           <div className="bar">
             <span className="app-icon">🏆</span>
             <div className="grow">
-              <div className="title">Mon classement</div>
+              <div className="title">Mes pronos</div>
               <div className="sub">
                 {filled === 20 ? "Complet · 20/20" : filled ? `${filled}/20` : "Pas encore envoyé"}
               </div>

@@ -54,8 +54,7 @@ export default async function LeaguePage({
               <div className="kicker">Ligue privée · saison {season}</div>
               <h1 style={{ marginTop: 6 }}>{league.name}</h1>
               <p className="muted" style={{ marginTop: 8 }}>
-                {members.length} joueur{members.length > 1 ? "s" : ""} · {submitted} classement
-                {submitted > 1 ? "s" : ""} envoyé{submitted > 1 ? "s" : ""}
+                {members.length} joueur{members.length > 1 ? "s" : ""} · {submitted} prono{submitted > 1 ? "s" : ""} envoyé{submitted > 1 ? "s" : ""}
               </p>
             </div>
             <div className="code-tiles" aria-label={`Code ${league.code}`}>
@@ -87,7 +86,7 @@ export default async function LeaguePage({
               <h2 style={{ fontSize: "2rem" }}>Clôture dans {timeLeft(season)}</h2>
               <p className="muted small">Les pronos de chacun sont dévoilés à la clôture.</p>
             </div>
-            <Link href="/pronos" className="btn blue">Mon classement</Link>
+            <Link href="/pronos" className="btn blue">Mes pronos</Link>
           </div>
           <ul className="list-plain" style={{ marginTop: 14 }}>
             {standings.map((s) => (
@@ -140,7 +139,7 @@ export default async function LeaguePage({
 
           <section className="card">
             <div className="kicker">Qui a dit quoi</div>
-            <h2>Les classements de chacun</h2>
+            <h2>Les pronos de chacun</h2>
             <p className="muted small" style={{ marginTop: 6 }}>
               <span className="pts pts-3">3</span> bonne place · <span className="pts pts-1">1</span> dans le top 10 mais mal placé
             </p>
@@ -291,7 +290,7 @@ function JerseyCard(props: {
 function StandingsList({
   rows, k, meId, published,
 }: { rows: { rank: number; row: Standing }[]; k: Key; meId: number; published: boolean }) {
-  if (rows.length === 0 && !published) return <p className="muted" style={{ marginTop: 12 }}>Personne n&apos;a envoyé de classement.</p>;
+  if (rows.length === 0 && !published) return <p className="muted" style={{ marginTop: 12 }}>Personne n&apos;a envoyé ses pronos.</p>;
   return (
     <ol className="standings" style={{ marginTop: 10 }}>
       {rows.map(({ rank, row }) => (

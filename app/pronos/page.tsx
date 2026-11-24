@@ -15,13 +15,13 @@ export default async function Pronos() {
     <>
       <div className="section-title" style={{ marginTop: 6, alignItems: "flex-end", flexWrap: "wrap" }}>
         <div>
-          <h1>Mon classement</h1>
+          <h1>Mes pronos</h1>
         </div>
         {locked ? <span className="chip lock">🔒 Fermé</span> : <span className="chip wait">⏱ encore {timeLeft(season)}</span>}
       </div>
       <p className="muted" style={{ margin: "-4px 2px 18px" }}>
         {locked
-          ? "Fermé. Voici ton classement."
+          ? "Fermé. Voici tes pronos."
           : "Sélectionne tes pronos avant le 15 décembre."}
       </p>
       <Top10Form
@@ -30,7 +30,7 @@ export default async function Pronos() {
         initial={mine}
         catalogue={catalogue}
         disabled={locked}
-        submitLabel="Enregistrer mon classement"
+        submitLabel="Enregistrer mes pronos"
         autoSave
       />
     </>
