@@ -30,6 +30,16 @@
 "note": "Bronze aux championnats d'Europe sur 100 m haies"
 },
 {
+"first_name": "Nadia",
+"last_name": "Battocletti",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "IT",
+"intl": false,
+"fr": false,
+"note": "Championne du monde en salle du 3000 m à Toruń"
+},
+{
 "first_name": "Femke",
 "last_name": "Bol",
 "sport": "Athlétisme",
@@ -60,6 +70,16 @@
 "note": "Record du monde du 60 m haies en salle"
 },
 {
+"first_name": "Zaynab",
+"last_name": "Dosso",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "IT",
+"intl": false,
+"fr": false,
+"note": "Championne du monde en salle du 60 m à Toruń"
+},
+{
 "first_name": "Alice",
 "last_name": "Finot",
 "sport": "Athlétisme",
@@ -68,6 +88,36 @@
 "intl": false,
 "fr": true,
 "note": "Vice-championne d'Europe du 3000 m steeple"
+},
+{
+"first_name": "Keely",
+"last_name": "Hodgkinson",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Championne du monde en salle du 800 m à Toruń avec record des championnats"
+},
+{
+"first_name": "Amy",
+"last_name": "Hunt",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "4 titres record aux Euro de Birmingham 2026 (100 m, 200 m, 2 relais 4x100)"
+},
+{
+"first_name": "Chase",
+"last_name": "Jackson",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "21,14 m au poids à Bruxelles, meilleur jet mondial depuis 15 ans, record américain"
 },
 {
 "first_name": "Melissa",
@@ -120,6 +170,36 @@
 "note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
+"first_name": "Agnes",
+"last_name": "Ngetich",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "KE",
+"intl": false,
+"fr": false,
+"note": "Championne du monde de cross à Tallahassee"
+},
+{
+"first_name": "Marileidy",
+"last_name": "Paulino",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "DO",
+"intl": false,
+"fr": false,
+"note": "Gagne le 400 m de l'Ultimate Championship de Budapest (49\"07)"
+},
+{
+"first_name": "María",
+"last_name": "Pérez",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "ES",
+"intl": false,
+"fr": false,
+"note": "Record du monde du semi-marathon marche aux Euro de Birmingham 2026"
+},
+{
 "first_name": "Masai",
 "last_name": "Russell",
 "sport": "Athlétisme",
@@ -128,6 +208,36 @@
 "intl": true,
 "fr": false,
 "note": "Record du monde du 100 m haies à Zurich, titre Ultimate"
+},
+{
+"first_name": "Audrey",
+"last_name": "Werro",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Finaliste athlète mondiale de l'année 2026, gagne le 800 m de l'Ultimate Championship"
+},
+{
+"first_name": "",
+"last_name": "Yan Ziyi",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "71,74 m au javelot, record du monde U20, 2e performeuse de l'histoire"
+},
+{
+"first_name": "Andreas",
+"last_name": "Almgren",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "SE",
+"intl": false,
+"fr": false,
+"note": "Champion du monde du semi-marathon à Copenhague, record d'Europe (58'06\")"
 },
 {
 "first_name": "Kenny",
@@ -160,6 +270,16 @@
 "note": "Record du monde perche (6,31 m), champion du monde en salle"
 },
 {
+"first_name": "Simon",
+"last_name": "Ehammer",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Record du monde de l'heptathlon en salle (6670 pts) aux Mondiaux de Toruń"
+},
+{
 "first_name": "Jimmy",
 "last_name": "Gressier",
 "sport": "Athlétisme",
@@ -188,6 +308,16 @@
 "intl": true,
 "fr": false,
 "note": "Record du monde du mile, champion du monde en salle 3000 m"
+},
+{
+"first_name": "Jacob",
+"last_name": "Kiplimo",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "UG",
+"intl": true,
+"fr": false,
+"note": "3e titre mondial de cross consécutif à Tallahassee"
 },
 {
 "first_name": "Muhammad Abdallah",
@@ -220,6 +350,16 @@
 "note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
+"first_name": "Christopher",
+"last_name": "Morales Williams",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "CA",
+"intl": false,
+"fr": false,
+"note": "Champion du monde en salle du 400 m à Toruń en 44\"76, record des championnats"
+},
+{
 "first_name": "Sabastian",
 "last_name": "Sawe",
 "sport": "Athlétisme",
@@ -238,6 +378,36 @@
 "intl": false,
 "fr": true,
 "note": "Bronze aux Mondiaux en salle sur 3000 m"
+},
+{
+"first_name": "Djamel",
+"last_name": "Sedjati",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "DZ",
+"intl": false,
+"fr": false,
+"note": "Gagne le 800 m de l'Ultimate Championship de Budapest (1'41\"91)"
+},
+{
+"first_name": "Ja'Kobe",
+"last_name": "Tharp",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "Vainqueur du 110 m haies de l'Ultimate Championship de Budapest"
+},
+{
+"first_name": "Baptiste",
+"last_name": "Thiery",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze à la perche aux championnats d'Europe de Birmingham 2026 (5,85 m)"
 },
 {
 "first_name": "Karsten",
@@ -390,6 +560,16 @@
 "note": "Champion du monde 2026, 1er Français sacré en simple"
 },
 {
+"first_name": "Arnaud",
+"last_name": "Merklé",
+"sport": "Badminton",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze européen en simple à Huelva, tombeur du tenant du titre Alex Lanier"
+},
+{
 "first_name": "Kodai",
 "last_name": "Naraoka",
 "sport": "Badminton",
@@ -398,6 +578,26 @@
 "intl": true,
 "fr": false,
 "note": "Finaliste des Championnats du monde 2026"
+},
+{
+"first_name": "Christo",
+"last_name": "Popov",
+"sport": "Badminton",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion d'Europe de simple à Huelva (bat Antonsen), finaliste en double"
+},
+{
+"first_name": "Toma Junior",
+"last_name": "Popov",
+"sport": "Badminton",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze en simple et argent en double aux championnats d'Europe à Huelva"
 },
 {
 "first_name": "Dominique",
@@ -770,6 +970,16 @@
 "note": "Vice-championne du monde de l'américaine (avec Marion Borras)"
 },
 {
+"first_name": "Emma",
+"last_name": "Finucane",
+"sport": "Cyclisme sur piste",
+"gender": "F",
+"country": "GB",
+"intl": false,
+"fr": false,
+"note": "4 titres en sprint aux Jeux du Commonwealth 2026, une première historique"
+},
+{
 "first_name": "Lara",
 "last_name": "Gillespie",
 "sport": "Cyclisme sur piste",
@@ -940,6 +1150,16 @@
 "note": "Tour de France Femmes, Giro, Tour des Flandres, championne du monde et d'Europe"
 },
 {
+"first_name": "Richard",
+"last_name": "Carapaz",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "EC",
+"intl": false,
+"fr": false,
+"note": "Maillot à pois du Tour de France 2026, 4e de la Vuelta"
+},
+{
 "first_name": "Remco",
 "last_name": "Evenepoel",
 "sport": "Cyclisme sur route",
@@ -948,6 +1168,16 @@
 "intl": true,
 "fr": false,
 "note": "2e du Tour, 4e titre mondial du chrono, champion d'Europe sur route"
+},
+{
+"first_name": "Felix",
+"last_name": "Gall",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "AT",
+"intl": false,
+"fr": false,
+"note": "2e du Giro et 3e de la Vuelta 2026"
 },
 {
 "first_name": "Romain",
@@ -990,6 +1220,16 @@
 "note": "5e du Tour de France, 7 victoires dont 5 en WorldTour"
 },
 {
+"first_name": "Enric",
+"last_name": "Mas",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Vainqueur de la Vuelta 2026, 1er Grand Tour, 1er Espagnol depuis Contador 2014"
+},
+{
 "first_name": "Brandon",
 "last_name": "McNulty",
 "sport": "Cyclisme sur route",
@@ -1000,6 +1240,16 @@
 "note": "Champion du monde sur route à Montréal"
 },
 {
+"first_name": "Mads",
+"last_name": "Pedersen",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "DK",
+"intl": true,
+"fr": false,
+"note": "Maillot vert du Tour de France 2026, 1er Danois à le remporter"
+},
+{
 "first_name": "Tadej",
 "last_name": "Pogačar",
 "sport": "Cyclisme sur route",
@@ -1008,6 +1258,16 @@
 "intl": true,
 "fr": false,
 "note": "5e Tour de France, Milan-San Remo, Tour des Flandres, Liège-Bastogne-Liège"
+},
+{
+"first_name": "Primož",
+"last_name": "Roglič",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "SI",
+"intl": false,
+"fr": false,
+"note": "2e de la Vuelta 2026"
 },
 {
 "first_name": "Paul",
@@ -1028,6 +1288,26 @@
 "intl": true,
 "fr": false,
 "note": "Vainqueur du Giro 2026, complète la triple couronne des Grands Tours"
+},
+{
+"first_name": "Isaac",
+"last_name": "del Toro",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "MX",
+"intl": true,
+"fr": false,
+"note": "3e du Tour de France 2026 et maillot blanc, 1er Mexicain sur le podium"
+},
+{
+"first_name": "Wout",
+"last_name": "van Aert",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "BE",
+"intl": true,
+"fr": false,
+"note": "Maillot vert (points) de la Vuelta 2026 avec plusieurs victoires d'étape"
 },
 {
 "first_name": "Mathieu",
@@ -1230,6 +1510,16 @@
 "note": "Vice-championne du monde de sabre à Hong Kong"
 },
 {
+"first_name": "Marie-Florence",
+"last_name": "Candassamy",
+"sport": "Escrime",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne d'Europe d'épée par équipes à Antony 2026"
+},
+{
 "first_name": "Larissa",
 "last_name": "Eifler",
 "sport": "Escrime",
@@ -1268,6 +1558,56 @@
 "intl": true,
 "fr": false,
 "note": "Champion du monde d'épée à Hong Kong"
+},
+{
+"first_name": "Jean-Philippe",
+"last_name": "Patrice",
+"sport": "Escrime",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion d'Europe de sabre à Antony 2026 (finale 100% française vs Pianfetti)"
+},
+{
+"first_name": "Maxime",
+"last_name": "Pianfetti",
+"sport": "Escrime",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-champion d'Europe de sabre à Antony 2026"
+},
+{
+"first_name": "Rafael",
+"last_name": "Savin",
+"sport": "Escrime",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion d'Europe de fleuret à Antony 2026, 1er titre français en 30 ans"
+},
+{
+"first_name": "Luke",
+"last_name": "Littler",
+"sport": "Fléchettes",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Champion du monde PDC pour la 2e fois de suite (7-1 contre Van Veen), chèque d'1 M£"
+},
+{
+"first_name": "Gian",
+"last_name": "van Veen",
+"sport": "Fléchettes",
+"gender": "M",
+"country": "NL",
+"intl": false,
+"fr": false,
+"note": "Finaliste du championnat du monde PDC de fléchettes (battu 7-1 par Littler)"
 },
 {
 "first_name": "Selma",
@@ -1340,6 +1680,16 @@
 "note": "9e du Ballon d'Or féminin 2026 (Arsenal, Angleterre)"
 },
 {
+"first_name": "Pau",
+"last_name": "Cubarsí",
+"sport": "Football",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion du monde 2026 avec l'Espagne, élu meilleur jeune joueur du Mondial"
+},
+{
 "first_name": "Ousmane",
 "last_name": "Dembélé",
 "sport": "Football",
@@ -1350,6 +1700,16 @@
 "note": "Ligue des champions 2026 avec le PSG, buteur en finale face à Arsenal"
 },
 {
+"first_name": "Brahim",
+"last_name": "Díaz",
+"sport": "Football",
+"gender": "M",
+"country": "MA",
+"intl": true,
+"fr": false,
+"note": "Meilleur buteur de la CAN 2025 (5 buts), Maroc déclaré champion par la CAF"
+},
+{
 "first_name": "Harry",
 "last_name": "Kane",
 "sport": "Football",
@@ -1358,6 +1718,26 @@
 "intl": true,
 "fr": false,
 "note": "Ballon d'Or 2026 (Bayern Munich, Angleterre 3e du Mondial)"
+},
+{
+"first_name": "Khvicha",
+"last_name": "Kvaratskhelia",
+"sport": "Football",
+"gender": "M",
+"country": "GE",
+"intl": true,
+"fr": false,
+"note": "6e du Ballon d'Or 2026"
+},
+{
+"first_name": "Sadio",
+"last_name": "Mané",
+"sport": "Football",
+"gender": "M",
+"country": "SN",
+"intl": true,
+"fr": false,
+"note": "Meilleur joueur de la CAN 2025 (titre sénégalais ensuite attribué au Maroc)"
 },
 {
 "first_name": "Kylian",
@@ -1400,6 +1780,16 @@
 "note": "Rodri : champion du monde 2026 et Ballon d'or du Mondial, 4e du Ballon d'Or"
 },
 {
+"first_name": "Unai",
+"last_name": "Simón",
+"sport": "Football",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion du monde 2026, Gant d'or (1 seul but encaissé en 8 matchs)"
+},
+{
 "first_name": "Dayot",
 "last_name": "Upamecano",
 "sport": "Football",
@@ -1438,6 +1828,16 @@
 "intl": false,
 "fr": true,
 "note": "Premier podium chez Red Bull (3e à Monaco), meilleur Français"
+},
+{
+"first_name": "Lewis",
+"last_name": "Hamilton",
+"sport": "Formule 1",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "1re victoire avec Ferrari (GP de Barcelone), à la lutte pour le titre de vice-champion"
 },
 {
 "first_name": "Charles",
@@ -1560,6 +1960,16 @@
 "note": "Vainqueur du Masters 2026, 1er doublé à Augusta depuis Tiger Woods"
 },
 {
+"first_name": "Aaron",
+"last_name": "Rai",
+"sport": "Golf",
+"gender": "M",
+"country": "GB",
+"intl": true,
+"fr": false,
+"note": "Vainqueur du PGA Championship 2026 à Aronimink, 1er titre majeur"
+},
+{
 "first_name": "Scottie",
 "last_name": "Scheffler",
 "sport": "Golf",
@@ -1590,6 +2000,16 @@
 "note": "Championne du monde du concours général à Rotterdam"
 },
 {
+"first_name": "Elena",
+"last_name": "Colas",
+"sport": "Gymnastique artistique",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne d'Europe à la poutre à 16 ans (Zagreb 2026), argent au sol, bronze au CG"
+},
+{
 "first_name": "Kaylia",
 "last_name": "Nemour",
 "sport": "Gymnastique artistique",
@@ -1598,6 +2018,16 @@
 "intl": true,
 "fr": false,
 "note": "2e titre mondial consécutif aux barres asymétriques"
+},
+{
+"first_name": "Maïana",
+"last_name": "Prat",
+"sport": "Gymnastique artistique",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Bronze au sol aux Mondiaux de Rotterdam à 16 ans"
 },
 {
 "first_name": "Daiki",
@@ -1618,6 +2048,16 @@
 "intl": true,
 "fr": false,
 "note": "Champion du monde aux barres parallèles à Rotterdam"
+},
+{
+"first_name": "Karlos",
+"last_name": "Nasar",
+"sport": "Haltérophilie",
+"gender": "M",
+"country": "BG",
+"intl": false,
+"fr": false,
+"note": "Champion du monde des -95 kg à Ningbo avec 3 records du monde"
 },
 {
 "first_name": "Sarah",
@@ -1660,6 +2100,26 @@
 "note": "Ligue des champions 2026 avec Barcelone (37-34 en finale)"
 },
 {
+"first_name": "Charlotte",
+"last_name": "Englebert",
+"sport": "Hockey sur gazon",
+"gender": "F",
+"country": "BE",
+"intl": false,
+"fr": false,
+"note": "Meilleure joueuse de la Coupe du monde 2026, bronze avec la Belgique"
+},
+{
+"first_name": "Roman",
+"last_name": "Josi",
+"sport": "Hockey sur glace",
+"gender": "M",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "MVP et meilleur défenseur des Mondiaux 2026, finaliste avec la Suisse à domicile"
+},
+{
 "first_name": "Uta",
 "last_name": "Abe",
 "sport": "Judo",
@@ -1668,6 +2128,16 @@
 "intl": true,
 "fr": false,
 "note": "Championne du monde -52 kg à Bakou"
+},
+{
+"first_name": "Melkia",
+"last_name": "Auchecorne",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne d'Europe des -70 kg à Tbilissi"
 },
 {
 "first_name": "Shirine",
@@ -1688,6 +2158,16 @@
 "intl": false,
 "fr": true,
 "note": "Vice-championne du monde +78 kg à Bakou"
+},
+{
+"first_name": "Léa",
+"last_name": "Fontaine",
+"sport": "Judo",
+"gender": "F",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vice-championne d'Europe des +78 kg à Tbilissi"
 },
 {
 "first_name": "Marie-Ève",
@@ -1778,6 +2258,16 @@
 "intl": true,
 "fr": false,
 "note": "4e titre mondial en -81 kg à Bakou"
+},
+{
+"first_name": "Luka",
+"last_name": "Mkheidze",
+"sport": "Judo",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion d'Europe des -60 kg à Tbilissi, 2e titre continental"
 },
 {
 "first_name": "Teddy",
@@ -1980,6 +2470,16 @@
 "note": "Non vérifié (recherche 2026 non faite)"
 },
 {
+"first_name": "Meg",
+"last_name": "Harris",
+"sport": "Natation",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "6 médailles d'or aux Jeux du Commonwealth de Glasgow 2026, record de la quinzaine"
+},
+{
 "first_name": "Anastasiia",
 "last_name": "Kirpichnikova",
 "sport": "Natation",
@@ -2030,6 +2530,16 @@
 "note": "Championne d'Europe 2026 du 100 m dos, record d'Europe"
 },
 {
+"first_name": "Lani",
+"last_name": "Pallister",
+"sport": "Natation",
+"gender": "F",
+"country": "AU",
+"intl": true,
+"fr": false,
+"note": "Bat Ledecky sur 800 m nl aux Pan Pacs 2026, titrée aussi sur 200 m nl"
+},
+{
 "first_name": "Gretchen",
 "last_name": "Walsh",
 "sport": "Natation",
@@ -2048,6 +2558,16 @@
 "intl": false,
 "fr": true,
 "note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "",
+"last_name": "Yu Yiting",
+"sport": "Natation",
+"gender": "F",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Bat Summer McIntosh sur 200 m 4 nages aux Pan Pacs 2026"
 },
 {
 "first_name": "Maxime",
@@ -2108,6 +2628,16 @@
 "intl": true,
 "fr": false,
 "note": "Non vérifié (recherche 2026 non faite)"
+},
+{
+"first_name": "Luca",
+"last_name": "Urlando",
+"sport": "Natation",
+"gender": "M",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "Champion Pan Pacs 2026 du 200 m papillon, bat le record de Phelps (1'53\"11)"
 },
 {
 "first_name": "Pan",
@@ -2310,6 +2840,16 @@
 "note": "Champions olympiques 2026 en couples"
 },
 {
+"first_name": "Arianna",
+"last_name": "Fontana",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "JO à domicile en short-track : 1 or + 2 argent, 14 médailles olympiques, record italien"
+},
+{
 "first_name": "Gil-li",
 "last_name": "Kim",
 "sport": "Patinage de vitesse",
@@ -2340,6 +2880,26 @@
 "note": "Championne olympique du 1000 m, argent 500 m"
 },
 {
+"first_name": "Francesca",
+"last_name": "Lollobrigida",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "IT",
+"intl": true,
+"fr": false,
+"note": "Double championne olympique (3000 m en record olympique et 5000 m) à Milan"
+},
+{
+"first_name": "Valérie",
+"last_name": "Maltais",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "CA",
+"intl": false,
+"fr": false,
+"note": "3 médailles aux JO de Milan-Cortina dont l'or en poursuite par équipes"
+},
+{
 "first_name": "Antoinette",
 "last_name": "Rijpma-de Jong",
 "sport": "Patinage de vitesse",
@@ -2348,6 +2908,16 @@
 "intl": true,
 "fr": false,
 "note": "Championne olympique du 1500 m"
+},
+{
+"first_name": "Courtney",
+"last_name": "Sarault",
+"sport": "Patinage de vitesse",
+"gender": "F",
+"country": "CA",
+"intl": false,
+"fr": false,
+"note": "4 médailles aux JO de Milan-Cortina (2 argent, 2 bronze) en short-track"
 },
 {
 "first_name": "Xandra",
@@ -3140,6 +3710,16 @@
 "note": "Vice-champion olympique du sprint et du sprint par équipes"
 },
 {
+"first_name": "Théo",
+"last_name": "Schely",
+"sport": "Ski de fond",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Médaille d'argent olympique du relais 4x7,5 km à Milan-Cortina"
+},
+{
 "first_name": "Mathilde",
 "last_name": "Gremaud",
 "sport": "Ski freestyle",
@@ -3258,6 +3838,26 @@
 "intl": true,
 "fr": false,
 "note": "Champion olympique des bosses devant Kingsbury"
+},
+{
+"first_name": "Kyren",
+"last_name": "Wilson",
+"sport": "Snooker",
+"gender": "M",
+"country": "GB",
+"intl": false,
+"fr": false,
+"note": "Vainqueur du Masters de snooker (10-6 contre John Higgins)"
+},
+{
+"first_name": "",
+"last_name": "Wu Yize",
+"sport": "Snooker",
+"gender": "M",
+"country": "CN",
+"intl": true,
+"fr": false,
+"note": "Champion du monde au Crucible à 22 ans (18-17 contre Shaun Murphy)"
 },
 {
 "first_name": "Josie",
@@ -3700,6 +4300,16 @@
 "note": "Top 16 européen 2026, 2 Grand Smash en double avec Félix"
 },
 {
+"first_name": "Kévin",
+"last_name": "Chapon",
+"sport": "Tir sportif",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Champion du monde au pistolet 25 m standard à Doha (épreuve non olympique)"
+},
+{
 "first_name": "Cassandre",
 "last_name": "Beaugrand",
 "sport": "Triathlon",
@@ -3948,6 +4558,16 @@
 "intl": true,
 "fr": false,
 "note": "Barreur espagnol qualifié pour la Grand Final SailGP 2026"
+},
+{
+"first_name": "Basile",
+"last_name": "Bourgnon",
+"sport": "Voile",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Vainqueur Route du Rhum 2026 en Ocean Fifty à 24 ans, record de la classe"
 },
 {
 "first_name": "Thomas",
