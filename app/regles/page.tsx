@@ -12,7 +12,7 @@ export default function Regles() {
           les classera en fin d&apos;année.
         </li>
         <li>
-          Le classement doit être envoyé <strong>avant le 1er décembre</strong> (minuit, heure de
+          Le classement doit être envoyé <strong>au plus tard le 15 décembre</strong> (23h59, heure de
           Paris). Jusque-là il reste modifiable et caché aux autres joueurs.
         </li>
         <li>

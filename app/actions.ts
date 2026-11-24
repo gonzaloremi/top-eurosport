@@ -151,7 +151,7 @@ async function readBoth(fd: FormData) {
 export async function savePredictions(_: FormState, fd: FormData): Promise<FormState> {
   const user = await requireUser();
   const season = currentSeason();
-  if (isLocked(season)) return { error: "Trop tard ! Les pronostics sont fermés depuis le 1er décembre." };
+  if (isLocked(season)) return { error: "Trop tard ! Les pronostics sont fermés depuis le 15 décembre." };
   const lists = await readBoth(fd);
   if (typeof lists === "string") return { error: lists };
   await sql.begin(async (tx) => {
@@ -171,8 +171,8 @@ export async function savePredictions(_: FormState, fd: FormData): Promise<FormS
     ok: vague
       ? `Enregistré ✔︎ — ${vague} nom(s) marqué(s) ⚠️ à préciser : choisis-les dans la liste pour être sûr que ça compte.`
       : missing
-        ? `Enregistré ✔︎ — il te reste ${missing} case(s) vide(s), tu peux revenir compléter jusqu'au 30 novembre.`
-        : "Classement enregistré ✔︎ Tu peux encore le modifier jusqu'au 30 novembre minuit.",
+        ? `Enregistré ✔︎ — il te reste ${missing} case(s) vide(s), tu peux revenir compléter jusqu'au 15 décembre.`
+        : "Classement enregistré ✔︎ Tu peux encore le modifier jusqu'au 15 décembre minuit.",
   };
 }
 

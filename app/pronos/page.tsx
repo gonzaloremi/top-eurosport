@@ -22,7 +22,7 @@ export default async function Pronos() {
       </div>
       <p className="muted" style={{ margin: "-4px 2px 20px", maxWidth: "72ch" }}>
         {locked
-          ? "Les pronostics sont fermés depuis le 1er décembre. Voici ce que tu as envoyé."
+          ? "Les pronostics sont fermés depuis le 15 décembre. Voici ce que tu as envoyé."
           : `Tape quelques lettres et choisis l'athlète dans la liste (les fautes sont tolérées). Quelqu'un manque ? Ajoute-le, l'admin vérifiera. Modifiable jusqu'au ${formatDeadline(season)} ; ton classement compte dans toutes tes ligues et reste secret jusqu'à la clôture.`}
       </p>
       <Top10Form

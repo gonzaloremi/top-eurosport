@@ -12,9 +12,9 @@ export function currentSeason(now = new Date()): number {
   );
 }
 
-/** Date limite : 1er décembre 00:00, heure de Paris (UTC+1 en hiver). */
+/** Date limite : 15 décembre 23:59, heure de Paris (UTC+1 en hiver) — avant le début du compte à rebours Eurosport. */
 export function deadline(season: number): Date {
-  return new Date(Date.UTC(season, 10, 30, 23, 0, 0));
+  return new Date(Date.UTC(season, 11, 15, 23, 0, 0));
 }
 
 export function isLocked(season: number, now = new Date()): boolean {

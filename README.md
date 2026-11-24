@@ -4,7 +4,7 @@ Jeu entre amis / en famille : deviner les **tops 10 Eurosport Monde et France** 
 
 - Chacun a son compte (pseudo + mot de passe).
 - Ligues privées : on rejoint avec un **code à 4 lettres** (ou le lien `/rejoindre/ABCD`).
-- Chaque joueur envoie son classement (10 Monde + 10 France) **avant le 1er décembre** (minuit, heure de Paris). Il est caché aux autres jusque-là.
+- Chaque joueur envoie son classement (10 Monde + 10 France) **au plus tard le 15 décembre** (23h59, heure de Paris), juste avant le compte à rebours Eurosport. Il est caché aux autres jusque-là.
 - Barème : **3 pts** bon athlète à la bonne place, **1 pt** athlète dans le top 10 mais mal placé.
 - Trois maillots par ligue : **Arc-en-ciel** (Monde), **Bleu** (France), **Jaune** (général). Égalité départagée au nombre de places exactes.
 - Un admin saisit les tops 10 officiels (page `/admin`) ; les points sont recalculés aussitôt. Les noms sont comparés sans accents/majuscules/espaces/tirets, et l'admin peut rapprocher les fautes de frappe.

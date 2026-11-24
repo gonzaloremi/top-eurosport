@@ -24,7 +24,7 @@ export default async function Connexion({
             Devine le <span style={{ color: "var(--yellow)" }}>top 10</span> de l&apos;année
           </h1>
           <p className="muted" style={{ marginTop: 14, maxWidth: "38ch" }}>
-            Classe les 10 meilleurs sportifs Monde et France avant le 1er décembre. Quand Eurosport
+            Classe les 10 meilleurs sportifs Monde et France avant le 15 décembre. Quand Eurosport
             publie ses tops, on voit qui repart avec les maillots.
           </p>
           <div className="row" style={{ marginTop: 26, gap: 4, alignItems: "flex-end" }}>
