@@ -384,7 +384,7 @@ details.player[open] summary::after { content: "▴"; }
 
 /* ============ Drag & drop ============ */
 .tile { flex: 1; min-width: 0; display: flex; align-items: stretch; gap: 6px; position: relative;
-  transition: transform 0.18s cubic-bezier(.2,.8,.3,1); will-change: transform; }
+  transition: transform 0.18s cubic-bezier(.2,.8,.3,1); }
 .settling .tile { transition: none !important; }
 .grip {
   flex: none; width: 30px; display: grid; place-items: center; border-radius: 10px; cursor: grab;
@@ -560,3 +560,25 @@ html, body { overflow-x: clip; max-width: 100%; }
 .autosave.error { background: #ffe1e1; color: #8f1111; border-color: transparent; }
 .autosave.saving { color: var(--muted); }
 .league-name { overflow-wrap: anywhere; }
+
+/* ============ Recherche plein écran (téléphone) ============ */
+@media (max-width: 640px) {
+  .picker.sheet {
+    position: fixed; inset: 0; z-index: 100; background: var(--surface); color: var(--ink);
+    display: flex; flex-direction: column; padding: max(12px, env(safe-area-inset-top)) 14px 12px;
+  }
+  .picker.sheet > input:not([type=hidden]) {
+    font-size: 17px; height: 52px; border: 2px solid var(--blue) !important; background: var(--surface-2) !important;
+    color: var(--ink) !important;
+  }
+  .picker.sheet .dropdown {
+    position: static; flex: 1; max-height: none; overflow-y: auto; margin-top: 10px; padding: 0;
+    border: 0; box-shadow: none; background: transparent;
+  }
+  .picker.sheet .option { padding: 12px 8px; border-bottom: 1px solid var(--line); border-radius: 0; }
+  .picker.sheet .option.active { outline: 0; background: var(--surface-2); }
+  .sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 800; color: var(--muted); font-size: 0.9rem; }
+  .sheet-close { border: 0; background: var(--surface-2); color: var(--ink); font: 800 0.9rem var(--body); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+  .sheet-hint { color: var(--muted); margin-top: 14px; text-align: center; }
+  body.picker-open { overflow: hidden; }
+}

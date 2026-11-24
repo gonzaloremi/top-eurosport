@@ -294,6 +294,7 @@ export function Top10Form({
                           takenIds={v.id ? new Set([...taken].filter((x) => x !== v.id)) : taken}
                           disabled={disabled}
                           placeholder={i === 0 ? "Tape un nom…" : `${i + 1}e`}
+                          label={`${c.title} · ${i + 1}${i === 0 ? "re" : "e"} place`}
                           onPropose={proposeAndRemember}
                           onChange={(nv) =>
                             setValues((prev) => {

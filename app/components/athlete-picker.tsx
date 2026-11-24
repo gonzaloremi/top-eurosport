@@ -28,6 +28,7 @@ export function AthletePicker({
   placeholder,
   onPropose,
   disabled,
+  label,
 }: {
   name: string;
   value: PickValue;
@@ -38,12 +39,27 @@ export function AthletePicker({
   placeholder?: string;
   onPropose: (data: FormData) => Promise<ProposeResult>;
   disabled?: boolean;
+  /** Intitulé affiché en tête de la recherche plein écran (mobile). */
+  label?: string;
 }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const [adding, setAdding] = useState(false);
   const [up, setUp] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const upd = () => setMobile(mq.matches);
+    upd();
+    mq.addEventListener("change", upd);
+    return () => mq.removeEventListener("change", upd);
+  }, []);
+  const sheet = open && mobile; // recherche plein écran sur téléphone
+  useEffect(() => {
+    document.body.classList.toggle("picker-open", sheet);
+    return () => document.body.classList.remove("picker-open");
+  }, [sheet]);
   const boxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -107,8 +123,26 @@ export function AthletePicker({
   }
 
   return (
-    <div className="picker" ref={boxRef}>
+    <div className={`picker ${sheet ? "sheet" : ""}`} ref={boxRef}>
       <input type="hidden" name={name} value={hiddenValue} />
+      {sheet && (
+        <div className="sheet-head">
+          <span>{label ?? "Choisis un athlète"}</span>
+          <button
+            type="button"
+            className="sheet-close"
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              setOpen(false);
+              setAdding(false);
+              setQuery("");
+              inputRef.current?.blur();
+            }}
+          >
+            Fermer
+          </button>
+        </div>
+      )}
       <input
         ref={inputRef}
         value={query}
@@ -123,7 +157,7 @@ export function AthletePicker({
         }}
         onBlur={() =>
           setTimeout(() => {
-            if (!boxRef.current?.contains(document.activeElement)) {
+            if (!boxRef.current?.contains(document.activeElement) && !window.matchMedia("(max-width: 640px)").matches) {
               setOpen(false);
               setAdding(false);
             }
@@ -147,8 +181,11 @@ export function AthletePicker({
           if (e.key === "Escape") { setOpen(false); setAdding(false); }
         }}
       />
+      {sheet && query.trim().length === 0 && (
+        <p className="sheet-hint">Tape quelques lettres du nom…</p>
+      )}
       {open && query.trim().length > 0 && (
-        <div className={`dropdown ${up ? "up" : ""}`} role="listbox">
+        <div className={`dropdown ${up && !sheet ? "up" : ""}`} role="listbox">
           {!adding &&
             results.map((a, i) => {
               const taken = takenIds.has(a.id);
