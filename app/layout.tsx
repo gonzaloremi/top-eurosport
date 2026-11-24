@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {user && (
             <nav>
               <Link href="/pronos" className="pill">
-                Mon prono
+                Mes pronos
               </Link>
               <Link href="/palmares" className="pill">
                 Palmarès
