@@ -1,7 +1,10 @@
+import { Jersey } from "../components/jersey";
+
 export default function Regles() {
   return (
-    <section className="card">
-      <h1>Règles du jeu</h1>
+    <section className="card rules">
+      <div className="kicker">Comment ça marche</div>
+      <h1 style={{ marginBottom: 8 }}>Règles du jeu</h1>
       <ol className="stack" style={{ paddingLeft: "1.2em" }}>
         <li>
           Chaque joueur classe <strong>les 10 sportifs du top Monde</strong> et{" "}
@@ -31,15 +34,15 @@ export default function Regles() {
           Trois maillots dans chaque ligue :
           <ul>
             <li>
-              <span className="swatch rainbow" style={{ verticalAlign: "middle" }} />{" "}
+              <Jersey variant="rainbow" size={26} />{" "}
               <strong>Arc-en-ciel</strong> — meilleur score sur le top Monde (30 pts max) ;
             </li>
             <li>
-              <span className="swatch blue" style={{ verticalAlign: "middle" }} />{" "}
+              <Jersey variant="blue" size={26} />{" "}
               <strong>Bleu</strong> — meilleur score sur le top France (30 pts max) ;
             </li>
             <li>
-              <span className="swatch yellow" style={{ verticalAlign: "middle" }} />{" "}
+              <Jersey variant="yellow" size={26} />{" "}
               <strong>Jaune</strong> — classement général (60 pts max).
             </li>
           </ul>

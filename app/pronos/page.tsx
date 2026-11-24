@@ -13,26 +13,19 @@ export default async function Pronos() {
 
   return (
     <>
-      <h1>Mon classement {season}</h1>
-      {locked ? (
-        <p className="alert error">
-          🔒 Les pronostics sont fermés depuis le 1er décembre. Voici ce que tu as envoyé.
-        </p>
-      ) : (
-        <p className="muted">
-          Classe les 10 sportifs du top Monde et du top France tels que tu penses
-          qu&apos;Eurosport les classera. Modifiable jusqu&apos;au {formatDeadline(season)} (encore{" "}
-          {timeLeft(season)}). Ton classement est le même dans toutes tes ligues et reste caché aux
-          autres jusqu&apos;à la date limite.
-        </p>
-      )}
-      <Top10Form
-        action={savePredictions}
-        initial={mine}
-        athletes={athletes}
-        disabled={locked}
-        submitLabel="Enregistrer mon classement"
-      />
+      <div className="section-title" style={{ marginTop: 6, alignItems: "flex-end", flexWrap: "wrap" }}>
+        <div>
+          <div className="kicker">Saison {season}</div>
+          <h1>Mon classement</h1>
+        </div>
+        {locked ? <span className="chip lock">🔒 Fermé</span> : <span className="chip wait">⏱ encore {timeLeft(season)}</span>}
+      </div>
+      <p className="muted" style={{ margin: "-4px 2px 20px", maxWidth: "70ch" }}>
+        {locked
+          ? "Les pronostics sont fermés depuis le 1er décembre. Voici ce que tu as envoyé."
+          : `Classe les sportifs comme tu penses qu'Eurosport les classera. Modifiable jusqu'au ${formatDeadline(season)}. Ton classement compte dans toutes tes ligues et reste secret jusqu'à la clôture.`}
+      </p>
+      <Top10Form action={savePredictions} initial={mine} athletes={athletes} disabled={locked} submitLabel="Enregistrer mon classement" />
     </>
   );
 }

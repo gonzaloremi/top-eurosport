@@ -13,19 +13,22 @@ export default async function Rejoindre({ params }: { params: Promise<{ code: st
   const members = await getMembers(league.id);
   if (members.some((m) => m.id === user.id)) redirect(`/ligue/${league.code}`);
   return (
-    <section className="card" style={{ maxWidth: 460, margin: "0 auto", textAlign: "center" }}>
-      <p className="muted">Tu es invité·e dans la ligue</p>
-      <h1>{league.name}</h1>
-      <p className="muted">
-        {members.map((m) => m.display_name).join(", ")} t&apos;attendent !
-      </p>
-      <div style={{ marginTop: 16 }}>
+    <section className="game theme-night dots" style={{ maxWidth: 520, margin: "10px auto 22px" }}>
+      <div className="art" style={{ textAlign: "center", paddingTop: 34 }}>
+        <div className="kicker">Tu es invité·e dans la ligue</div>
+        <h1 style={{ margin: "8px 0 18px" }}>{league.name}</h1>
+        <div className="code-tiles" style={{ justifyContent: "center", marginBottom: 18 }}>
+          {league.code.split("").map((c, i) => <span key={i}>{c}</span>)}
+        </div>
+        <p className="muted">{members.map((m) => m.display_name).join(", ")} t&apos;attendent !</p>
+      </div>
+      <div className="bar" style={{ justifyContent: "center" }}>
         <InlineForm
           action={joinLeague}
           name="code"
           placeholder="ABCD"
           button="Rejoindre la ligue"
-          extra={{ defaultValue: league.code, readOnly: true, className: "code-input" }}
+          extra={{ defaultValue: league.code, readOnly: true, type: "hidden" }}
         />
       </div>
     </section>

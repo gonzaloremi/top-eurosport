@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import type { FormState } from "@/app/actions";
+import { Jersey } from "./jersey";
 
 type Action = (s: FormState, fd: FormData) => Promise<FormState>;
 
@@ -48,7 +49,7 @@ export function AuthForm({
         />
       </label>
       <Feedback state={state} />
-      <Submit>{mode === "login" ? "Se connecter" : "Créer mon compte"}</Submit>
+      <Submit className="btn big">{mode === "login" ? "Se connecter" : "Créer mon compte"}</Submit>
     </form>
   );
 }
@@ -96,11 +97,11 @@ export function Top10Form({
   const [state, formAction] = useActionState(action, undefined);
   const [values, setValues] = useState(initial);
   const cols = [
-    { key: "monde" as const, title: "Top 10 Monde", jersey: "rainbow" },
-    { key: "france" as const, title: "Top 10 France", jersey: "blue" },
+    { key: "monde" as const, kicker: "Maillot arc-en-ciel", title: "Top 10 Monde", theme: "theme-rainbow", jersey: "rainbow" as const },
+    { key: "france" as const, kicker: "Maillot bleu", title: "Top 10 France", theme: "theme-blue", jersey: "blue" as const },
   ];
   return (
-    <form action={formAction} className="stack">
+    <form action={formAction} className="stack" style={{ gap: 0 }}>
       {hidden &&
         Object.entries(hidden).map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
       <datalist id="athletes">
@@ -109,33 +110,50 @@ export function Top10Form({
         ))}
       </datalist>
       <div className="grid2">
-        {cols.map((c) => (
-          <fieldset key={c.key} className={`card top10 ${c.jersey}`} disabled={disabled}>
-            <legend>
-              <span className={`swatch ${c.jersey}`} /> {c.title}
-            </legend>
-            {values[c.key].map((v, i) => (
-              <div className="pick" key={i}>
-                <span className="pos">{i + 1}</span>
-                <input
-                  name={`${c.key}-${i + 1}`}
-                  list="athletes"
-                  value={v}
-                  maxLength={60}
-                  placeholder={`${i + 1}${i === 0 ? "er" : "e"}`}
-                  autoComplete="off"
-                  onChange={(e) =>
-                    setValues((prev) => {
-                      const next = { ...prev, [c.key]: [...prev[c.key]] };
-                      next[c.key][i] = e.target.value;
-                      return next;
-                    })
-                  }
-                />
+        {cols.map((c) => {
+          const filled = values[c.key].filter((v) => v.trim()).length;
+          return (
+            <section key={c.key} className={`game ${c.theme}`}>
+              {c.jersey === "rainbow" && <div className="rainbow-band" />}
+              <div className="art">
+                <div className="row" style={{ justifyContent: "space-between", marginBottom: 16 }}>
+                  <div>
+                    <div className="kicker">{c.kicker}</div>
+                    <h2 style={{ fontSize: "2.1rem" }}>{c.title}</h2>
+                  </div>
+                  <div className="row" style={{ gap: 6 }}>
+                    <Jersey variant={c.jersey} size={50} tilt={-8} />
+                    <span className="counter">{filled}/10</span>
+                  </div>
+                </div>
+                <fieldset disabled={disabled}>
+                  <ol className="pick-list">
+                    {values[c.key].map((v, i) => (
+                      <li className="pick" key={i}>
+                        <span className={`medal ${i < 3 ? `m${i + 1}` : ""}`}>{i + 1}</span>
+                        <input
+                          name={`${c.key}-${i + 1}`}
+                          list="athletes"
+                          value={v}
+                          maxLength={60}
+                          placeholder={i === 0 ? "Le n°1 de l'année…" : `${i + 1}e`}
+                          autoComplete="off"
+                          onChange={(e) =>
+                            setValues((prev) => {
+                              const next = { ...prev, [c.key]: [...prev[c.key]] };
+                              next[c.key][i] = e.target.value;
+                              return next;
+                            })
+                          }
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                </fieldset>
               </div>
-            ))}
-          </fieldset>
-        ))}
+            </section>
+          );
+        })}
       </div>
       {!disabled && (
         <div className="sticky-submit stack">
@@ -152,7 +170,7 @@ export function CopyButton({ text, label }: { text: string; label: string }) {
   return (
     <button
       type="button"
-      className="btn ghost"
+      className="btn"
       onClick={async () => {
         try {
           if (navigator.share && /Mobi/.test(navigator.userAgent)) {
@@ -170,7 +188,7 @@ export function CopyButton({ text, label }: { text: string; label: string }) {
   );
 }
 
-export function ConfirmButton({ children, message, className = "btn danger" }: { children: React.ReactNode; message: string; className?: string }) {
+export function ConfirmButton({ children, message, className = "btn link" }: { children: React.ReactNode; message: string; className?: string }) {
   return (
     <button className={className} onClick={(e) => { if (!confirm(message)) e.preventDefault(); }}>
       {children}

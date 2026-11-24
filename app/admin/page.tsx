@@ -33,7 +33,8 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
 
   return (
     <>
-      <h1>Admin — tops 10 officiels</h1>
+      <div className="kicker">Espace admin</div>
+      <h1 style={{ marginBottom: 12 }}>Tops 10 officiels</h1>
       <nav className="season-switch" style={{ marginBottom: 12 }}>
         {[now - 1, now, now + 1].map((s) => (
           <Link key={s} href={`/admin?saison=${s}`} className={s === season ? "active" : ""}>
@@ -41,7 +42,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
           </Link>
         ))}
       </nav>
-      <p className="muted">
+      <p className="muted" style={{ marginBottom: 18 }}>
         Saisis les tops 10 publiés par Eurosport pour la saison {season}. Les points de toutes les
         ligues sont recalculés immédiatement. Les accents, majuscules, espaces et tirets sont
         ignorés pour comparer les noms.
@@ -57,7 +58,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
 
       {hasResults(results) && (
         <section className="card" style={{ marginTop: 16 }}>
-          <h2>Noms à rapprocher</h2>
+          <h2 style={{ marginBottom: 6 }}>Noms à rapprocher</h2>
           <p className="muted small">
             Noms saisis par les joueurs qui ne correspondent à aucun athlète officiel. Si c&apos;est
             une faute de frappe (ex : « Mbape »), associe-le au bon athlète. Sinon, laisse vide.
@@ -74,7 +75,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
               <form key={k} action={saveAlias} className="row" style={{ margin: "6px 0" }}>
                 <input type="hidden" name="season" value={season} />
                 <input type="hidden" name="from" value={name} />
-                <span style={{ minWidth: 140 }}>{name} →</span>
+                <strong style={{ minWidth: 140 }}>{name} →</strong>
                 <input
                   name="to"
                   list="official"
@@ -89,12 +90,12 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
       )}
 
       <section className="card" style={{ marginTop: 16 }}>
-        <h2>Administrateurs</h2>
-        <ul className="league-list">
+        <h2 style={{ marginBottom: 6 }}>Administrateurs</h2>
+        <ul className="list-plain">
           {users.map((u) => (
             <li key={u.id}>
               <span>
-                {u.display_name} {u.is_admin && <span className="badge ok">admin</span>}
+                {u.display_name} {u.is_admin && <span className="chip ok">admin</span>}
               </span>
               {u.id !== me.id && (
                 <form action={setAdmin}>
