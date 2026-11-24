@@ -235,7 +235,7 @@ export function Top10Form({
                           franceOnly={c.key === "france"}
                           takenIds={taken}
                           disabled={disabled}
-                          placeholder={i === 0 ? "Tape un nom… (ex : mbappe)" : `${i + 1}e`}
+                          placeholder={i === 0 ? "Tape un nom…" : `${i + 1}e`}
                           onPropose={proposeAndRemember}
                           onChange={(nv) =>
                             setValues((prev) => {

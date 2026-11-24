@@ -131,7 +131,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
           <h2 style={{ fontSize: "2.2rem" }}>Tops 10 officiels</h2>
         </div>
         <nav className="season-switch">
-          {[now - 1, now].map((s) => (
+          {[now - 2, now - 1, now].map((s) => (
             <Link key={s} href={`/admin?saison=${s}`} className={s === season ? "active" : ""}>
               {s}
             </Link>

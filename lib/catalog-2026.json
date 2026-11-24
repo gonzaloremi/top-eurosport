@@ -1,5 +1,15 @@
 [
 {
+"first_name": "Julien",
+"last_name": "Alfred",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "LC",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Tigst",
 "last_name": "Assefa",
 "sport": "Athlétisme",
@@ -18,6 +28,16 @@
 "intl": false,
 "fr": true,
 "note": "Bronze aux championnats d'Europe sur 100 m haies"
+},
+{
+"first_name": "Femke",
+"last_name": "Bol",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "NL",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
 "first_name": "Marie-Julie",
@@ -60,6 +80,16 @@
 "note": "Doublé 100 m (10\"62)/200 m à l'Ultimate Championship"
 },
 {
+"first_name": "Faith",
+"last_name": "Kipyegon",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "KE",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Hilary",
 "last_name": "Kpatcha",
 "sport": "Athlétisme",
@@ -78,6 +108,16 @@
 "intl": true,
 "fr": false,
 "note": "Victoire en hauteur à l'Ultimate Championship"
+},
+{
+"first_name": "Sydney",
+"last_name": "McLaughlin-Levrone",
+"sport": "Athlétisme",
+"gender": "F",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
 "first_name": "Masai",
@@ -130,6 +170,16 @@
 "note": "Record d'Europe du 5 km, record de France du 3000 m, bronze Euro"
 },
 {
+"first_name": "Jakob",
+"last_name": "Ingebrigtsen",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "NO",
+"intl": false,
+"fr": false,
+"note": "Vainqueur du 5000 m à l'Ultimate Championship 2026"
+},
+{
 "first_name": "Josh",
 "last_name": "Kerr",
 "sport": "Athlétisme",
@@ -160,6 +210,16 @@
 "note": "Vice-champion d'Europe du 110 m haies"
 },
 {
+"first_name": "Noah",
+"last_name": "Lyles",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Sabastian",
 "last_name": "Sawe",
 "sport": "Athlétisme",
@@ -178,6 +238,16 @@
 "intl": false,
 "fr": true,
 "note": "Bronze aux Mondiaux en salle sur 3000 m"
+},
+{
+"first_name": "Karsten",
+"last_name": "Warholm",
+"sport": "Athlétisme",
+"gender": "M",
+"country": "NO",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
 "first_name": "Alison",
@@ -960,6 +1030,16 @@
 "note": "Vainqueur du Giro 2026, complète la triple couronne des Grands Tours"
 },
 {
+"first_name": "Mathieu",
+"last_name": "van der Poel",
+"sport": "Cyclisme sur route",
+"gender": "M",
+"country": "NL",
+"intl": true,
+"fr": false,
+"note": "8e titre mondial de cyclo-cross (record), Coupe du monde"
+},
+{
 "first_name": "Ceylin del Carmen",
 "last_name": "Alvarado",
 "sport": "Cyclo-cross",
@@ -1008,16 +1088,6 @@
 "intl": true,
 "fr": false,
 "note": "Bronze aux Mondiaux, 2e de la Coupe du monde"
-},
-{
-"first_name": "Mathieu",
-"last_name": "van der Poel",
-"sport": "Cyclo-cross",
-"gender": "M",
-"country": "NL",
-"intl": true,
-"fr": false,
-"note": "8e titre mondial de cyclo-cross (record), Coupe du monde"
 },
 {
 "first_name": "Sébastien",
@@ -1370,6 +1440,26 @@
 "note": "Premier podium chez Red Bull (3e à Monaco), meilleur Français"
 },
 {
+"first_name": "Charles",
+"last_name": "Leclerc",
+"sport": "Formule 1",
+"gender": "M",
+"country": "MC",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
+"first_name": "Lando",
+"last_name": "Norris",
+"sport": "Formule 1",
+"gender": "M",
+"country": "GB",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "George",
 "last_name": "Russell",
 "sport": "Formule 1",
@@ -1690,6 +1780,16 @@
 "note": "4e titre mondial en -81 kg à Bakou"
 },
 {
+"first_name": "Teddy",
+"last_name": "Riner",
+"sport": "Judo",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Ryuga",
 "last_name": "Tanaka",
 "sport": "Judo",
@@ -1800,6 +1900,26 @@
 "note": "Conserve son titre UFC plumes face à Diego Lopes"
 },
 {
+"first_name": "Pedro",
+"last_name": "Acosta",
+"sport": "MotoGP",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "En tête du championnat MotoGP en juin 2026"
+},
+{
+"first_name": "Francesco",
+"last_name": "Bagnaia",
+"sport": "MotoGP",
+"gender": "M",
+"country": "IT",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Marco",
 "last_name": "Bezzecchi",
 "sport": "MotoGP",
@@ -1830,6 +1950,26 @@
 "note": "8e titre en catégorie reine, égale le record d'Agostini"
 },
 {
+"first_name": "Fabio",
+"last_name": "Quartararo",
+"sport": "MotoGP",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
+"first_name": "Kate",
+"last_name": "Douglass",
+"sport": "Natation",
+"gender": "F",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Record du monde du 50 m NL aux Pan Pacs 2026"
+},
+{
 "first_name": "Béryl",
 "last_name": "Gastaldello",
 "sport": "Natation",
@@ -1857,7 +1997,7 @@
 "country": "US",
 "intl": true,
 "fr": false,
-"note": "Non vérifié (recherche 2026 non faite)"
+"note": "Championne Pan Pacs 2026 du 1500 m"
 },
 {
 "first_name": "Summer",
@@ -1867,7 +2007,7 @@
 "country": "CA",
 "intl": true,
 "fr": false,
-"note": "Non vérifié (recherche 2026 non faite)"
+"note": "Championne Pan Pacs 2026 du 400 4 nages (record des championnats)"
 },
 {
 "first_name": "Kaylee",
@@ -1880,14 +2020,14 @@
 "note": "Non vérifié (recherche 2026 non faite)"
 },
 {
-"first_name": "Mollie",
-"last_name": "O'Callaghan",
+"first_name": "Mary-Ambre",
+"last_name": "Moluh",
 "sport": "Natation",
 "gender": "F",
-"country": "AU",
-"intl": true,
-"fr": false,
-"note": "Non vérifié (recherche 2026 non faite)"
+"country": "FR",
+"intl": false,
+"fr": true,
+"note": "Championne d'Europe 2026 du 100 m dos, record d'Europe"
 },
 {
 "first_name": "Gretchen",
@@ -1897,7 +2037,7 @@
 "country": "US",
 "intl": true,
 "fr": false,
-"note": "Non vérifié (recherche 2026 non faite)"
+"note": "Record des championnats Pan Pacs 2026 (50 pap), record du monde relais mixte"
 },
 {
 "first_name": "Marie",
@@ -1940,16 +2080,6 @@
 "note": "Non vérifié (recherche 2026 non faite)"
 },
 {
-"first_name": "Florent",
-"last_name": "Manaudou",
-"sport": "Natation",
-"gender": "M",
-"country": "FR",
-"intl": false,
-"fr": true,
-"note": "Non vérifié (recherche 2026 non faite)"
-},
-{
 "first_name": "Léon",
 "last_name": "Marchand",
 "sport": "Natation",
@@ -1957,7 +2087,7 @@
 "country": "FR",
 "intl": true,
 "fr": true,
-"note": "Non vérifié (recherche 2026 non faite)"
+"note": "Double champion d'Europe 2026 (200 pap, 400 NL) à Paris"
 },
 {
 "first_name": "Yohann",
@@ -2428,6 +2558,16 @@
 "intl": true,
 "fr": true,
 "note": "Meilleur joueur du Tournoi 2026, record de 9 essais, Champions Cup avec l'UBB"
+},
+{
+"first_name": "Antoine",
+"last_name": "Dupont",
+"sport": "Rugby",
+"gender": "M",
+"country": "FR",
+"intl": false,
+"fr": false,
+"note": "Capitaine, vainqueur du Tournoi 2026, champion du Top 14 avec Toulouse"
 },
 {
 "first_name": "Maxime",
@@ -3270,6 +3410,16 @@
 "note": "Vainqueure de Roland-Garros et du Masters WTA 2026 à 19 ans"
 },
 {
+"first_name": "Coco",
+"last_name": "Gauff",
+"sport": "Tennis",
+"gender": "F",
+"country": "US",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Linda",
 "last_name": "Nosková",
 "sport": "Tennis",
@@ -3310,6 +3460,16 @@
 "note": "Finaliste de l'Open d'Australie et de l'US Open 2026"
 },
 {
+"first_name": "Iga",
+"last_name": "Świątek",
+"sport": "Tennis",
+"gender": "F",
+"country": "PL",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
+},
+{
 "first_name": "Carlos",
 "last_name": "Alcaraz",
 "sport": "Tennis",
@@ -3318,6 +3478,16 @@
 "intl": true,
 "fr": false,
 "note": "Vainqueur de l'Open d'Australie 2026, Grand Chelem en carrière à 22 ans"
+},
+{
+"first_name": "Novak",
+"last_name": "Djokovic",
+"sport": "Tennis",
+"gender": "M",
+"country": "RS",
+"intl": false,
+"fr": false,
+"note": "Valeur sûre (notoriété, saison 2026 non vérifiée)"
 },
 {
 "first_name": "Arthur",
