@@ -302,7 +302,7 @@ export async function setAdmin(fd: FormData) {
   const id = intId(str(fd, "userId"));
   const value = str(fd, "value") === "1";
   await sql`UPDATE users SET is_admin = ${value} WHERE id = ${id}`;
-  redirect("/admin");
+  redirect("/admin#joueurs");
 }
 
 // ---------- Accès analytique ----------
@@ -315,4 +315,42 @@ export async function rotateAnalyticsToken(_: FormState): Promise<FormState> {
   await sql`INSERT INTO settings (key, value) VALUES ('analytics_token_hash', ${hash})
             ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value`;
   return { ok: token };
+}
+
+// ---------- Admin : joueurs ----------
+
+export async function adminRemoveMember(fd: FormData) {
+  await requireAdmin();
+  const userId = intId(str(fd, "userId"));
+  const leagueId = intId(str(fd, "leagueId"));
+  await sql.begin(async (tx) => {
+    await tx`DELETE FROM league_members WHERE league_id = ${leagueId} AND user_id = ${userId}`;
+    // si le retiré était le créateur, la ligue passe au plus ancien membre restant
+    await tx`UPDATE leagues SET owner_id = (
+               SELECT user_id FROM league_members WHERE league_id = ${leagueId} ORDER BY joined_at LIMIT 1)
+             WHERE id = ${leagueId} AND owner_id = ${userId}
+               AND EXISTS (SELECT 1 FROM league_members WHERE league_id = ${leagueId})`;
+    await tx`DELETE FROM leagues WHERE id = ${leagueId}
+             AND NOT EXISTS (SELECT 1 FROM league_members WHERE league_id = ${leagueId})`;
+  });
+  revalidatePath("/", "layout");
+  redirect("/admin#joueurs");
+}
+
+export async function adminDeleteUser(fd: FormData) {
+  const me = await requireAdmin();
+  const userId = intId(str(fd, "userId"));
+  if (!userId || userId === me.id) redirect("/admin#joueurs");
+  await sql.begin(async (tx) => {
+    // les ligues qu'il a créées passent au plus ancien autre membre (sinon elles disparaissent avec lui)
+    await tx`UPDATE leagues l SET owner_id = (
+               SELECT m.user_id FROM league_members m
+               WHERE m.league_id = l.id AND m.user_id <> ${userId} ORDER BY m.joined_at LIMIT 1)
+             WHERE l.owner_id = ${userId}
+               AND EXISTS (SELECT 1 FROM league_members m WHERE m.league_id = l.id AND m.user_id <> ${userId})`;
+    await tx`UPDATE athletes SET created_by = NULL WHERE created_by = ${userId}`;
+    await tx`DELETE FROM users WHERE id = ${userId}`; // pronos et adhésions supprimés en cascade
+  });
+  revalidatePath("/", "layout");
+  redirect("/admin#joueurs");
 }

@@ -5,8 +5,8 @@ import { allAthletes, makeResolver, similarTo, toLite } from "@/lib/athletes";
 import { getResults } from "@/lib/data";
 import { currentSeason } from "@/lib/season";
 import { flag, search } from "@/lib/search";
-import { editAthlete, linkLegacy, mergeAthlete, proposeAthlete, rotateAnalyticsToken, saveResults, setAdmin } from "../actions";
-import { TokenForm, Top10Form } from "../components/forms";
+import { adminDeleteUser, adminRemoveMember, editAthlete, linkLegacy, mergeAthlete, proposeAthlete, rotateAnalyticsToken, saveResults, setAdmin } from "../actions";
+import { ConfirmButton, TokenForm, Top10Form } from "../components/forms";
 
 export default async function Admin({ searchParams }: { searchParams: Promise<{ saison?: string }> }) {
   const me = await requireAdmin();
@@ -16,8 +16,13 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
   const [results, athletes, users, legacyRows] = await Promise.all([
     getResults(season),
     allAthletes(),
-    sql<{ id: number; display_name: string; is_admin: boolean }[]>`
-      SELECT id, display_name, is_admin FROM users ORDER BY created_at`,
+    sql<{ id: number; display_name: string; is_admin: boolean; picks: number; leagues: { id: number; name: string; code: string }[] }[]>`
+      SELECT u.id, u.display_name, u.is_admin,
+             (SELECT count(*)::int FROM predictions p WHERE p.user_id = u.id
+                AND p.season = ${now}) AS picks,
+             COALESCE((SELECT json_agg(json_build_object('id', l.id, 'name', l.name, 'code', l.code) ORDER BY l.name)
+                       FROM league_members m JOIN leagues l ON l.id = m.league_id WHERE m.user_id = u.id), '[]') AS leagues
+      FROM users u ORDER BY u.created_at`,
     sql<{ athlete: string; n: number; users: string }[]>`
       SELECT p.athlete, count(*)::int AS n, string_agg(DISTINCT u.display_name, ', ') AS users
       FROM predictions p JOIN users u ON u.id = p.user_id
@@ -151,20 +156,41 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
         <TokenForm action={rotateAnalyticsToken} />
       </section>
 
-      <section className="card">
-        <h2 style={{ marginBottom: 6 }}>Administrateurs</h2>
+      <section className="card" id="joueurs">
+        <div className="kicker">{users.length} comptes</div>
+        <h2 style={{ marginBottom: 10 }}>Joueurs</h2>
         <ul className="list-plain">
           {users.map((u) => (
-            <li key={u.id}>
-              <span>
-                {u.display_name} {u.is_admin && <span className="chip ok">admin</span>}
-              </span>
+            <li key={u.id} style={{ flexWrap: "wrap", alignItems: "flex-start" }}>
+              <div style={{ minWidth: 160, flex: 1 }}>
+                <strong>{u.display_name}</strong> {u.is_admin && <span className="chip ok">admin</span>}
+                <div className="small muted">Prono {now} : {u.picks}/20</div>
+                <div className="row" style={{ gap: 6, marginTop: 6 }}>
+                  {u.leagues.map((l) => (
+                    <form key={l.id} action={adminRemoveMember} className="league-chip">
+                      <input type="hidden" name="userId" value={u.id} />
+                      <input type="hidden" name="leagueId" value={l.id} />
+                      <span>{l.name}</span>
+                      <ConfirmButton className="chip-x" message={`Retirer ${u.display_name} de « ${l.name} » ?`}>✕</ConfirmButton>
+                    </form>
+                  ))}
+                  {u.leagues.length === 0 && <span className="small muted">aucune ligue</span>}
+                </div>
+              </div>
               {u.id !== me.id && (
-                <form action={setAdmin}>
-                  <input type="hidden" name="userId" value={u.id} />
-                  <input type="hidden" name="value" value={u.is_admin ? "0" : "1"} />
-                  <button className="btn ghost">{u.is_admin ? "Retirer admin" : "Rendre admin"}</button>
-                </form>
+                <div className="row" style={{ gap: 6 }}>
+                  <form action={setAdmin}>
+                    <input type="hidden" name="userId" value={u.id} />
+                    <input type="hidden" name="value" value={u.is_admin ? "0" : "1"} />
+                    <button className="btn ghost">{u.is_admin ? "Retirer admin" : "Rendre admin"}</button>
+                  </form>
+                  <form action={adminDeleteUser}>
+                    <input type="hidden" name="userId" value={u.id} />
+                    <ConfirmButton className="btn ghost danger-text" message={`Supprimer définitivement le compte « ${u.display_name} » et ses pronos ?`}>
+                      Supprimer
+                    </ConfirmButton>
+                  </form>
+                </div>
               )}
             </li>
           ))}
