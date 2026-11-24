@@ -2560,6 +2560,56 @@
 "note": "Capitaine, vainqueur du Tournoi 2026, champion du Top 14 avec Toulouse"
 },
 {
+"first_name": "Eben",
+"last_name": "Etzebeth",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
+},
+{
+"first_name": "Sacha",
+"last_name": "Feinberg-Mngomezulu",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
+},
+{
+"first_name": "Cheslin",
+"last_name": "Kolbe",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
+},
+{
+"first_name": "Siya",
+"last_name": "Kolisi",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
+},
+{
+"first_name": "Jesse",
+"last_name": "Kriel",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": true,
+"fr": false,
+"note": "Springbok : un essai à chacun des 3 premiers matchs de la Nations Championship 2026"
+},
+{
 "first_name": "Maxime",
 "last_name": "Lucu",
 "sport": "Rugby",
@@ -2568,6 +2618,16 @@
 "intl": false,
 "fr": true,
 "note": "Champions Cup 2026 avec l'UBB (41-19 en finale contre le Leinster)"
+},
+{
+"first_name": "Malcolm",
+"last_name": "Marx",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
 },
 {
 "first_name": "Peato",
@@ -2618,6 +2678,16 @@
 "intl": true,
 "fr": false,
 "note": "Homme du match de la finale du Top 14 2026 avec Toulouse"
+},
+{
+"first_name": "Pieter-Steph",
+"last_name": "du Toit",
+"sport": "Rugby",
+"gender": "M",
+"country": "ZA",
+"intl": false,
+"fr": false,
+"note": "Springbok, double champion du monde (saison 2026 non vérifiée en détail)"
 },
 {
 "first_name": "Nozomi",
