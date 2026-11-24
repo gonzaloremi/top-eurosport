@@ -1,6 +1,6 @@
 import { requireUser } from "@/lib/auth";
 import { getCatalogLite, getPredictions, emptySlots } from "@/lib/data";
-import { currentSeason, formatDeadline, isLocked, timeLeft } from "@/lib/season";
+import { currentSeason, isLocked, timeLeft } from "@/lib/season";
 import { proposeAthlete, savePredictions } from "../actions";
 import { Top10Form } from "../components/forms";
 
@@ -15,15 +15,14 @@ export default async function Pronos() {
     <>
       <div className="section-title" style={{ marginTop: 6, alignItems: "flex-end", flexWrap: "wrap" }}>
         <div>
-          <div className="kicker">Saison {season}</div>
           <h1>Mon classement</h1>
         </div>
         {locked ? <span className="chip lock">🔒 Fermé</span> : <span className="chip wait">⏱ encore {timeLeft(season)}</span>}
       </div>
-      <p className="muted" style={{ margin: "-4px 2px 20px", maxWidth: "72ch" }}>
+      <p className="muted" style={{ margin: "-4px 2px 18px" }}>
         {locked
-          ? "Les pronostics sont fermés depuis le 15 décembre. Voici ce que tu as envoyé."
-          : `Tape quelques lettres et choisis l'athlète dans la liste (les fautes sont tolérées). Quelqu'un manque ? Ajoute-le, l'admin vérifiera. Modifiable jusqu'au ${formatDeadline(season)} ; ton classement compte dans toutes tes ligues et reste secret jusqu'à la clôture.`}
+          ? "Fermé. Voici ton classement."
+          : "Tape un nom, choisis. Glisse ⠿ pour réordonner. Secret jusqu'au 15 déc."}
       </p>
       <Top10Form
         action={savePredictions}

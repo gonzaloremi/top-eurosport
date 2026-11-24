@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { getMyLeagues, getPredictions } from "@/lib/data";
-import { currentSeason, deadline, formatDeadline, isLocked } from "@/lib/season";
+import { currentSeason, deadline, isLocked } from "@/lib/season";
 import { createLeague, joinLeague } from "./actions";
 import { InlineForm } from "./components/forms";
 import { Jersey } from "./components/jersey";
@@ -48,8 +48,7 @@ export default async function Home() {
             </div>
             {locked ? (
               <p className="muted" style={{ marginTop: 14, maxWidth: "42ch" }}>
-                Les pronostics sont fermés. Les maillots seront attribués dès la publication des tops 10
-                officiels.
+                Pronos fermés. Verdict fin décembre.
               </p>
             ) : (
               <>
@@ -58,7 +57,7 @@ export default async function Home() {
                   <div className="unit"><div className="num">{pad(t.h)}</div><div className="lbl">heures</div></div>
                   <div className="unit"><div className="num">{pad(t.m)}</div><div className="lbl">min</div></div>
                 </div>
-                <p className="muted small">avant la clôture · {formatDeadline(season)}</p>
+                <p className="muted small">avant la clôture · 15 déc. 23h59</p>
               </>
             )}
           </div>
@@ -115,8 +114,7 @@ export default async function Home() {
       </div>
       {leagues.length === 0 ? (
         <div className="empty">
-          Tu n&apos;es dans aucune ligue pour l&apos;instant. Crée-en une ou entre le code à 4 lettres
-          qu&apos;on t&apos;a envoyé.
+          Aucune ligue. Crée-en une ou entre un code.
         </div>
       ) : (
         <div className="grid2">

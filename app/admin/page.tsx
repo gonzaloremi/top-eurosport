@@ -52,10 +52,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
           <h2 style={{ fontSize: "2.2rem" }}>
             {todo ? `${todo} élément${todo > 1 ? "s" : ""} à revoir` : "Tout est propre ✔"}
           </h2>
-          <p style={{ marginTop: 6, maxWidth: "70ch" }}>
-            Athlètes ajoutés par les joueurs (corrige l&apos;orthographe puis valide, ou fusionne avec un athlète existant) et
-            anciens noms saisis à la main qui ne correspondent à personne du catalogue.
-          </p>
+          <p style={{ marginTop: 6 }}>Ajouts des joueurs et noms non reconnus.</p>
 
           {pending.map((a) => {
             const similar = similarTo(a, athletes);

@@ -169,10 +169,10 @@ export async function savePredictions(_: FormState, fd: FormData): Promise<FormS
   const vague = CATEGORIES.reduce((n, c) => n + lists[c].filter((a) => a.name && !a.id).length, 0);
   return {
     ok: vague
-      ? `Enregistré ✔︎ — ${vague} nom(s) marqué(s) ⚠️ à préciser : choisis-les dans la liste pour être sûr que ça compte.`
+      ? `Enregistré ✔︎ · ${vague} nom(s) ⚠️ à choisir dans la liste`
       : missing
-        ? `Enregistré ✔︎ — il te reste ${missing} case(s) vide(s), tu peux revenir compléter jusqu'au 15 décembre.`
-        : "Classement enregistré ✔︎ Tu peux encore le modifier jusqu'au 15 décembre minuit.",
+        ? `Enregistré ✔︎ · ${20 - missing}/20`
+        : "Enregistré ✔︎ · 20/20",
   };
 }
 

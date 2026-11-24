@@ -31,7 +31,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <header className="topbar">
           <Link href="/" className="wordmark">
             <span className="mark">Top10<span className="dot">.</span></span>
-            <small>by la famille · saison {new Date().getFullYear()}</small>
           </Link>
           {user && (
             <nav>
@@ -44,8 +43,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 </Link>
               )}
               <form action={logout}>
-                <button className="pill ghost" title="Se déconnecter">
-                  {user.display_name} <span aria-hidden>⏻</span>
+                <button className="pill ghost" title="Se déconnecter" aria-label={`Se déconnecter (${user.display_name})`}>
+                  {user.display_name}
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
+                    <path d="M12 3v8" />
+                    <path d="M6.3 6.8a8 8 0 1 0 11.4 0" />
+                  </svg>
                 </button>
               </form>
             </nav>

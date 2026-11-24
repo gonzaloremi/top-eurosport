@@ -4,7 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { requireUser } from "@/lib/auth";
 import { sql } from "@/lib/db";
 import { computeStandings, getLeague, getMembers, hasResults } from "@/lib/data";
-import { currentSeason, formatDeadline, isLocked, timeLeft } from "@/lib/season";
+import { currentSeason, isLocked, timeLeft } from "@/lib/season";
 import { rankBy, type Standing } from "@/lib/scoring";
 import { leaveLeague } from "../../actions";
 import { ConfirmButton, CopyButton } from "../../components/forms";
@@ -73,7 +73,7 @@ export default async function LeaguePage({
               ))}
             </nav>
           ) : (
-            <div className="grow sub">Partage le code pour inviter la famille</div>
+            <div className="grow sub">Partage le code</div>
           )}
           <CopyButton text={invite} label="📨 Inviter" />
         </div>
@@ -85,9 +85,7 @@ export default async function LeaguePage({
             <div>
               <div className="kicker">Pronostics en cours</div>
               <h2 style={{ fontSize: "2rem" }}>Clôture dans {timeLeft(season)}</h2>
-              <p className="muted small">
-                {formatDeadline(season)} — les classements de chacun seront dévoilés à ce moment-là.
-              </p>
+              <p className="muted small">Les pronos de chacun sont dévoilés à la clôture.</p>
             </div>
             <Link href="/pronos" className="btn blue">Mon classement</Link>
           </div>
@@ -107,7 +105,7 @@ export default async function LeaguePage({
         <>
           {!published && (
             <p className="alert ok" style={{ marginBottom: 22 }}>
-              🔒 Pronostics fermés. On attend les tops 10 officiels Eurosport {season} pour distribuer les maillots.
+              🔒 Pronos fermés · verdict Eurosport fin décembre.
             </p>
           )}
 
