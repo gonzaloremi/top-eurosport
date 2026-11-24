@@ -293,3 +293,27 @@ export function ConfirmButton({ children, message, className = "btn link" }: { c
     </button>
   );
 }
+
+export function TokenForm({ action }: { action: (s: FormState) => Promise<FormState> }) {
+  const [state, formAction] = useActionState(action, undefined);
+  return (
+    <form action={formAction} className="stack">
+      {state?.ok ? (
+        <>
+          <p className="small">
+            Jeton généré (affiché une seule fois). Colle-le dans le formulaire sécurisé que Claude t&apos;ouvre,
+            puis ferme cette page. L&apos;ancien jeton ne marche plus.
+          </p>
+          <div className="row">
+            <input readOnly value={state.ok} onFocus={(e) => e.currentTarget.select()} style={{ fontFamily: "ui-monospace, monospace", fontSize: "0.85rem" }} />
+            <CopyButton text={state.ok} label="Copier" />
+          </div>
+        </>
+      ) : (
+        <div>
+          <Submit className="btn dark">🔑 Générer un jeton d&apos;accès</Submit>
+        </div>
+      )}
+    </form>
+  );
+}

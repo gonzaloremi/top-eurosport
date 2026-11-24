@@ -5,8 +5,8 @@ import { allAthletes, makeResolver, similarTo, toLite } from "@/lib/athletes";
 import { getResults } from "@/lib/data";
 import { currentSeason } from "@/lib/season";
 import { flag, search } from "@/lib/search";
-import { editAthlete, linkLegacy, mergeAthlete, proposeAthlete, saveResults, setAdmin } from "../actions";
-import { Top10Form } from "../components/forms";
+import { editAthlete, linkLegacy, mergeAthlete, proposeAthlete, rotateAnalyticsToken, saveResults, setAdmin } from "../actions";
+import { TokenForm, Top10Form } from "../components/forms";
 
 export default async function Admin({ searchParams }: { searchParams: Promise<{ saison?: string }> }) {
   const me = await requireAdmin();
@@ -152,6 +152,16 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
       />
 
       <section className="card" style={{ marginTop: 22 }}>
+        <div className="kicker">API lecture seule · /api/analytics</div>
+        <h2 style={{ marginBottom: 6 }}>Accès analytique</h2>
+        <p className="muted small" style={{ marginBottom: 12 }}>
+          Permet d&apos;interroger la base en SQL (vues sans mots de passe, transaction en lecture seule).
+          Générer un nouveau jeton révoque le précédent.
+        </p>
+        <TokenForm action={rotateAnalyticsToken} />
+      </section>
+
+      <section className="card">
         <h2 style={{ marginBottom: 6 }}>Administrateurs</h2>
         <ul className="list-plain">
           {users.map((u) => (

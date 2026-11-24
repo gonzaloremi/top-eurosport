@@ -286,3 +286,15 @@ export async function setAdmin(fd: FormData) {
   await sql`UPDATE users SET is_admin = ${value} WHERE id = ${id}`;
   redirect("/admin");
 }
+
+// ---------- Accès analytique ----------
+
+export async function rotateAnalyticsToken(_: FormState): Promise<FormState> {
+  await requireAdmin();
+  const { randomBytes, createHash } = await import("crypto");
+  const token = `t10_${randomBytes(24).toString("hex")}`;
+  const hash = createHash("sha256").update(token).digest("hex");
+  await sql`INSERT INTO settings (key, value) VALUES ('analytics_token_hash', ${hash})
+            ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value`;
+  return { ok: token };
+}

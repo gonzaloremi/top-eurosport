@@ -103,6 +103,12 @@ export function ensureSchema(): Promise<void> {
       .then(async () => {
         const { syncCatalog } = await import("./catalog");
         await syncCatalog();
+        try {
+          const { setupAnalytics } = await import("./analytics");
+          await setupAnalytics();
+        } catch (e) {
+          console.error("analytics setup failed", e);
+        }
       })
       .catch((e) => {
       g._schema = undefined;
