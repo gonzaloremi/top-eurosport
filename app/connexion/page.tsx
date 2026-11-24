@@ -23,8 +23,8 @@ export default async function Connexion({
       <section className="game theme-night dots">
         <div className="art" style={{ minHeight: 360, paddingBottom: 30 }}>
           <div className="kicker">Le jeu de fin d&apos;année</div>
-          <h1 style={{ fontSize: "clamp(2.6rem, 7vw, 4.4rem)", marginTop: 8, maxWidth: "9ch" }}>
-            Devine le <span style={{ color: "var(--yellow)" }}>top 10</span> de l&apos;année
+          <h1 style={{ fontSize: "clamp(2.6rem, 7vw, 4.4rem)", marginTop: 8, maxWidth: "11ch" }}>
+            Devine le <span className="nowrap" style={{ color: "var(--yellow)" }}>top 10</span> Eurosport de l&apos;année
           </h1>
           <p className="muted" style={{ marginTop: 14, maxWidth: "38ch" }}>
             Classe les 10 sportifs Monde et France de l&apos;année. Verdict Eurosport fin décembre.
