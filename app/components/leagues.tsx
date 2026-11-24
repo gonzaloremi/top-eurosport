@@ -26,7 +26,6 @@ export function LeagueTiles({ leagues }: { leagues: League[] }) {
                 <span className="app-icon">👥</span>
                 <div className="grow">
                   <div className="title">{l.members} joueur{l.members > 1 ? "s" : ""}</div>
-                  <div className="sub">code {l.code}</div>
                 </div>
                 <span className="btn">Ouvrir</span>
               </div>
