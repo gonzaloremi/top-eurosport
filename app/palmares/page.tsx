@@ -7,16 +7,6 @@ import { Jersey } from "../components/jersey";
 // Drapeaux des athlètes historiques absents du catalogue
 const EXTRA_FLAGS: Record<string, string> = { "Simone Biles": "US" };
 
-// Maillots de l'édition familiale 2025 (Excel)
-const FAMILY: Record<number, { league: string; jaune: [string, number][]; arc: [string, number][]; bleu: [string, number][] }> = {
-  2025: {
-    league: "GSC",
-    jaune: [["Pierre", 27], ["Paul", 21], ["François", 21], ["Corentin", 19], ["Laurent", 17]],
-    arc: [["Corentin", 13], ["François", 10], ["Paul", 10], ["Pierre", 9], ["Laurent", 8]],
-    bleu: [["Pierre", 18], ["Paul", 11], ["François", 11], ["Laurent", 9], ["Corentin", 6]],
-  },
-};
-
 export default async function Palmares({ searchParams }: { searchParams: Promise<{ saison?: string }> }) {
   await ensureSchema();
   const rows = await sql`SELECT DISTINCT season FROM results ORDER BY season DESC`;
@@ -27,7 +17,6 @@ export default async function Palmares({ searchParams }: { searchParams: Promise
   const countries = new Map(
     (await sql`SELECT id, country FROM athletes`).map((r) => [r.id as number, String(r.country).trim()])
   );
-  const fam = season ? FAMILY[season] : undefined;
 
   return (
     <>
@@ -75,41 +64,6 @@ export default async function Palmares({ searchParams }: { searchParams: Promise
         </div>
       )}
 
-      {fam && (
-        <>
-          <div className="section-title">
-            <h2 style={{ fontSize: "2rem" }}>Maillots {season} · {fam.league}</h2>
-          </div>
-          <div className="grid3">
-            {(
-              [
-                ["Maillot Jaune", "yellow", fam.jaune, "theme-yellow"],
-                ["Arc-en-ciel", "rainbow", fam.arc, "theme-rainbow"],
-                ["Maillot Bleu", "blue", fam.bleu, "theme-blue"],
-              ] as const
-            ).map(([title, sw, list, theme]) => (
-              <div key={title} className={`game ${theme}`}>
-                {sw === "rainbow" && <div className="rainbow-band" />}
-                <div className="art" style={{ minHeight: 0 }}>
-                  <div className="row" style={{ justifyContent: "space-between" }}>
-                    <h2>{title}</h2>
-                    <Jersey variant={sw} size={44} tilt={-8} />
-                  </div>
-                  <ol className="standings" style={{ marginTop: 8 }}>
-                    {list.map(([n, pts], i) => (
-                      <li key={n}>
-                        <span className={`medal ${i < 3 ? `m${i + 1}` : ""}`}>{i + 1}</span>
-                        <span className="who">{n}</span>
-                        <span className="score">{pts}<small>pts</small></span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
     </>
   );
 }

@@ -105,7 +105,7 @@ export async function leaveLeague(fd: FormData) {
   // supprime la ligue seulement si elle est vide (en une requête, sans course avec un nouvel arrivant)
   await sql`DELETE FROM leagues WHERE id = ${league.id}
             AND NOT EXISTS (SELECT 1 FROM league_members WHERE league_id = ${league.id})`;
-  redirect("/");
+  redirect("/ligues");
 }
 
 // ---------- Pronostics ----------
@@ -182,10 +182,10 @@ export async function savePredictions(_: FormState, fd: FormData): Promise<FormS
   const vague = CATEGORIES.reduce((n, c) => n + lists[c].filter((a) => a.name && !a.id).length, 0);
   return {
     ok: vague
-      ? `Enregistré ✔︎ · ${vague} nom(s) ⚠️ à choisir dans la liste`
+      ? `Enregistré · ${vague} nom(s) à choisir dans la liste`
       : missing
-        ? `Enregistré ✔︎ · ${20 - missing}/20`
-        : "Enregistré ✔︎ · 20/20",
+        ? `Enregistré · ${20 - missing}/20`
+        : "Enregistré · 20/20",
   };
 }
 

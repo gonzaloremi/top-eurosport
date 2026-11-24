@@ -9,6 +9,7 @@ import { rankBy, type Standing } from "@/lib/scoring";
 import { leaveLeague } from "../../actions";
 import { ConfirmButton, CopyButton } from "../../components/forms";
 import { Jersey } from "../../components/jersey";
+import { LEAGUE_HISTORY } from "@/lib/league-history";
 
 type Key = "monde" | "france" | "total";
 
@@ -28,8 +29,7 @@ export default async function LeaguePage({
 
   const now = currentSeason();
   const seasonRows = await sql`
-    SELECT DISTINCT season FROM predictions WHERE user_id = ANY(${members.map((m) => m.id)})
-    UNION SELECT DISTINCT season FROM results`;
+    SELECT DISTINCT season FROM predictions WHERE user_id = ANY(${members.map((m) => m.id)})`;
   const seasons = [...new Set([now, ...seasonRows.map((r) => r.season as number)])]
     .filter((s) => s <= now)
     .sort((a, b) => b - a);
@@ -180,6 +180,43 @@ export default async function LeaguePage({
           </section>
         </>
       )}
+
+      {(LEAGUE_HISTORY[league.code] ?? []).map((h) => (
+        <section key={h.season} style={{ marginTop: 8 }}>
+          <div className="section-title">
+            <h2 style={{ fontSize: "2rem" }}>Palmarès {h.season}</h2>
+            <span className="kicker">édition Excel</span>
+          </div>
+          <div className="grid3">
+            {(
+              [
+                ["Maillot Jaune", "yellow", h.jaune, "theme-yellow"],
+                ["Arc-en-ciel", "rainbow", h.arc, "theme-rainbow"],
+                ["Maillot Bleu", "blue", h.bleu, "theme-blue"],
+              ] as const
+            ).map(([title, sw, list, theme]) => (
+              <div key={title} className={`game ${theme}`}>
+                {sw === "rainbow" && <div className="rainbow-band" />}
+                <div className="art" style={{ minHeight: 0 }}>
+                  <div className="row" style={{ justifyContent: "space-between" }}>
+                    <h2>{title}</h2>
+                    <Jersey variant={sw} size={44} tilt={-8} />
+                  </div>
+                  <ol className="standings" style={{ marginTop: 8 }}>
+                    {list.map(([n, pts], i) => (
+                      <li key={n}>
+                        <span className={`medal ${i < 3 ? `m${i + 1}` : ""}`}>{i + 1}</span>
+                        <span className="who">{n}</span>
+                        <span className="score">{pts}<small>pts</small></span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <form action={leaveLeague} style={{ textAlign: "center", marginTop: 8 }}>
         <input type="hidden" name="code" value={league.code} />

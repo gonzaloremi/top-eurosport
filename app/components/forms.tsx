@@ -89,6 +89,7 @@ export function Top10Form({
   disabled,
   submitLabel,
   hidden,
+  autoSave,
 }: {
   action: Action;
   initial: { monde: PickValue[]; france: PickValue[] };
@@ -97,9 +98,63 @@ export function Top10Form({
   disabled?: boolean;
   submitLabel: string;
   hidden?: Record<string, string | number>;
+  /** Enregistrement automatique à chaque changement (pas de bouton). */
+  autoSave?: boolean;
 }) {
   const [state, formAction] = useActionState(action, undefined);
   const [values, setValues] = useState(initial);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // ----- Enregistrement automatique -----
+  const [auto, setAuto] = useState<{ status: "idle" | "saving" | "ok" | "error"; msg?: string }>({ status: "idle" });
+  const firstRender = useRef(true);
+  const inFlight = useRef(false);
+  const again = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  async function flush() {
+    if (!formRef.current) return;
+    if (inFlight.current) {
+      again.current = true; // une sauvegarde est en cours : on relancera avec la dernière version
+      return;
+    }
+    inFlight.current = true;
+    setAuto({ status: "saving" });
+    try {
+      // les champs cachés reflètent déjà le dernier état affiché
+      const res = await action(undefined, new FormData(formRef.current));
+      setAuto(res?.error ? { status: "error", msg: res.error } : { status: "ok", msg: res?.ok });
+    } catch {
+      setAuto({ status: "error", msg: "Connexion perdue, nouvel essai au prochain changement." });
+    } finally {
+      inFlight.current = false;
+      if (again.current) {
+        again.current = false;
+        flush();
+      }
+    }
+  }
+  useEffect(() => {
+    if (!autoSave || disabled) return;
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    setAuto({ status: "saving" });
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      timer.current = null;
+      flush();
+    }, 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+  useEffect(() => {
+    if (!autoSave) return;
+    const warn = (e: BeforeUnloadEvent) => {
+      if (inFlight.current || timer.current) e.preventDefault();
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [autoSave]);
   const [catalogue, setCatalogue] = useState(initialCatalogue);
   type Drag = { cat: "monde" | "france"; from: number; over: number; startY: number; dy: number; step: number };
   const [drag, setDrag] = useState<Drag | null>(null);
@@ -179,7 +234,7 @@ export function Top10Form({
     return res;
   };
   return (
-    <form action={formAction} className="stack" style={{ gap: 0 }}>
+    <form ref={formRef} action={formAction} className="stack" style={{ gap: 0 }}>
       {hidden &&
         Object.entries(hidden).map(([k, v]) => <input key={k} type="hidden" name={k} value={v} />)}
       <div className="grid2">
@@ -257,10 +312,15 @@ export function Top10Form({
           );
         })}
       </div>
-      {!disabled && (
+      {!disabled && !autoSave && (
         <div className="sticky-submit stack">
           <Feedback state={state} />
           <Submit className="btn big">{submitLabel}</Submit>
+        </div>
+      )}
+      {!disabled && autoSave && auto.status !== "idle" && (
+        <div className={`autosave ${auto.status}`} role="status" aria-live="polite">
+          {auto.status === "saving" ? "Enregistrement…" : auto.status === "ok" ? `✔ ${auto.msg ?? "Enregistré"}` : `⚠️ ${auto.msg}`}
         </div>
       )}
     </form>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getUser } from "@/lib/auth";
 import { logout } from "./actions";
 import { InstallPrompt } from "./components/install-prompt";
+import { NavTabs } from "./components/nav-tabs";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
@@ -33,30 +34,24 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <span className="mark">Top10<span className="dot">.</span></span>
           </Link>
           {user && (
-            <nav>
-              <Link href="/pronos" className="pill">
-                Mes pronos
-              </Link>
-              <Link href="/palmares" className="pill">
-                Palmarès
-              </Link>
-              {user.is_admin && (
-                <Link href="/admin" className="pill">
-                  Admin
-                </Link>
-              )}
-              <form action={logout}>
+            <div className="user-box">
+                <form action={logout}>
                 <button className="pill ghost" title="Se déconnecter" aria-label={`Se déconnecter (${user.display_name})`}>
-                  {user.display_name}
+                  <span className="pill-name">{user.display_name}</span>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
                     <path d="M12 3v8" />
                     <path d="M6.3 6.8a8 8 0 1 0 11.4 0" />
                   </svg>
                 </button>
               </form>
-            </nav>
+            </div>
           )}
         </header>
+        {user && (
+          <div className="nav-wrap">
+            <NavTabs isAdmin={user.is_admin} />
+          </div>
+        )}
         <main>{children}</main>
         <footer>
           <span>

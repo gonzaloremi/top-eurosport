@@ -523,3 +523,40 @@ html, body { overflow-x: clip; max-width: 100%; }
 .chip-x:hover { color: var(--red); }
 .btn.danger-text { color: var(--red); }
 #joueurs .btn { padding: 6px 12px; font-size: 0.85rem; }
+
+/* ============ Barre d'onglets ============ */
+.topbar { padding-bottom: 10px; align-items: center; flex-wrap: nowrap; }
+.user-box form { margin: 0; }
+.nav-wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px 14px; }
+.tabs-nav {
+  display: flex; gap: 4px; padding: 4px; border-radius: 14px; background: var(--surface-2);
+  border: 1px solid var(--stroke); overflow-x: auto; scrollbar-width: none;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+.tabs-nav a {
+  flex: 1 0 auto; text-align: center; padding: 9px 12px; border-radius: 10px; text-decoration: none;
+  font-weight: 800; font-size: 0.92rem; color: var(--muted); white-space: nowrap;
+}
+.tabs-nav a.active { background: var(--ink); color: var(--page); }
+@media (max-width: 420px) { .tabs-nav a { padding: 8px 8px; font-size: 0.86rem; } }
+.user-box .pill { max-width: 46vw; }
+.pill-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.user-box .pill svg { flex: none; }
+@media (max-width: 420px) {
+  .tabs-nav { gap: 2px; padding: 3px; }
+  .tabs-nav a { flex: 1 1 auto; padding: 8px 5px; font-size: 0.8rem; letter-spacing: -0.01em; }
+}
+.tabs-nav .l-short { display: none; }
+@media (max-width: 380px) { .tabs-nav .l-full { display: none; } .tabs-nav .l-short { display: inline; } }
+
+/* ============ Enregistrement automatique ============ */
+.autosave {
+  position: sticky; bottom: 14px; z-index: 5; align-self: center; margin: 4px auto 0;
+  padding: 9px 16px; border-radius: 999px; font-weight: 800; font-size: 0.9rem;
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.35); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--stroke); width: fit-content; max-width: calc(100% - 32px);
+}
+.autosave.ok { background: #dcf7e6; color: #0d5a2e; border-color: transparent; }
+.autosave.error { background: #ffe1e1; color: #8f1111; border-color: transparent; }
+.autosave.saving { color: var(--muted); }
+.league-name { overflow-wrap: anywhere; }

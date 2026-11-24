@@ -22,7 +22,7 @@ export default async function Pronos() {
       <p className="muted" style={{ margin: "-4px 2px 18px" }}>
         {locked
           ? "Fermé. Voici ton classement."
-          : "Tape un nom, choisis. Glisse ⠿ pour réordonner. Secret jusqu'au 15 déc."}
+          : "Tape un nom, choisis. Glisse ⠿ pour réordonner. Tout s'enregistre tout seul, secret jusqu'au 15 déc."}
       </p>
       <Top10Form
         action={savePredictions}
@@ -31,6 +31,7 @@ export default async function Pronos() {
         catalogue={catalogue}
         disabled={locked}
         submitLabel="Enregistrer mon classement"
+        autoSave
       />
     </>
   );

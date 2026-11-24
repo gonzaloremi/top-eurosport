@@ -2,8 +2,7 @@ import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { getMyLeagues, getPredictions } from "@/lib/data";
 import { currentSeason, deadline, isLocked, now } from "@/lib/season";
-import { createLeague, joinLeague } from "./actions";
-import { InlineForm } from "./components/forms";
+import { JoinCreate, LeagueTiles } from "./components/leagues";
 import { Jersey } from "./components/jersey";
 
 function countdown(season: number) {
@@ -81,32 +80,7 @@ export default async function Home() {
         </section>
 
         <div className="stack" style={{ gap: 22 }}>
-          <section className="game theme-yellow">
-            <div className="art" style={{ minHeight: 0 }}>
-              <div className="kicker">Tu as un code ?</div>
-              <h2 style={{ fontSize: "2.2rem", marginBottom: 12 }}>Rejoindre une ligue</h2>
-              <InlineForm
-                action={joinLeague}
-                name="code"
-                placeholder="ABCD"
-                button="Go"
-                extra={{ maxLength: 4, minLength: 4, className: "code-input", autoComplete: "off", autoCapitalize: "characters" }}
-              />
-            </div>
-          </section>
-          <section className="game theme-pitch">
-            <div className="art" style={{ minHeight: 0 }}>
-              <div className="kicker" style={{ color: "#c9f5d8" }}>Famille, potes, bureau…</div>
-              <h2 style={{ fontSize: "2.2rem", marginBottom: 12 }}>Créer une ligue</h2>
-              <InlineForm
-                action={createLeague}
-                name="name"
-                placeholder="Famille Dupont"
-                button="Créer"
-                extra={{ maxLength: 40 }}
-              />
-            </div>
-          </section>
+          <JoinCreate />
         </div>
       </div>
 
@@ -114,33 +88,7 @@ export default async function Home() {
         <h2 style={{ fontSize: "2.2rem" }}>Mes ligues</h2>
         <span className="kicker">{leagues.length} ligue{leagues.length > 1 ? "s" : ""}</span>
       </div>
-      {leagues.length === 0 ? (
-        <div className="empty">
-          Aucune ligue. Crée-en une ou entre un code.
-        </div>
-      ) : (
-        <div className="grid2">
-          {leagues.map((l, i) => (
-            <Link key={l.id} href={`/ligue/${l.code}`} className={`league-tile game ${["theme-night dots", "theme-blue", "theme-pitch", "theme-yellow"][i % 4]}`}>
-              <div className="art" style={{ minHeight: 150 }}>
-                <div className="kicker">Ligue privée</div>
-                <h2 style={{ fontSize: "2.3rem", maxWidth: "12ch" }}>{l.name}</h2>
-                <div className="code-tiles small" style={{ position: "absolute", right: 22, bottom: 22 }}>
-                  {l.code.split("").map((c, k) => <span key={k}>{c}</span>)}
-                </div>
-              </div>
-              <div className="bar">
-                <span className="app-icon">👥</span>
-                <div className="grow">
-                  <div className="title">{l.name}</div>
-                  <div className="sub">{l.members} joueur{l.members > 1 ? "s" : ""}</div>
-                </div>
-                <span className="btn">Ouvrir</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+      <LeagueTiles leagues={leagues} />
     </>
   );
 }
