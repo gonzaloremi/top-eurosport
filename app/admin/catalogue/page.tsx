@@ -3,7 +3,7 @@ import { requireAdmin } from "@/lib/auth";
 import { sql } from "@/lib/db";
 import { allAthletes } from "@/lib/athletes";
 import { ensureSchema } from "@/lib/db";
-import { flag } from "@/lib/search";
+import { flag, genderLabel } from "@/lib/search";
 import { deleteAthlete } from "../../actions";
 
 export default async function Catalogue() {
@@ -42,7 +42,7 @@ export default async function Catalogue() {
                   <span title={a.note}>
                     {flag(a.country.trim())} <strong>{a.display_name}</strong>{" "}
                     <span className="muted">
-                      {a.gender === "F" ? "F" : "H"}
+                      {genderLabel(a.gender)}
                       {a.in_intl && " · 🌍"}
                       {a.in_fr && " · 🇫🇷 top"}
                     </span>

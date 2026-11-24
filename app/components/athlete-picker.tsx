@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { flag, search, type Lite } from "@/lib/search";
+import { flag, genderLabel, search, type Lite } from "@/lib/search";
 import type { ProposeResult } from "@/app/actions";
 
 export type PickValue = { id: number | null; name: string };
@@ -168,7 +168,7 @@ export function AthletePicker({
                   <span className="opt-name">
                     {a.n}
                     <small>
-                      {a.s} · {a.g === "F" ? "F" : "H"}
+                      {a.s} · {genderLabel(a.g)}
                       {a.p && " · à valider"}
                       {taken && " · déjà dans ton top"}
                     </small>

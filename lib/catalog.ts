@@ -15,7 +15,16 @@ type Entry = {
 };
 
 const entries = catalog as Entry[];
-const SYNC_REV = "3"; // à incrémenter quand la logique de synchro change
+const SYNC_REV = "4";
+
+const PA = "Patinage artistique";
+const REMAP: Record<string, string> = {
+  [`guillaumecizeron|${PA}`]: `laurencefournierbeaudryguillaumecizeron|${PA}`,
+  [`laurencefournierbeaudry|${PA}`]: `laurencefournierbeaudryguillaumecizeron|${PA}`,
+  [`rikumiura|${PA}`]: `rikumiuraryuichikihara|${PA}`,
+  [`ryuichikihara|${PA}`]: `rikumiuraryuichikihara|${PA}`,
+  [`minervafabiennehase|${PA}`]: `minervafabiennehasenikitavolodin|${PA}`,
+}; // à incrémenter quand la logique de synchro change
 
 export function catalogVersion() {
   return createHash("sha1").update(SYNC_REV + JSON.stringify(entries)).digest("hex").slice(0, 12);
@@ -47,6 +56,17 @@ export async function syncCatalog(sql: Db) {
       last_key = EXCLUDED.last_key, gender = EXCLUDED.gender, country = EXCLUDED.country,
       in_intl = EXCLUDED.in_intl, in_fr = EXCLUDED.in_fr, note = EXCLUDED.note, status = 'approved'`;
   const keep = rows.map((r) => `${r.search_key}|${r.sport}`);
+  // Fiches remplacées (patineurs regroupés en duo) : pronos et résultats basculent vers la nouvelle fiche
+  for (const [oldKey, newKey] of Object.entries(REMAP)) {
+    const [from] = await sql`SELECT id FROM athletes WHERE search_key || '|' || sport = ${oldKey}`;
+    const [to] = await sql`SELECT id FROM athletes WHERE search_key || '|' || sport = ${newKey}`;
+    if (from && to) {
+      await sql`UPDATE predictions SET athlete_id = ${to.id}, athlete = (SELECT display_name FROM athletes WHERE id = ${to.id})
+                WHERE athlete_id = ${from.id}`;
+      await sql`UPDATE results SET athlete_id = ${to.id}, athlete = (SELECT display_name FROM athletes WHERE id = ${to.id})
+                WHERE athlete_id = ${from.id}`;
+    }
+  }
   // Athlète déplacé de sport (ex. van der Poel) : on rebascule pronos et résultats vers la nouvelle fiche
   for (const table of ["predictions", "results"] as const) {
     await sql`

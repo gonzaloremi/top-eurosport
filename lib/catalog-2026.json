@@ -2200,26 +2200,6 @@
 "note": "N°1 mondial avec Coello, 9 titres Premier Padel en 2026"
 },
 {
-"first_name": "Laurence",
-"last_name": "Fournier Beaudry",
-"sport": "Patinage artistique",
-"gender": "F",
-"country": "FR",
-"intl": true,
-"fr": true,
-"note": "Championne olympique et du monde de danse avec Cizeron"
-},
-{
-"first_name": "Minerva Fabienne",
-"last_name": "Hase",
-"sport": "Patinage artistique",
-"gender": "F",
-"country": "DE",
-"intl": true,
-"fr": false,
-"note": "Championne du monde des couples 2026 avec Nikita Volodin"
-},
-{
 "first_name": "Alysa",
 "last_name": "Liu",
 "sport": "Patinage artistique",
@@ -2228,16 +2208,6 @@
 "intl": true,
 "fr": false,
 "note": "Championne olympique 2026"
-},
-{
-"first_name": "Riku",
-"last_name": "Miura",
-"sport": "Patinage artistique",
-"gender": "F",
-"country": "JP",
-"intl": true,
-"fr": false,
-"note": "Championne olympique des couples avec Ryuichi Kihara"
 },
 {
 "first_name": "Kaori",
@@ -2260,16 +2230,6 @@
 "note": "11e aux JO, vainqueur du Skate Canada 2026"
 },
 {
-"first_name": "Guillaume",
-"last_name": "Cizeron",
-"sport": "Patinage artistique",
-"gender": "M",
-"country": "FR",
-"intl": true,
-"fr": true,
-"note": "Champion olympique et du monde de danse avec Fournier Beaudry"
-},
-{
 "first_name": "Yuma",
 "last_name": "Kagiyama",
 "sport": "Patinage artistique",
@@ -2278,16 +2238,6 @@
 "intl": true,
 "fr": false,
 "note": "Vice-champion olympique et vice-champion du monde"
-},
-{
-"first_name": "Ryuichi",
-"last_name": "Kihara",
-"sport": "Patinage artistique",
-"gender": "M",
-"country": "JP",
-"intl": true,
-"fr": false,
-"note": "Champion olympique des couples avec Riku Miura"
 },
 {
 "first_name": "Ilia",
@@ -2318,6 +2268,46 @@
 "intl": false,
 "fr": true,
 "note": "7e aux JO, vainqueur du Grand Prix de France 2026"
+},
+{
+"first_name": "",
+"last_name": "Laurence Fournier Beaudry & Guillaume Cizeron",
+"sport": "Patinage artistique",
+"gender": "X",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champions olympiques 2026 de danse sur glace"
+},
+{
+"first_name": "",
+"last_name": "Madison Chock & Evan Bates",
+"sport": "Patinage artistique",
+"gender": "X",
+"country": "US",
+"intl": true,
+"fr": false,
+"note": "Vice-champions olympiques 2026 de danse sur glace"
+},
+{
+"first_name": "",
+"last_name": "Minerva Fabienne Hase & Nikita Volodin",
+"sport": "Patinage artistique",
+"gender": "X",
+"country": "DE",
+"intl": true,
+"fr": false,
+"note": "En tête après le programme court des JO 2026 (couples)"
+},
+{
+"first_name": "",
+"last_name": "Riku Miura & Ryuichi Kihara",
+"sport": "Patinage artistique",
+"gender": "X",
+"country": "JP",
+"intl": true,
+"fr": false,
+"note": "Champions olympiques 2026 en couples"
 },
 {
 "first_name": "Gil-li",
@@ -2908,6 +2898,46 @@
 "intl": true,
 "fr": false,
 "note": "Triple champion olympique 2026 (descente, super-G, combiné équipe)"
+},
+{
+"first_name": "Marianne",
+"last_name": "Fatton",
+"sport": "Ski alpinisme",
+"gender": "F",
+"country": "CH",
+"intl": true,
+"fr": false,
+"note": "Championne olympique 2026 du sprint"
+},
+{
+"first_name": "Emily",
+"last_name": "Harrop",
+"sport": "Ski alpinisme",
+"gender": "F",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Championne olympique 2026 (relais mixte), argent du sprint"
+},
+{
+"first_name": "Thibault",
+"last_name": "Anselmet",
+"sport": "Ski alpinisme",
+"gender": "M",
+"country": "FR",
+"intl": true,
+"fr": true,
+"note": "Champion olympique 2026 (relais mixte), bronze du sprint"
+},
+{
+"first_name": "Oriol",
+"last_name": "Cardona Coll",
+"sport": "Ski alpinisme",
+"gender": "M",
+"country": "ES",
+"intl": true,
+"fr": false,
+"note": "Champion olympique 2026 du sprint"
 },
 {
 "first_name": "Ebba",

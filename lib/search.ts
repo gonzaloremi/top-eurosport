@@ -118,3 +118,7 @@ export function flag(iso: string): string {
   if (!/^[A-Z]{2}$/.test(iso)) return "🏳️";
   return String.fromCodePoint(...[...iso].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
 }
+
+export function genderLabel(g: string): string {
+  return g === "F" ? "F" : g === "X" ? "Duo" : "H";
+}

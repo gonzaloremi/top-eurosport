@@ -4,7 +4,7 @@ import { sql } from "@/lib/db";
 import { allAthletes, makeResolver, similarTo, toLite } from "@/lib/athletes";
 import { getResults } from "@/lib/data";
 import { currentSeason } from "@/lib/season";
-import { flag, search } from "@/lib/search";
+import { flag, genderLabel, search } from "@/lib/search";
 import { adminDeleteUser, adminRemoveMember, editAthlete, linkLegacy, mergeAthlete, proposeAthlete, rotateAnalyticsToken, saveResults, setAdmin } from "../actions";
 import { ConfirmButton, TokenForm, Top10Form } from "../components/forms";
 
@@ -62,7 +62,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                     {flag(a.country.trim())} {a.display_name}
                   </strong>{" "}
                   <span className="small">
-                    · {a.sport} · {a.gender === "F" ? "F" : "H"}
+                    · {a.sport} · {genderLabel(a.gender)}
                   </span>
                 </div>
                 <div className="row" style={{ gap: 6 }}>
