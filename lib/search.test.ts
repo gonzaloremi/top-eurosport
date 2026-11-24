@@ -31,6 +31,13 @@ test("homonymes : les deux Lebrun sont proposés, le prénom départage", () => 
   assert.equal(search(list, "felix lebrun")[0].id, 2);
 });
 
+test("lettres nordiques et spéciales", () => {
+  const l = [A(9, "Johannes Høsflot Klæbo", "Ski de fond", "NO"), A(10, "Iga Świątek", "Tennis", "PL")];
+  assert.equal(search(l, "klaebo")[0].id, 9);
+  assert.equal(search(l, "hosflot")[0].id, 9);
+  assert.equal(search(l, "swiatek")[0].id, 10);
+});
+
 test("filtre France", () => {
   assert.equal(search(list, "pogacar", { franceOnly: true }).length, 0);
 });

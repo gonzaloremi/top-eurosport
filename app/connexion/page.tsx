@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getUser } from "@/lib/auth";
+import { safeNext } from "@/lib/safe-next";
 import { login, register } from "../actions";
 import { AuthForm } from "../components/forms";
 import { Jersey } from "../components/jersey";
@@ -8,10 +9,12 @@ import { Jersey } from "../components/jersey";
 export default async function Connexion({
   searchParams,
 }: {
-  searchParams: Promise<{ mode?: string; next?: string }>;
+  searchParams: Promise<{ mode?: string | string[]; next?: string | string[] }>;
 }) {
-  const { mode, next = "/" } = await searchParams;
-  if (await getUser()) redirect(next.startsWith("/") ? next : "/");
+  const sp = await searchParams;
+  const mode = typeof sp.mode === "string" ? sp.mode : undefined;
+  const next = safeNext(sp.next);
+  if (await getUser()) redirect(next);
   const isRegister = mode === "inscription";
   const q = (m?: string) =>
     `/connexion?${new URLSearchParams({ ...(m ? { mode: m } : {}), ...(next !== "/" ? { next } : {}) })}`;

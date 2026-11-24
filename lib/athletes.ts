@@ -1,5 +1,5 @@
 import "server-only";
-import { sql } from "./db";
+import { sql as defaultSql, type Db } from "./db";
 import { distance, normalize, type Lite } from "./search";
 
 export type Athlete = {
@@ -23,7 +23,7 @@ export function displayName(first: string, last: string) {
   return [first.trim(), last.trim()].filter(Boolean).join(" ");
 }
 
-export async function allAthletes(): Promise<Athlete[]> {
+export async function allAthletes(sql: Db = defaultSql): Promise<Athlete[]> {
   return sql<Athlete[]>`SELECT * FROM athletes ORDER BY sport, last_name`;
 }
 
@@ -39,6 +39,8 @@ export function toLite(a: Athlete): Lite {
     p: a.status === "pending",
   };
 }
+
+const sql = defaultSql;
 
 export async function insertAthlete(input: {
   first_name: string;
@@ -86,8 +88,8 @@ export function makeResolver(athletes: Athlete[]) {
 }
 
 /** Rattache automatiquement les anciens pronos / résultats en texte libre quand c'est sans ambiguïté. */
-export async function relinkLegacy() {
-  const athletes = await allAthletes();
+export async function relinkLegacy(sql: Db = defaultSql) {
+  const athletes = await allAthletes(sql);
   const resolve = makeResolver(athletes);
   for (const table of ["predictions", "results"] as const) {
     const rows = await sql`SELECT DISTINCT athlete FROM ${sql(table)} WHERE athlete_id IS NULL`;

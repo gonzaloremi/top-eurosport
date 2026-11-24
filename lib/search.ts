@@ -1,7 +1,16 @@
 /** Utilitaires partagés client/serveur : normalisation, recherche floue, drapeaux. */
 
+/** Lettres qui ne se décomposent pas en NFD (æ, ø, œ, ß, ł…). */
+const SPECIAL: Record<string, string> = {
+  æ: "ae", Æ: "ae", ø: "o", Ø: "o", œ: "oe", Œ: "oe", ß: "ss", ł: "l", Ł: "l",
+  đ: "d", Đ: "d", ð: "d", Ð: "d", þ: "th", Þ: "th", ı: "i",
+};
+function fold(s: string): string {
+  return s.replace(/[æÆøØœŒßłŁđĐðÐþÞı]/g, (c) => SPECIAL[c] ?? c);
+}
+
 export function normalize(name: string): string {
-  return name
+  return fold(name)
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
@@ -10,7 +19,7 @@ export function normalize(name: string): string {
 
 /** Tokens normalisés : "Ferrand-Prévost" -> ["ferrand","prevost","ferrandprevost"] */
 export function tokens(name: string): string[] {
-  const parts = name
+  const parts = fold(name)
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()

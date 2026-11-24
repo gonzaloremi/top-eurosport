@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { getMyLeagues, getPredictions } from "@/lib/data";
-import { currentSeason, deadline, isLocked } from "@/lib/season";
+import { currentSeason, deadline, isLocked, now } from "@/lib/season";
 import { createLeague, joinLeague } from "./actions";
 import { InlineForm } from "./components/forms";
 import { Jersey } from "./components/jersey";
 
 function countdown(season: number) {
-  const ms = Math.max(0, deadline(season).getTime() - Date.now());
+  const ms = Math.max(0, deadline(season).getTime() - now().getTime());
   return {
     j: Math.floor(ms / 86_400_000),
     h: Math.floor((ms % 86_400_000) / 3_600_000),

@@ -1,5 +1,5 @@
 import { createHash } from "crypto";
-import { sql } from "./db";
+import type { Db } from "./db";
 import { normalize } from "./search";
 import catalog from "./catalog-2026.json";
 
@@ -14,43 +14,49 @@ type Entry = {
   note?: string;
 };
 
-/** Charge le catalogue (lib/catalog-2026.json) en base quand il a changé. Idempotent. */
-export async function syncCatalog() {
-  const entries = catalog as Entry[];
-  const SYNC_REV = "2"; // à incrémenter quand la logique de synchro change
-  const version = createHash("sha1").update(SYNC_REV + JSON.stringify(entries)).digest("hex").slice(0, 12);
-  const [row] = await sql`SELECT value FROM settings WHERE key = 'catalog_version'`;
-  if (row?.value === version) {
-    await seedHistory();
-    return;
+const entries = catalog as Entry[];
+const SYNC_REV = "3"; // à incrémenter quand la logique de synchro change
+
+export function catalogVersion() {
+  return createHash("sha1").update(SYNC_REV + JSON.stringify(entries)).digest("hex").slice(0, 12);
+}
+
+/** Charge le catalogue (lib/catalog-2026.json) en base. Appelé dans la transaction de boot. */
+export async function syncCatalog(sql: Db) {
+  // Recalcule les clés de recherche (la normalisation a pu évoluer)
+  for (const a of await sql`SELECT id, display_name, last_name, search_key, last_key FROM athletes`) {
+    const sk = normalize(a.display_name), lk = normalize(a.last_name);
+    if (sk !== a.search_key || lk !== a.last_key) {
+      const [clash] = await sql`SELECT 1 FROM athletes WHERE search_key = ${sk} AND sport = (SELECT sport FROM athletes WHERE id = ${a.id}) AND id <> ${a.id}`;
+      if (!clash) await sql`UPDATE athletes SET search_key = ${sk}, last_key = ${lk} WHERE id = ${a.id}`;
+    }
   }
-  for (const e of entries) {
+  const rows = entries.map((e) => {
     const display = [e.first_name, e.last_name].filter(Boolean).join(" ");
+    return {
+      first_name: e.first_name, last_name: e.last_name, display_name: display,
+      search_key: normalize(display), last_key: normalize(e.last_name), sport: e.sport, gender: e.gender,
+      country: e.country.toUpperCase(), in_intl: e.intl, in_fr: e.fr, note: e.note ?? "", status: "approved",
+    };
+  });
+  await sql`
+    INSERT INTO athletes ${sql(rows, "first_name", "last_name", "display_name", "search_key", "last_key", "sport",
+      "gender", "country", "in_intl", "in_fr", "note", "status")}
+    ON CONFLICT (search_key, sport) DO UPDATE SET
+      first_name = EXCLUDED.first_name, last_name = EXCLUDED.last_name, display_name = EXCLUDED.display_name,
+      last_key = EXCLUDED.last_key, gender = EXCLUDED.gender, country = EXCLUDED.country,
+      in_intl = EXCLUDED.in_intl, in_fr = EXCLUDED.in_fr, note = EXCLUDED.note, status = 'approved'`;
+  const keep = rows.map((r) => `${r.search_key}|${r.sport}`);
+  // Athlète déplacé de sport (ex. van der Poel) : on rebascule pronos et résultats vers la nouvelle fiche
+  for (const table of ["predictions", "results"] as const) {
     await sql`
-      INSERT INTO athletes (first_name, last_name, display_name, search_key, last_key, sport, gender, country,
-                            in_intl, in_fr, note, status)
-      VALUES (${e.first_name}, ${e.last_name}, ${display}, ${normalize(display)}, ${normalize(e.last_name)},
-              ${e.sport}, ${e.gender}, ${e.country.toUpperCase()}, ${e.intl}, ${e.fr}, ${e.note ?? ""}, 'approved')
-      ON CONFLICT (search_key, sport) DO UPDATE SET
-        first_name = EXCLUDED.first_name, last_name = EXCLUDED.last_name, display_name = EXCLUDED.display_name,
-        last_key = EXCLUDED.last_key, gender = EXCLUDED.gender, country = EXCLUDED.country,
-        in_intl = EXCLUDED.in_intl, in_fr = EXCLUDED.in_fr, note = EXCLUDED.note, status = 'approved'`;
+      UPDATE ${sql(table)} t SET athlete_id = n.id
+      FROM athletes o JOIN athletes n ON n.search_key = o.search_key AND n.id <> o.id
+      WHERE t.athlete_id = o.id AND o.created_by IS NULL
+        AND NOT ((o.search_key || '|' || o.sport) = ANY(${keep}))
+        AND ((n.search_key || '|' || n.sport) = ANY(${keep}))`;
   }
-  const keep = entries.map((e) => `${normalize([e.first_name, e.last_name].filter(Boolean).join(" "))}|${e.sport}`);
-  // Athlète déplacé de sport (ex. van der Poel) : on rebascule les pronos vers la nouvelle fiche
-  await sql`
-    UPDATE predictions p SET athlete_id = n.id
-    FROM athletes o JOIN athletes n ON n.search_key = o.search_key AND n.id <> o.id
-    WHERE p.athlete_id = o.id AND o.created_by IS NULL
-      AND NOT ((o.search_key || '|' || o.sport) = ANY(${keep}))
-      AND ((n.search_key || '|' || n.sport) = ANY(${keep}))`;
-  await sql`
-    UPDATE results r SET athlete_id = n.id
-    FROM athletes o JOIN athletes n ON n.search_key = o.search_key AND n.id <> o.id
-    WHERE r.athlete_id = o.id AND o.created_by IS NULL
-      AND NOT ((o.search_key || '|' || o.sport) = ANY(${keep}))
-      AND ((n.search_key || '|' || n.sport) = ANY(${keep}))`;
-  // Retire les athlètes du catalogue qui n'y figurent plus (jamais ceux ajoutés par des joueurs ou déjà choisis)
+  // Retire les athlètes qui ne sont plus au catalogue (jamais ceux ajoutés par des joueurs ou déjà utilisés)
   await sql`
     DELETE FROM athletes a
     WHERE a.created_by IS NULL AND a.status = 'approved'
@@ -58,17 +64,14 @@ export async function syncCatalog() {
       AND NOT EXISTS (SELECT 1 FROM predictions p WHERE p.athlete_id = a.id)
       AND NOT EXISTS (SELECT 1 FROM results r WHERE r.athlete_id = a.id)`;
   const { relinkLegacy } = await import("./athletes");
-  await relinkLegacy();
-  await seedHistory();
-  await sql`INSERT INTO settings (key, value) VALUES ('catalog_version', ${version})
-            ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value`;
+  await relinkLegacy(sql);
 }
 
 /** Charge les tops officiels des saisons passées (lib/history.ts) quand la saison est vide en base. */
-async function seedHistory() {
+export async function seedHistory(sql: Db) {
   const { HISTORY } = await import("./history");
   const { allAthletes, makeResolver } = await import("./athletes");
-  const resolve = makeResolver(await allAthletes());
+  const resolve = makeResolver(await allAthletes(sql));
   for (const [season, tops] of Object.entries(HISTORY)) {
     const [has] = await sql`SELECT 1 FROM results WHERE season = ${Number(season)} LIMIT 1`;
     if (has) continue;
@@ -76,7 +79,8 @@ async function seedHistory() {
       for (let i = 0; i < tops[cat].length; i++) {
         const name = tops[cat][i];
         await sql`INSERT INTO results (season, category, position, athlete, athlete_id)
-                  VALUES (${Number(season)}, ${cat}, ${i + 1}, ${name}, ${resolve(name)})`;
+                  VALUES (${Number(season)}, ${cat}, ${i + 1}, ${name}, ${resolve(name)})
+                  ON CONFLICT DO NOTHING`;
       }
   }
 }

@@ -8,7 +8,7 @@ export default async function Pronos() {
   const user = await requireUser();
   const season = currentSeason();
   const locked = isLocked(season);
-  const [preds, catalogue] = await Promise.all([getPredictions([user.id], season), getCatalogLite()]);
+  const [preds, catalogue] = await Promise.all([getPredictions([user.id], season), getCatalogLite(user)]);
   const mine = preds.get(user.id) ?? emptySlots();
 
   return (

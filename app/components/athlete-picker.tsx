@@ -247,7 +247,17 @@ function ProposeForm({
   }
 
   return (
-    <div className="propose" onMouseDown={(e) => e.stopPropagation()}>
+    <div
+      className="propose"
+      onMouseDown={(e) => e.stopPropagation()}
+      onKeyDown={(e) => {
+        // Entrée = ajouter l'athlète (et surtout pas envoyer tout le classement)
+        if (e.key === "Enter") {
+          e.preventDefault();
+          if (!pending && last.trim() && sport.trim()) submit();
+        }
+      }}
+    >
       <div className="kicker">Ajouter un athlète</div>
       <div className="propose-grid">
         <input placeholder="Prénom" value={first} onChange={(e) => setFirst(e.target.value)} />

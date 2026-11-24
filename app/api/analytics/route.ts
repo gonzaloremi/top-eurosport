@@ -1,6 +1,6 @@
 import { createHash, timingSafeEqual } from "crypto";
 import { sql, ensureSchema } from "@/lib/db";
-import { ANALYTICS_DOC } from "@/lib/analytics";
+import { ANALYTICS_DOC, readerClient } from "@/lib/analytics";
 
 export const dynamic = "force-dynamic";
 const MAX_ROWS = 2000;
@@ -34,15 +34,15 @@ export async function POST(req: Request) {
   if (!query) return Response.json({ error: "empty sql" }, { status: 400 });
   if (query.includes(";")) return Response.json({ error: "one statement only" }, { status: 400 });
   try {
-    const rows = await sql.begin("read only", async (tx) => {
+    const reader = await readerClient(sql);
+    // Une seule requête SELECT, bornée : enveloppée dans une sous-requête avec LIMIT
+    const rows = await reader.begin("read only", async (tx) => {
       await tx.unsafe(`SET LOCAL statement_timeout = '5s'`);
-      await tx.unsafe(`SET LOCAL ROLE analytics_reader`);
-      await tx.unsafe(`SET LOCAL search_path = analytics`);
-      return tx.unsafe(query);
+      return tx.unsafe(`SELECT * FROM (${query}) AS q LIMIT ${MAX_ROWS + 1}`);
     });
     const list = Array.from(rows as unknown as Record<string, unknown>[]);
     return Response.json({
-      rowCount: list.length,
+      rowCount: Math.min(list.length, MAX_ROWS),
       truncated: list.length > MAX_ROWS,
       columns: list[0] ? Object.keys(list[0]) : [],
       rows: list.slice(0, MAX_ROWS),

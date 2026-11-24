@@ -27,12 +27,6 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
   const resolve = makeResolver(athletes);
   const legacy = legacyRows.filter((r) => !resolve(r.athlete));
   const pending = athletes.filter((a) => a.status === "pending");
-  const creators = new Map(users.map((u) => [u.id, u.display_name]));
-  const usage = new Map(
-    (await sql`SELECT athlete_id, count(*)::int AS n FROM predictions WHERE athlete_id IS NOT NULL GROUP BY athlete_id`).map(
-      (r) => [r.athlete_id as number, r.n as number]
-    )
-  );
   const todo = pending.length + legacy.length;
   const sportsList = [...new Set(athletes.map((a) => a.sport))].sort((a, b) => a.localeCompare(b, "fr"));
 
@@ -63,8 +57,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
                     {flag(a.country.trim())} {a.display_name}
                   </strong>{" "}
                   <span className="small">
-                    · {a.sport} · {a.gender === "F" ? "F" : "H"} · ajouté par {creators.get(a.created_by ?? 0) ?? "?"} ·{" "}
-                    {usage.get(a.id) ?? 0} prono(s)
+                    · {a.sport} · {a.gender === "F" ? "F" : "H"}
                   </span>
                 </div>
                 <div className="row" style={{ gap: 6 }}>
@@ -94,7 +87,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
               <div key={r.athlete} className="review-item">
                 <div className="grow">
                   <strong>⚠️ « {r.athlete} »</strong>{" "}
-                  <span className="small">· saisi à la main par {r.users} ({r.n})</span>
+                  <span className="small">· saisi à la main</span>
                 </div>
                 <div className="row" style={{ gap: 6 }}>
                   {guesses.map((g) => (

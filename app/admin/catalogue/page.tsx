@@ -45,7 +45,6 @@ export default async function Catalogue() {
                       {a.gender === "F" ? "F" : "H"}
                       {a.in_intl && " · 🌍"}
                       {a.in_fr && " · 🇫🇷 top"}
-                      {usage.get(a.id) ? ` · ${usage.get(a.id)} prono` : ""}
                     </span>
                     {a.status === "pending" && <span className="chip wait" style={{ marginLeft: 6 }}>à valider</span>}
                   </span>

@@ -1,10 +1,12 @@
-import { sql } from "./db";
+import { randomBytes } from "crypto";
+import postgres from "postgres";
+import type { Db } from "./db";
 
 /**
  * Schéma `analytics` : vues en lecture seule pour l'exploration SQL (sans mots de passe),
  * et rôle `analytics_reader` qui n'a accès qu'à ces vues.
  */
-export async function setupAnalytics() {
+export async function setupAnalytics(sql: Db) {
   await sql`CREATE SCHEMA IF NOT EXISTS analytics`;
   await sql.unsafe(`
     CREATE OR REPLACE VIEW analytics.players AS
@@ -29,7 +31,9 @@ export async function setupAnalytics() {
     CREATE OR REPLACE VIEW analytics.predictions AS
       SELECT p.user_id AS player_id, u.display_name AS player, p.season, p.category, p.position,
              p.athlete_id, p.athlete, a.sport, a.country, p.updated_at
-      FROM predictions p JOIN users u ON u.id = p.user_id LEFT JOIN athletes a ON a.id = p.athlete_id;
+      FROM predictions p JOIN users u ON u.id = p.user_id LEFT JOIN athletes a ON a.id = p.athlete_id
+      -- les pronos restent secrets jusqu'à la clôture (15 décembre 23:59, heure de Paris)
+      WHERE now() >= make_timestamptz(p.season, 12, 16, 0, 0, 0, 'Europe/Paris');
 
     CREATE OR REPLACE VIEW analytics.results AS
       SELECT r.season, r.category, r.position, r.athlete_id, r.athlete, a.sport, a.country
@@ -65,23 +69,47 @@ export async function setupAnalytics() {
       LEFT JOIN predictions p ON p.user_id = u.id AND p.season = s.season
       GROUP BY u.id, u.display_name, s.season;
   `);
-  // Rôle lecture seule limité au schéma analytics (best effort : dépend des droits sur l'hébergeur)
+  // Rôle de connexion dédié, lecture seule, limité au schéma analytics.
+  // Il se connecte lui-même : impossible de « remonter » vers le propriétaire de la base.
+  await sql`INSERT INTO settings (key, value) VALUES ('analytics_pw', ${randomBytes(24).toString("hex")})
+            ON CONFLICT (key) DO NOTHING`;
+  const [{ value: pw }] = await sql`SELECT value FROM settings WHERE key = 'analytics_pw'`;
+  const [exists] = await sql`SELECT 1 FROM pg_roles WHERE rolname = 'analytics_reader'`;
+  const lit = String(pw).replace(/[^0-9a-f]/g, "");
+  await sql.unsafe(
+    exists
+      ? `ALTER ROLE analytics_reader WITH LOGIN NOINHERIT PASSWORD '${lit}'`
+      : `CREATE ROLE analytics_reader WITH LOGIN NOINHERIT PASSWORD '${lit}'`
+  );
   await sql.unsafe(`
-    DO $$ BEGIN
-      IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'analytics_reader') THEN
-        CREATE ROLE analytics_reader NOLOGIN;
-      END IF;
-    END $$;
+    ALTER ROLE analytics_reader SET search_path = analytics;
+    ALTER ROLE analytics_reader SET default_transaction_read_only = on;
+    ALTER ROLE analytics_reader SET statement_timeout = '5s';
+    REVOKE ALL ON SCHEMA public FROM analytics_reader;
     GRANT USAGE ON SCHEMA analytics TO analytics_reader;
     GRANT SELECT ON ALL TABLES IN SCHEMA analytics TO analytics_reader;
   `);
-  try {
-    await sql.unsafe(`GRANT analytics_reader TO CURRENT_USER WITH SET TRUE`);
-  } catch {
-    try {
-      await sql.unsafe(`GRANT analytics_reader TO CURRENT_USER`);
-    } catch {}
-  }
+}
+
+const g = globalThis as unknown as { _reader?: postgres.Sql };
+
+/** Client Postgres connecté en tant que analytics_reader (URL dérivée de DATABASE_URL). */
+export async function readerClient(owner: Db): Promise<postgres.Sql> {
+  if (g._reader) return g._reader;
+  const [row] = await owner`SELECT value FROM settings WHERE key = 'analytics_pw'`;
+  if (!row) throw new Error("analytics not initialised");
+  const u = new URL(process.env.DATABASE_URL || process.env.POSTGRES_URL || "");
+  u.username = "analytics_reader";
+  u.password = String(row.value);
+  const isLocal = /localhost|127\.0\.0\.1/.test(u.hostname);
+  g._reader = postgres(u.toString(), {
+    ssl: isLocal ? false : "require",
+    prepare: false,
+    max: 1,
+    idle_timeout: 10,
+    onnotice: () => {},
+  });
+  return g._reader;
 }
 
 export const ANALYTICS_DOC = {

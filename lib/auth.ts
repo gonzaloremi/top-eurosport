@@ -48,21 +48,18 @@ export type User = { id: number; username: string; display_name: string; is_admi
 export async function getUser(): Promise<User | null> {
   const token = (await cookies()).get(COOKIE)?.value;
   if (!token) return null;
+  let uid: number;
   try {
     const { payload } = await jwtVerify(token, await getSecret());
-    await ensureSchema();
-    const [user] = await sql<User[]>`
-      SELECT id, username, display_name, is_admin FROM users WHERE id = ${Number(payload.uid)}`;
-    if (!user) return null;
-    const envAdmins = (process.env.ADMIN_USERNAMES || "")
-      .split(",")
-      .map((s) => s.trim().toLowerCase())
-      .filter(Boolean);
-    if (envAdmins.includes(user.username)) user.is_admin = true;
-    return user;
+    uid = Number(payload.uid);
   } catch {
-    return null;
+    return null; // jeton invalide ou expiré
   }
+  // Les erreurs base de données remontent (page d'erreur) au lieu de déconnecter tout le monde
+  await ensureSchema();
+  const [user] = await sql<User[]>`
+    SELECT id, username, display_name, is_admin FROM users WHERE id = ${uid}`;
+  return user ?? null;
 }
 
 export async function requireUser(): Promise<User> {

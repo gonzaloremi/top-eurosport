@@ -8,16 +8,21 @@ import { createSession, destroySession, requireUser, requireAdmin } from "@/lib/
 import { CATEGORIES, currentSeason, isLocked, type Category } from "@/lib/season";
 import { normalize, type Lite } from "@/lib/search";
 import { displayName, insertAthlete, mergeAthletes, toLite } from "@/lib/athletes";
+import { safeNext } from "@/lib/safe-next";
 
 export type FormState = { error?: string; ok?: string } | undefined;
 
 const str = (fd: FormData, k: string) => String(fd.get(k) ?? "").trim();
+/** Identifiant entier positif valide pour Postgres (sinon 0). */
+const intId = (v: string) => (/^\d{1,9}$/.test(v) ? Number(v) : 0);
+/** Pseudo : forme Unicode canonique, sans caractères invisibles. */
+const cleanName = (v: string) => v.normalize("NFC").replace(/[\u0000-\u001f\u007f\u200b-\u200f\u2028-\u202f\u2060\ufeff]/g, "").replace(/\s+/g, " ").trim();
 
 // ---------- Comptes ----------
 
 export async function register(_: FormState, fd: FormData): Promise<FormState> {
   await ensureSchema();
-  const displayName = str(fd, "name");
+  const displayName = cleanName(str(fd, "name"));
   const username = displayName.toLowerCase();
   const password = String(fd.get("password") ?? "");
   const next = safeNext(str(fd, "next"));
@@ -27,18 +32,24 @@ export async function register(_: FormState, fd: FormData): Promise<FormState> {
   const [exists] = await sql`SELECT 1 FROM users WHERE username = ${username}`;
   if (exists) return { error: "Ce pseudo est déjà pris." };
   const hash = await bcrypt.hash(password, 10);
-  const [{ count }] = await sql`SELECT count(*)::int AS count FROM users`;
-  const [user] = await sql`
-    INSERT INTO users (username, display_name, password_hash, is_admin)
-    VALUES (${username}, ${displayName}, ${hash}, ${count === 0})
-    RETURNING id`;
+  let user;
+  try {
+    // le tout premier compte devient admin
+    [user] = await sql`
+      INSERT INTO users (username, display_name, password_hash, is_admin)
+      VALUES (${username}, ${displayName}, ${hash}, NOT EXISTS (SELECT 1 FROM users))
+      RETURNING id`;
+  } catch (e) {
+    if ((e as { code?: string }).code === "23505") return { error: "Ce pseudo est déjà pris." };
+    throw e;
+  }
   await createSession(user.id);
   redirect(next);
 }
 
 export async function login(_: FormState, fd: FormData): Promise<FormState> {
   await ensureSchema();
-  const username = str(fd, "name").toLowerCase();
+  const username = cleanName(str(fd, "name")).toLowerCase();
   const password = String(fd.get("password") ?? "");
   const next = safeNext(str(fd, "next"));
   const [user] = await sql`SELECT id, password_hash FROM users WHERE username = ${username}`;
@@ -53,9 +64,6 @@ export async function logout() {
   redirect("/connexion");
 }
 
-function safeNext(n: string) {
-  return n.startsWith("/") && !n.startsWith("//") ? n : "/";
-}
 
 // ---------- Ligues ----------
 
@@ -94,9 +102,9 @@ export async function leaveLeague(fd: FormData) {
   const [league] = await sql`SELECT id, owner_id FROM leagues WHERE code = ${code}`;
   if (!league) redirect("/");
   await sql`DELETE FROM league_members WHERE league_id = ${league.id} AND user_id = ${user.id}`;
-  const [{ count }] = await sql`
-    SELECT count(*)::int AS count FROM league_members WHERE league_id = ${league.id}`;
-  if (count === 0) await sql`DELETE FROM leagues WHERE id = ${league.id}`;
+  // supprime la ligue seulement si elle est vide (en une requête, sans course avec un nouvel arrivant)
+  await sql`DELETE FROM leagues WHERE id = ${league.id}
+            AND NOT EXISTS (SELECT 1 FROM league_members WHERE league_id = ${league.id})`;
   redirect("/");
 }
 
@@ -106,18 +114,21 @@ type SlotIn = { id: number | null; name: string };
 
 async function readSlots(fd: FormData, prefix: string): Promise<SlotIn[] | string> {
   const raw = Array.from({ length: 10 }, (_, i) => str(fd, `${prefix}-${i + 1}`));
-  const ids = raw.filter((v) => /^\d+$/.test(v)).map(Number);
+  const ids = raw.map(intId).filter(Boolean);
   const rows = ids.length
-    ? await sql`SELECT id, display_name FROM athletes WHERE id = ANY(${ids})`
+    ? await sql`SELECT id, display_name, country FROM athletes WHERE id = ANY(${ids})`
     : [];
   const names = new Map(rows.map((r) => [r.id as number, r.display_name as string]));
+  const countries = new Map(rows.map((r) => [r.id as number, String(r.country).trim()]));
   const out: SlotIn[] = [];
   for (const v of raw) {
     if (!v) out.push({ id: null, name: "" });
-    else if (/^\d+$/.test(v)) {
-      const name = names.get(Number(v));
+    else if (intId(v)) {
+      const name = names.get(intId(v));
       if (!name) return "Un des athlètes choisis n'existe plus, recharge la page.";
-      out.push({ id: Number(v), name });
+      if (prefix === "france" && countries.get(intId(v)) !== "FR")
+        return `Top France : « ${name} » n'est pas français.`;
+      out.push({ id: intId(v), name });
     } else if (v.startsWith("txt:")) out.push({ id: null, name: v.slice(4).slice(0, 60) });
     else return "Valeur invalide.";
   }
@@ -155,6 +166,8 @@ export async function savePredictions(_: FormState, fd: FormData): Promise<FormS
   const lists = await readBoth(fd);
   if (typeof lists === "string") return { error: lists };
   await sql.begin(async (tx) => {
+    // sérialise deux enregistrements simultanés du même joueur (2 onglets / 2 appareils)
+    await tx`SELECT 1 FROM users WHERE id = ${user.id} FOR UPDATE`;
     await tx`DELETE FROM predictions WHERE user_id = ${user.id} AND season = ${season}`;
     for (const c of CATEGORIES)
       for (let i = 0; i < 10; i++) {
@@ -208,6 +221,7 @@ export async function saveResults(_: FormState, fd: FormData): Promise<FormState
   const lists = await readBoth(fd);
   if (typeof lists === "string") return { error: lists };
   await sql.begin(async (tx) => {
+    await tx`SELECT pg_advisory_xact_lock(727211)`;
     await tx`DELETE FROM results WHERE season = ${season}`;
     for (const c of CATEGORIES)
       for (let i = 0; i < 10; i++) {
@@ -223,18 +237,22 @@ export async function saveResults(_: FormState, fd: FormData): Promise<FormState
 
 export async function approveAthlete(fd: FormData) {
   await requireAdmin();
-  await sql`UPDATE athletes SET status = 'approved' WHERE id = ${Number(str(fd, "id"))}`;
+  await sql`UPDATE athletes SET status = 'approved' WHERE id = ${intId(str(fd, "id"))}`;
   revalidatePath("/", "layout");
   redirect("/admin#revue");
 }
 
 export async function editAthlete(fd: FormData) {
   await requireAdmin();
-  const id = Number(str(fd, "id"));
+  const id = intId(str(fd, "id"));
   const first = str(fd, "first_name").slice(0, 40);
   const last = str(fd, "last_name").slice(0, 40);
-  if (id && last.length >= 2) {
-    const display = displayName(first, last);
+  const display = displayName(first, last);
+  const [clash] = await sql`SELECT id FROM athletes WHERE search_key = ${normalize(display)} AND id <> ${id}
+                            AND sport = (SELECT sport FROM athletes WHERE id = ${id})`;
+  // l'orthographe corrigée correspond à un athlète existant : on fusionne
+  if (id && clash) await mergeAthletes(id, clash.id);
+  else if (id && last.length >= 2) {
     await sql`UPDATE athletes SET first_name = ${first}, last_name = ${last}, display_name = ${display},
               search_key = ${normalize(display)}, last_key = ${normalize(last)}, status = 'approved'
               WHERE id = ${id}`;
@@ -247,8 +265,8 @@ export async function editAthlete(fd: FormData) {
 
 export async function mergeAthlete(fd: FormData) {
   await requireAdmin();
-  const from = Number(str(fd, "from"));
-  const to = Number(str(fd, "to"));
+  const from = intId(str(fd, "from"));
+  const to = intId(str(fd, "to"));
   if (from && to) await mergeAthletes(from, to);
   revalidatePath("/", "layout");
   redirect("/admin#revue");
@@ -256,7 +274,7 @@ export async function mergeAthlete(fd: FormData) {
 
 export async function deleteAthlete(fd: FormData) {
   await requireAdmin();
-  const id = Number(str(fd, "id"));
+  const id = intId(str(fd, "id"));
   const [used] = await sql`
     SELECT 1 FROM predictions WHERE athlete_id = ${id} UNION SELECT 1 FROM results WHERE athlete_id = ${id} LIMIT 1`;
   if (!used) await sql`DELETE FROM athletes WHERE id = ${id}`;
@@ -268,7 +286,7 @@ export async function deleteAthlete(fd: FormData) {
 export async function linkLegacy(fd: FormData) {
   await requireAdmin();
   const text = str(fd, "text");
-  const id = Number(str(fd, "athlete_id"));
+  const id = intId(str(fd, "athlete_id"));
   if (!text || !id) redirect("/admin#revue");
   const [a] = await sql`SELECT display_name FROM athletes WHERE id = ${id}`;
   if (a) {
@@ -281,7 +299,7 @@ export async function linkLegacy(fd: FormData) {
 
 export async function setAdmin(fd: FormData) {
   await requireAdmin();
-  const id = Number(str(fd, "userId"));
+  const id = intId(str(fd, "userId"));
   const value = str(fd, "value") === "1";
   await sql`UPDATE users SET is_admin = ${value} WHERE id = ${id}`;
   redirect("/admin");

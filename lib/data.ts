@@ -109,7 +109,10 @@ export async function computeStandings(members: { id: number; display_name: stri
   return { standings, details, results, preds };
 }
 
-export async function getCatalogLite() {
+/** Catalogue pour le sélecteur : les ajouts en attente ne sont visibles que par leur auteur (et l'admin). */
+export async function getCatalogLite(viewer?: { id: number; is_admin: boolean }) {
   await ensureSchema();
-  return (await allAthletes()).map(toLite);
+  return (await allAthletes())
+    .filter((a) => a.status === "approved" || viewer?.is_admin || a.created_by === viewer?.id)
+    .map(toLite);
 }

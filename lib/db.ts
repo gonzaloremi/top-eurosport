@@ -18,7 +18,9 @@ export const sql: postgres.Sql =
     onnotice: () => {},
   }));
 
-async function createSchema() {
+export type Db = postgres.Sql;
+
+async function createSchema(sql: Db) {
   await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
@@ -87,8 +89,13 @@ async function createSchema() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
       UNIQUE (search_key, sport)
     )`;
-  await sql`ALTER TABLE predictions ADD COLUMN IF NOT EXISTS athlete_id INT REFERENCES athletes(id) ON DELETE SET NULL`;
-  await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS athlete_id INT REFERENCES athletes(id) ON DELETE SET NULL`;
+  // ALTER seulement si nécessaire (un ALTER verrouille la table même quand la colonne existe)
+  for (const table of ["predictions", "results"]) {
+    const [col] = await sql`SELECT 1 FROM information_schema.columns
+                            WHERE table_schema = current_schema() AND table_name = ${table} AND column_name = 'athlete_id'`;
+    if (!col)
+      await sql.unsafe(`ALTER TABLE ${table} ADD COLUMN athlete_id INT REFERENCES athletes(id) ON DELETE SET NULL`);
+  }
   await sql`
     CREATE TABLE IF NOT EXISTS settings (
       key TEXT PRIMARY KEY,
@@ -96,24 +103,50 @@ async function createSchema() {
     )`;
 }
 
-/** Creates tables on first use (idempotent), once per server instance. */
+const BOOT_REV = "4"; // à incrémenter quand le schéma ou la logique d'initialisation change
+
+/**
+ * Initialise la base au premier accès de chaque instance serveur (idempotent).
+ * Chemin rapide : rien à faire si la version de boot est déjà en base.
+ * Sinon tout se fait dans une transaction protégée par un verrou, pour que deux démarrages simultanés
+ * ne se marchent pas dessus.
+ */
 export function ensureSchema(): Promise<void> {
   if (!g._schema) {
-    g._schema = createSchema()
-      .then(async () => {
-        const { syncCatalog } = await import("./catalog");
-        await syncCatalog();
-        try {
-          const { setupAnalytics } = await import("./analytics");
-          await setupAnalytics();
-        } catch (e) {
-          console.error("analytics setup failed", e);
-        }
-      })
-      .catch((e) => {
+    g._schema = boot().catch((e) => {
       g._schema = undefined;
       throw e;
     });
   }
   return g._schema;
+}
+
+async function boot() {
+  const { catalogVersion, syncCatalog, seedHistory } = await import("./catalog");
+  const version = `${BOOT_REV}-${catalogVersion()}`;
+  try {
+    const [r] = await sql`SELECT value FROM settings WHERE key = 'boot_version'`;
+    if (r?.value === version) return;
+  } catch {
+    // table settings absente : première initialisation
+  }
+  await sql.begin(async (tx) => {
+    const db = tx as unknown as Db;
+    await db`SELECT pg_advisory_xact_lock(727210)`;
+    await createSchema(db);
+    const [r] = await db`SELECT value FROM settings WHERE key = 'boot_version'`;
+    if (r?.value === version) return; // une autre instance vient de le faire
+    await syncCatalog(db);
+    await seedHistory(db);
+    try {
+      await tx.savepoint(async (sp) => {
+        const { setupAnalytics } = await import("./analytics");
+        await setupAnalytics(sp as unknown as Db);
+      });
+    } catch (e) {
+      console.error("analytics setup failed", e);
+    }
+    await db`INSERT INTO settings (key, value) VALUES ('boot_version', ${version})
+             ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value`;
+  });
 }

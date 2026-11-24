@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useRef, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import type { FormState, ProposeResult } from "@/app/actions";
 import type { Lite } from "@/lib/search";
@@ -109,8 +109,11 @@ export function Top10Form({
   const lastY = useRef(0);
 
   // Glisser-déposer : la tuile suit le doigt / la souris, les autres s'écartent, on lâche pour valider.
+  useEffect(() => () => { if (scrollTimer.current) clearInterval(scrollTimer.current); }, []);
+
   function startDrag(e: React.PointerEvent, cat: "monde" | "france", index: number) {
-    if (disabled) return;
+    if (disabled || drag) return;
+    if (scrollTimer.current) clearInterval(scrollTimer.current);
     e.preventDefault();
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     const rows = Array.from(listRefs.current[cat]?.children ?? []) as HTMLElement[];
@@ -233,7 +236,7 @@ export function Top10Form({
                           value={v}
                           catalogue={catalogue}
                           franceOnly={c.key === "france"}
-                          takenIds={taken}
+                          takenIds={v.id ? new Set([...taken].filter((x) => x !== v.id)) : taken}
                           disabled={disabled}
                           placeholder={i === 0 ? "Tape un nom…" : `${i + 1}e`}
                           onPropose={proposeAndRemember}
