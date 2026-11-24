@@ -38,6 +38,15 @@ test("lettres nordiques et spéciales", () => {
   assert.equal(search(l, "swiatek")[0].id, 10);
 });
 
+test("noms abrégés pour les tuiles", async () => {
+  const { shortName } = await import("./search.ts");
+  assert.equal(shortName("Johannes Høsflot Klæbo", "Klæbo"), "J. H. Klæbo");
+  assert.equal(shortName("Antoinette Rijpma-de Jong", "Rijpma-de Jong"), "A. Rijpma-de Jong");
+  assert.equal(shortName("Laurence Fournier Beaudry & Guillaume Cizeron", "Laurence Fournier Beaudry & Guillaume Cizeron"), "Fournier Beaudry & Cizeron");
+  assert.equal(shortName("Tadej Pogačar", "Pogačar"), "Tadej Pogačar");
+  assert.equal(shortName("Jean-Philippe Patrice", "Patrice"), "Jean-Philippe Patrice");
+});
+
 test("filtre France", () => {
   assert.equal(search(list, "pogacar", { franceOnly: true }).length, 0);
 });

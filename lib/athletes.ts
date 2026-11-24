@@ -37,6 +37,7 @@ export function toLite(a: Athlete): Lite {
     i: a.in_intl,
     f: a.in_fr,
     p: a.status === "pending",
+    l: a.last_name,
   };
 }
 

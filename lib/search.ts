@@ -94,7 +94,33 @@ export type Lite = {
   i: boolean; // candidat international
   f: boolean; // candidat France
   p: boolean; // en attente de validation
+  l?: string; // nom de famille (pour l'affichage abrégé)
 };
+
+/** Nom affichable dans une tuile étroite : « J. H. Klæbo », « Fournier Beaudry & Cizeron ». */
+export function shortName(full: string, last?: string, max = 21): string {
+  if (full.length <= max) return full;
+  if (full.includes(" & ")) {
+    // duo : on garde les noms de famille (tout sauf le premier mot de chaque côté)
+    return full
+      .split(" & ")
+      .map((p) => {
+        const w = p.trim().split(/\s+/);
+        return w.length > 1 ? w.slice(1).join(" ") : p.trim();
+      })
+      .join(" & ");
+  }
+  if (last && full.endsWith(last) && full.length > last.length) {
+    const first = full.slice(0, full.length - last.length).trim();
+    const initials = first
+      .split(/[\s]+/)
+      .filter(Boolean)
+      .map((w) => w.split("-").map((x) => x[0] + ".").join("-"))
+      .join(" ");
+    return `${initials} ${last}`;
+  }
+  return full;
+}
 
 export function search(list: Lite[], query: string, opts: { franceOnly?: boolean; limit?: number } = {}) {
   const pool = opts.franceOnly ? list.filter((a) => a.c === "FR") : list;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { flag, genderLabel, search, type Lite } from "@/lib/search";
+import { flag, genderLabel, search, shortName, type Lite } from "@/lib/search";
 import type { ProposeResult } from "@/app/actions";
 
 export type PickValue = { id: number | null; name: string };
@@ -109,7 +109,9 @@ export function AthletePicker({
         >
           <span className="flag">{selected ? flag(selected.c) : "⚠️"}</span>
           <span className="picked-name">
-            <span className="nm" title={selected?.n ?? value.name}>{selected?.n ?? value.name}</span>
+            <span className="nm" title={selected?.n ?? value.name}>
+              {selected ? shortName(selected.n, selected.l) : value.name}
+            </span>
             <small>{selected ? `${selected.s}${selected.p ? " · à valider" : ""}` : "À choisir dans la liste"}</small>
           </span>
         </button>
