@@ -435,3 +435,63 @@ details.player[open] summary::after { content: "▴"; }
   .medal { width: 32px; height: 32px; font-size: 1.1rem; }
   .picked-main { padding: 6px 10px; gap: 8px; }
 }
+
+/* ============ Affinage : traits fins, ombres douces ============ */
+:root {
+  --stroke: rgba(20, 20, 20, 0.14);
+  --stroke-strong: rgba(20, 20, 20, 0.28);
+  --shadow-chunky: 0 1px 2px rgba(0,0,0,0.06), 0 10px 30px -12px rgba(0,0,0,0.25);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --stroke: rgba(255,255,255,0.10); --stroke-strong: rgba(255,255,255,0.22); --shadow-chunky: 0 10px 30px -12px rgba(0,0,0,0.6); }
+}
+.card, .game { border: 1px solid var(--stroke); box-shadow: var(--shadow-chunky); }
+.game { border-color: rgba(0,0,0,0.25); }
+.game .bar { border-top: 1px solid rgba(0,0,0,0.18); }
+.theme-yellow .bar, .theme-rainbow .bar { border-top-color: var(--stroke); }
+
+.btn { border-width: 1.5px; box-shadow: 0 3px 0 #141414; border-radius: 12px; }
+.btn:hover { box-shadow: 0 4px 0 #141414; }
+.btn:active { box-shadow: 0 1px 0 #141414; }
+.btn.ghost { border-color: var(--stroke-strong); box-shadow: none; }
+.btn.ghost:hover { box-shadow: none; border-color: currentColor; }
+
+.app-icon { border: 1px solid var(--stroke); box-shadow: none; }
+.code-tiles span { border-width: 1.5px; box-shadow: 0 3px 0 rgba(0,0,0,0.6); }
+.alert { border: 0; }
+.chip { border: 0; }
+.pts { border: 0; }
+.pts-0 { box-shadow: inset 0 0 0 1px var(--line); }
+details.player { border-width: 1px; }
+details.player[open] { border-color: var(--stroke-strong); }
+.review-item { border: 1px solid var(--stroke-strong); }
+.dropdown { border: 1px solid var(--stroke-strong); box-shadow: 0 18px 40px -8px rgba(0,0,0,0.35); }
+.dropdown.up { box-shadow: 0 -18px 40px -8px rgba(0,0,0,0.35); }
+.install-sheet { border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+.tabs { border: 0; }
+input { border-width: 1px; }
+.podium .block { border-width: 1.5px; box-shadow: 0 3px 0 rgba(0,0,0,0.5); }
+.timer .unit { border: 0; }
+
+/* Lignes de prono */
+.medal { border: 0; box-shadow: none; }
+.medal.m1, .medal.m2, .medal.m3 { border: 0; }
+.theme-rainbow .medal:not(.m1):not(.m2):not(.m3) { background: transparent; color: #8a8579; }
+.theme-blue .medal:not(.m1):not(.m2):not(.m3) { background: transparent; color: rgba(255,255,255,0.7); }
+.medal.target { box-shadow: 0 0 0 2px var(--yellow); }
+.picked-main { border: 1px solid rgba(255,255,255,0.16); min-height: 46px; }
+.theme-rainbow .picked-main, .theme-yellow .picked-main { border: 1px solid var(--stroke-strong); background: #fff; }
+.theme-rainbow input, .theme-yellow input { border: 1px solid var(--stroke-strong); }
+.picked.legacy .picked-main { border: 1px dashed var(--orange); }
+.grip { background: transparent !important; border: 0 !important; width: 22px; opacity: 0.45; }
+.grip:hover, .tile.lifted .grip { opacity: 1; }
+.tile.lifted .grip { color: inherit; }
+.clear { border: 0 !important; background: transparent; width: 30px; opacity: 0.4; font-size: 0.9rem; }
+.clear:hover { opacity: 1; }
+.tile.lifted .picked-main, .tile.lifted .picker input { box-shadow: 0 14px 30px -8px rgba(0,0,0,0.4); border-color: var(--yellow); }
+.pick-list { gap: 6px; }
+
+/* Tuiles de hauteur fixe : les noms longs sont tronqués */
+.picked-main { height: 50px; min-height: 50px; }
+.picker input { height: 50px; }
+.picked-name .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }

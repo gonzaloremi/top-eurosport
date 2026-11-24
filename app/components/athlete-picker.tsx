@@ -93,7 +93,7 @@ export function AthletePicker({
         >
           <span className="flag">{selected ? flag(selected.c) : "⚠️"}</span>
           <span className="picked-name">
-            {selected?.n ?? value.name}
+            <span className="nm" title={selected?.n ?? value.name}>{selected?.n ?? value.name}</span>
             <small>{selected ? `${selected.s}${selected.p ? " · à valider" : ""}` : "À choisir dans la liste"}</small>
           </span>
         </button>

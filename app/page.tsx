@@ -30,7 +30,6 @@ export default async function Home() {
       <div className="hero-grid">
         <section className="game theme-night dots">
           <div className="art" style={{ paddingBottom: 26 }}>
-            <div className="kicker">Saison {season}</div>
             <h1 style={{ maxWidth: "11ch", marginTop: 6 }}>
               {locked ? (
                 <>Les jeux sont faits</>
@@ -64,9 +63,9 @@ export default async function Home() {
           <div className="bar">
             <span className="app-icon">🏆</span>
             <div className="grow">
-              <div className="title">Mon classement {season}</div>
+              <div className="title">Mon classement</div>
               <div className="sub">
-                {filled === 20 ? "Complet · 20/20 athlètes" : filled ? `Incomplet · ${filled}/20 athlètes` : "Pas encore envoyé"}
+                {filled === 20 ? "Complet · 20/20" : filled ? `${filled}/20` : "Pas encore envoyé"}
               </div>
               <div className="progress" style={{ marginTop: 6, maxWidth: 220 }}>
                 <span style={{ width: `${(filled / 20) * 100}%` }} />
