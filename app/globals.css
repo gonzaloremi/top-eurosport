@@ -495,3 +495,11 @@ input { border-width: 1px; }
 .picked-main { height: 50px; min-height: 50px; }
 .picker input { height: 50px; }
 .picked-name .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+
+.nowrap { white-space: nowrap; }
+@media (max-width: 420px) {
+  .jersey-stack { position: static; transform: none; justify-content: flex-start; margin: -6px 0 10px -4px; }
+  .jersey-stack svg { width: 54px; height: 54px; }
+  .game .bar { flex-wrap: wrap; }
+  .game .bar .grow { min-width: 140px; }
+}

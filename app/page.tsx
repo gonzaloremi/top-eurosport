@@ -30,21 +30,24 @@ export default async function Home() {
       <div className="hero-grid">
         <section className="game theme-night dots">
           <div className="art" style={{ paddingBottom: 26 }}>
-            <h1 style={{ maxWidth: "11ch", marginTop: 6 }}>
-              {locked ? (
-                <>Les jeux sont faits</>
-              ) : (
-                <>
-                  Salut {user.display_name}
-                  <span style={{ color: "var(--yellow)" }}> !</span>
-                </>
-              )}
-            </h1>
             <div className="jersey-stack">
               <span className="float"><Jersey variant="rainbow" size={70} tilt={-12} number={1} /></span>
               <span className="float d2"><Jersey variant="yellow" size={86} number={1} /></span>
               <span className="float d3"><Jersey variant="blue" size={70} tilt={12} number={1} /></span>
             </div>
+            <h1 style={{ maxWidth: "11ch", marginTop: 6, fontSize: user.display_name.length > 9 ? "clamp(1.7rem, 7.5vw, 2.6rem)" : undefined }}>
+              {locked ? (
+                <>Les jeux sont faits</>
+              ) : (
+                <>
+                  Salut{" "}
+                  <span className="nowrap">
+                    {user.display_name}
+                    <span style={{ color: "var(--yellow)" }}>{"\u00a0"}!</span>
+                  </span>
+                </>
+              )}
+            </h1>
             {locked ? (
               <p className="muted" style={{ marginTop: 14, maxWidth: "42ch" }}>
                 Pronos fermés. Verdict fin décembre.
