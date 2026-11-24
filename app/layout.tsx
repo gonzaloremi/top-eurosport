@@ -32,6 +32,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <header className="topbar">
           <Link href="/" className="wordmark">
             <span className="mark">Top10<span className="dot">.</span></span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand-coin" src="/brand-96.png" width={46} height={46} alt="" aria-hidden />
           </Link>
           {user && (
             <div className="user-box">
@@ -60,6 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <span>
             <Link href="/regles">Règles</Link> · <Link href="/palmares">Palmarès</Link>
           </span>
+          <span className="disclaimer">Jeu non officiel, sans lien avec Eurosport.</span>
         </footer>
         <InstallPrompt />
       </body>
