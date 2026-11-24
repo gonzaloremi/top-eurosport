@@ -383,17 +383,27 @@ details.player[open] summary::after { content: "▴"; }
 .review-item select { max-width: 260px; }
 
 /* ============ Drag & drop ============ */
-.medal.handle { position: relative; cursor: grab; touch-action: none; user-select: none; }
-fieldset:disabled .medal.handle, .medal.handle:active { cursor: grabbing; }
-.medal .grip {
-  position: absolute; left: -13px; top: 50%; transform: translateY(-50%); font-family: var(--body);
-  font-size: 0.8rem; letter-spacing: -2px; opacity: 0.35; line-height: 1;
+.tile { flex: 1; min-width: 0; display: flex; align-items: stretch; gap: 6px; position: relative;
+  transition: transform 0.18s cubic-bezier(.2,.8,.3,1); will-change: transform; }
+.settling .tile { transition: none !important; }
+.grip {
+  flex: none; width: 30px; display: grid; place-items: center; border-radius: 10px; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.22); color: currentColor;
 }
-.pick { margin-left: 10px; transition: transform 0.12s ease; }
-.pick.dragging { transform: scale(1.02); position: relative; z-index: 3; }
-.pick.dragging .medal { box-shadow: 0 4px 0 #141414; transform: rotate(-4deg); }
-.pick.dragging .picked-main, .pick.dragging .picker input { box-shadow: 0 8px 22px rgba(0,0,0,0.28); }
-
+.grip svg { fill: currentColor; opacity: 0.85; }
+.grip:hover { background: rgba(255,255,255,0.2); }
+.theme-rainbow .grip, .theme-yellow .grip { background: #eee9dc; border-color: #c9c3b4; color: #141414; }
+.theme-rainbow .grip:hover, .theme-yellow .grip:hover { background: #e2dccb; border-color: #141414; }
+.is-dragging, .is-dragging * { cursor: grabbing !important; user-select: none; }
+.tile.lifted .grip { background: var(--yellow); border-color: #141414; color: #141414; }
+.tile.lifted .picked-main, .tile.lifted .picker input {
+  box-shadow: 0 6px 0 #141414, 0 22px 40px rgba(0,0,0,0.35); border-color: #141414;
+}
+.tile.lifted { filter: saturate(1.1); }
+.medal { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.medal.target { transform: scale(1.12) rotate(-4deg); box-shadow: 0 0 0 3px var(--yellow); }
+.pick { position: relative; }
 /* ============ Install sheet (PWA) ============ */
 .install-sheet {
   position: fixed; z-index: 50; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom));
@@ -411,3 +421,9 @@ fieldset:disabled .medal.handle, .medal.handle:active { cursor: grabbing; }
 .install-actions .btn { padding: 8px 14px; }
 .ios-share { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: #fff; color: #1a6cff; font-weight: 900; }
 @keyframes slideup { from { transform: translateY(120%); } to { transform: none; } }
+
+/* Cartes contenant des sélecteurs : la liste de suggestions peut dépasser */
+.game.open-overflow { overflow: visible; }
+.game.open-overflow > .rainbow-band { border-radius: calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0; }
+.dropdown.up { top: auto; bottom: calc(100% + 6px); box-shadow: 0 -4px 0 #141414, 0 -18px 40px rgba(0,0,0,0.25); }
+.pick:has(.dropdown) { z-index: 40; }

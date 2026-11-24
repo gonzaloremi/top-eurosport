@@ -43,6 +43,7 @@ export function AthletePicker({
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const [adding, setAdding] = useState(false);
+  const [up, setUp] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -114,7 +115,12 @@ export function AthletePicker({
         disabled={disabled}
         placeholder={placeholder}
         autoComplete="off"
-        onFocus={() => setOpen(true)}
+        onFocus={() => {
+          const r = boxRef.current?.getBoundingClientRect();
+          // pas assez de place sous le champ (bas de liste, clavier mobile) : on ouvre vers le haut
+          if (r) setUp(window.innerHeight - r.bottom < 320 && r.top > 320);
+          setOpen(true);
+        }}
         onBlur={() =>
           setTimeout(() => {
             if (!boxRef.current?.contains(document.activeElement)) {
@@ -142,7 +148,7 @@ export function AthletePicker({
         }}
       />
       {open && query.trim().length > 0 && (
-        <div className="dropdown" role="listbox">
+        <div className={`dropdown ${up ? "up" : ""}`} role="listbox">
           {!adding &&
             results.map((a, i) => {
               const taken = takenIds.has(a.id);
