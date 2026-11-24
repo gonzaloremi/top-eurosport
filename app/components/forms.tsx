@@ -131,7 +131,8 @@ export function Top10Form({
   function update(clientY: number) {
     setDrag((d) => {
       if (!d) return d;
-      const dy = clientY + window.scrollY - d.startY;
+      // la tuile reste dans la liste (entre la 1re et la 10e place)
+      const dy = Math.max(-d.from * d.step - 8, Math.min((9 - d.from) * d.step + 8, clientY + window.scrollY - d.startY));
       const over = Math.max(0, Math.min(9, d.from + Math.round(dy / d.step)));
       if (over !== d.over && navigator.vibrate) navigator.vibrate(6);
       return { ...d, dy, over };
@@ -160,7 +161,7 @@ export function Top10Form({
   }
   function shift(cat: "monde" | "france", i: number): React.CSSProperties | undefined {
     if (!drag || drag.cat !== cat) return undefined;
-    if (i === drag.from) return { transform: `translateY(${drag.dy}px) scale(1.03)`, transition: "none", zIndex: 30 };
+    if (i === drag.from) return { transform: `translateY(${drag.dy}px)`, transition: "none", zIndex: 30 };
     if (drag.from < drag.over && i > drag.from && i <= drag.over) return { transform: `translateY(${-drag.step}px)` };
     if (drag.from > drag.over && i >= drag.over && i < drag.from) return { transform: `translateY(${drag.step}px)` };
     return { transform: "translateY(0)" };
