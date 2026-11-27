@@ -17,6 +17,8 @@ type Entry = {
 const entries = catalog as Entry[];
 const SYNC_REV = "4";
 
+const HISTORY_RENAMES: [number, string, string][] = [[2025, "Dalin", "Charlie Dalin"]];
+
 const PA = "Patinage artistique";
 const REMAP: Record<string, string> = {
   [`guillaumecizeron|${PA}`]: `laurencefournierbeaudryguillaumecizeron|${PA}`,
@@ -83,6 +85,9 @@ export async function syncCatalog(sql: Db) {
       AND NOT ((a.search_key || '|' || a.sport) = ANY(${keep}))
       AND NOT EXISTS (SELECT 1 FROM predictions p WHERE p.athlete_id = a.id)
       AND NOT EXISTS (SELECT 1 FROM results r WHERE r.athlete_id = a.id)`;
+  // Corrections de noms dans les tops historiques déjà chargés en base
+  for (const [season, from, to] of HISTORY_RENAMES)
+    await sql`UPDATE results SET athlete = ${to}, athlete_id = NULL WHERE season = ${season} AND athlete = ${from}`;
   const { relinkLegacy } = await import("./athletes");
   await relinkLegacy(sql);
 }

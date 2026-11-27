@@ -13,7 +13,7 @@ export const HISTORY: Record<number, { monde: string[]; france: string[] }> = {
     ],
     france: [
       "Ousmane Dembélé", "Pauline Ferrand-Prévot", "Jimmy Gressier", "Léon Marchand", "Sébastien Ogier",
-      "Dalin", "Maxime Grousset", "Louis Bielle-Biarrey", "Julia Simon", "Félix Lebrun",
+      "Charlie Dalin", "Maxime Grousset", "Louis Bielle-Biarrey", "Julia Simon", "Félix Lebrun",
     ],
   },
   2024: {
